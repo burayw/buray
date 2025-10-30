@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Disallow - 标签 - Buray&#39;s Blog</title>
+    <link>http://localhost:1313/tags/disallow/</link>
+    <description>Buray&#39;s Blog</description>
+    <generator>Hugo 0.152.2 &amp; FixIt v0.3.20</generator>
+    <language>zh-CN</language>
+    <managingEditor>buray@qq.com (Buray)</managingEditor>
+    <webMaster>buray@qq.com (Buray)</webMaster>
+    <lastBuildDate>Thu, 22 Sep 2022 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/disallow/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>禁止搜索引擎收录</title>
+      <link>http://localhost:1313/posts/disallow/</link>
+      <pubDate>Thu, 22 Sep 2022 00:00:00 +0000</pubDate><author>buray@qq.com (Buray)</author>
+      <guid>http://localhost:1313/posts/disallow/</guid>
+      <category domain="http://localhost:1313/categories/%E7%AC%94%E8%AE%B0/">笔记</category>
+      <description>&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#39;https://burayimg.heisenw.com/blog/img/b1fb23cf-7119-4f6a-afa1-19881abdf2c0.webp&#39; alt=&#34;https://burayimg.heisenw.com/blog/img/b1fb23cf-7119-4f6a-afa1-19881abdf2c0.webp&#34;&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;因为做单位内部使用的网站，有部分内容不想公开，所以希望屏蔽所有搜索引擎，整理了网上的几种方法，参考&lt;a href=&#34;https://www.rmnof.com/article/block-search-indexing/&#34;target=&#34;_blank&#34; rel=&#34;external nofollow noopener noreferrer&#34;&gt;通过nginx禁止搜索引擎抓取和收录&lt;/a&gt;这篇文章实现。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

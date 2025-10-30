@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>Docsify学习笔记 - Buray&#39;s Blog</title><meta name="author" content="Buray">
+<meta name="description" content="
+docsify本地部署 windows环境搭建 软件准备
+"><meta name="keywords" content='docsify, 静态博客'>
+  <meta itemprop="name" content="docsify学习笔记">
+  <meta itemprop="description" content="docsify本地部署 windows环境搭建 软件准备">
+  <meta itemprop="datePublished" content="2022-09-23T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2022-09-23T00:00:00+00:00">
+  <meta itemprop="wordCount" content="7545">
+  <meta itemprop="keywords" content="Docsify,静态博客"><meta property="og:url" content="http://localhost:1313/posts/docsify-notes/">
+  <meta property="og:site_name" content="Buray&#39;s Blog">
+  <meta property="og:title" content="docsify学习笔记">
+  <meta property="og:description" content="docsify本地部署 windows环境搭建 软件准备">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2022-09-23T00:00:00+00:00">
+    <meta property="article:modified_time" content="2022-09-23T00:00:00+00:00">
+    <meta property="article:tag" content="Docsify">
+    <meta property="article:tag" content="静态博客">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="docsify学习笔记">
+  <meta name="twitter:description" content="docsify本地部署 windows环境搭建 软件准备">
+<meta name="application-name" content="Buray&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="Buray&#39;s Blog"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" type="text/html" href="http://localhost:1313/posts/docsify-notes/" title="docsify学习笔记 - Buray&#39;s Blog" /><link rel="prev" type="text/html" href="http://localhost:1313/posts/markdown-notes/" title="Markdown语法学习" /><link rel="next" type="text/html" href="http://localhost:1313/posts/disallow/" title="Gitee推送" /><link rel="alternate" type="text/markdown" href="http://localhost:1313/posts/docsify-notes/index.md" title="docsify学习笔记 - Buray's Blog"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "docsify学习笔记",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http:\/\/localhost:1313\/posts\/docsify-notes\/"
+    },"image": ["https:\/\/burayimg.heisenw.com\/blog\/img\/a6c9b1f7-6da1-4978-bedf-29b03325cace.webp"],"genre": "posts","keywords": "docsify, 静态博客","wordcount":  7545 ,
+    "url": "http:\/\/localhost:1313\/posts\/docsify-notes\/","datePublished": "2022-09-23T00:00:00+00:00","dateModified": "2022-09-23T00:00:00+00:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "Buray"
+      },"description": ""
+  }
+  </script><script src="/js/head/color-scheme.min.js"></script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><div class="wrapper" data-page-style="normal"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="Buray&#39;s Blog"><img class="logo" src='https://burayimg.heisenw.com/blog/img/a6c9b1f7-6da1-4978-bedf-29b03325cace.webp' alt="Buray&#39;s Blog" height="32" width="32"><span class="header-title-text">Buray&#39;s Blog</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a class="menu-link" href="/archives/"><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 文档</a></li><li class="menu-item">
+              <a class="menu-link" href="/categories/"><i class="fa-solid fa-folder-tree fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li class="menu-item">
+              <a class="menu-link" href="/tags/"><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索文章标题或内容……" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="Buray&#39;s Blog"><img class="logo" src='https://burayimg.heisenw.com/blog/img/a6c9b1f7-6da1-4978-bedf-29b03325cace.webp' alt="Buray&#39;s Blog" height="26" width="26"><span class="header-title-text">Buray&#39;s Blog</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索文章标题或内容……" id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              取消
+            </a>
+          </li><li class="menu-item"><a class="menu-link" href="/archives/"><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 文档</a></li><li class="menu-item"><a class="menu-link" href="/categories/"><i class="fa-solid fa-folder-tree fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li class="menu-item"><a class="menu-link" href="/tags/"><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="切换主题"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><nav aria-label="breadcrumb" class="breadcrumb-container">
+    <ol class="breadcrumb"><li class="breadcrumb-item" data-separator="/"><a href="/" title="Buray&#39;s Blog">主页</a></li><li class="breadcrumb-item" data-separator="/"><a href="/posts/" title="Posts">文章</a></li><li class="breadcrumb-item active" data-separator="/" aria-current="page">Docsify学习笔记</li>
+    </ol>
+  </nav><main class="container"><aside class="aside-collection animate__animated animate__fadeIn animate__faster" aria-label="合集"></aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>Docsify学习笔记</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><a href="http://www.burayw.top" title="作者"target="_blank" rel="external nofollow noopener noreferrer author" class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+    Buray</a></span><span class="post-included-in">&nbsp;收录于 <a href="/categories/%E7%AC%94%E8%AE%B0/" class="post-category" title="分类 - 笔记"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 笔记</a></span></div><div class="post-meta-line"><span title="发布于 2022-09-23 00:00:00"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2022-09-23">2022-09-23</time></span>&nbsp;<span title="7545 字"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 7600 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 16 分钟</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#docsify本地部署">docsify本地部署</a>
+      <ul>
+        <li><a href="#windows环境搭建">windows环境搭建</a></li>
+        <li><a href="#部署docsify">部署docsify</a></li>
+        <li><a href="#相关设置">相关设置</a></li>
+      </ul>
+    </li>
+    <li><a href="#上传gitee仓库">上传Gitee仓库</a>
+      <ul>
+        <li><a href="#仓库配置">仓库配置</a></li>
+      </ul>
+    </li>
+    <li><a href="#宝塔面板同步gitee">宝塔面板同步Gitee</a>
+      <ul>
+        <li><a href="#宝塔终端生成公钥">宝塔终端生成公钥</a></li>
+        <li><a href="#gitee仓库添加公钥">Gitee仓库添加公钥</a></li>
+        <li><a href="#宝塔安装webhook插件并配置">宝塔安装WebHook插件并配置</a></li>
+        <li><a href="#配置gitee的webhooks">配置Gitee的WebHooks</a></li>
+        <li><a href="#将gitee仓库clone到服务器的本地目录中">将Gitee仓库clone到服务器的本地目录中</a></li>
+        <li><a href="#测试">测试</a></li>
+      </ul>
+    </li>
+    <li><a href="#网站上线">网站上线</a>
+      <ul>
+        <li><a href="#docsify上传到服务器宝塔面板">docsify上传到服务器（宝塔面板）</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><p><img loading="lazy" src='https://burayimg.heisenw.com/blog/img/bb3b1351-17dd-4e29-a810-ac70f6590340.webp' alt="https://burayimg.heisenw.com/blog/img/bb3b1351-17dd-4e29-a810-ac70f6590340.webp"></p>
+<h2 class="heading-element" id="docsify本地部署"><span>docsify本地部署</span>
+  <a href="#docsify%e6%9c%ac%e5%9c%b0%e9%83%a8%e7%bd%b2" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><h3 class="heading-element" id="windows环境搭建"><span>windows环境搭建</span>
+  <a href="#windows%e7%8e%af%e5%a2%83%e6%90%ad%e5%bb%ba" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><ul>
+<li>
+<p>软件准备</p>
+<ul>
+<li><a href="http://nodejs.cn/"target="_blank" rel="external nofollow noopener noreferrer">node.js中文官网</a>
+<ul>
+<li>选择“长期支持版本（LTS）”</li>
+</ul>
+</li>
+<li><a href="https://git-scm.com/"target="_blank" rel="external nofollow noopener noreferrer">git官网</a>
+<ul>
+<li>下载最新版本</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>软件安装</p>
+<ul>
+<li>node.js 默认安装即可
+<ul>
+<li>安装完成后 win+r 打开命令提示符输入 <code>node</code> 有版本号输出即可</li>
+</ul>
+</li>
+<li>git 安装时注意添加到桌面快捷方式，其他内容默认安装即可
+<ul>
+<li>安装完成后 右键能打开 Git Bash Here 即可</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>新建文件夹命名为tcwiki，右键使用 Visual Studio Code 打开</p>
+<ul>
+<li>
+<p>发现右键没有 Visual Studio Code</p>
+<ul>
+<li>
+<p>解决方案</p>
+<ul>
+<li>
+<p>新建文本文档，修改后缀为 .reg</p>
+</li>
+<li>
+<p>右键打开文档，粘贴为以下代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Windows Registry Editor Version 5.00
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[HKEY_CLASSES_ROOT\*\shell\VSCode]
+</span></span><span class="line"><span class="cl">@=&#34;Open with Code&#34;
+</span></span><span class="line"><span class="cl">&#34;Icon&#34;=&#34;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe&#34;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[HKEY_CLASSES_ROOT\*\shell\VSCode\command]
+</span></span><span class="line"><span class="cl">@=&#34;\&#34;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe\&#34; \&#34;%1\&#34;&#34;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Windows Registry Editor Version 5.00
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[HKEY_CLASSES_ROOT\Directory\shell\VSCode]
+</span></span><span class="line"><span class="cl">@=&#34;Open with Code&#34;
+</span></span><span class="line"><span class="cl">&#34;Icon&#34;=&#34;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe&#34;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[HKEY_CLASSES_ROOT\Directory\shell\VSCode\command]
+</span></span><span class="line"><span class="cl">@=&#34;\&#34;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe\&#34; \&#34;%V\&#34;&#34;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Windows Registry Editor Version 5.00
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[HKEY_CLASSES_ROOT\Directory\Background\shell\VSCode]
+</span></span><span class="line"><span class="cl">@=&#34;Open with Code&#34;
+</span></span><span class="line"><span class="cl">&#34;Icon&#34;=&#34;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe&#34;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[HKEY_CLASSES_ROOT\Directory\Background\shell\VSCode\command]
+</span></span><span class="line"><span class="cl">@=&#34;\&#34;C:\\Users\\Administrator\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe\&#34; \&#34;%V\&#34;&#34;</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>其中<code>C:\\Users\\Administrator\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe</code>为 Visual Studio Code 所在位置路径，可以在 Visual Studio Code 快捷方式上<code>右键-属性</code>获得，注意<code>\</code>要替换为<code>\\</code>。</p>
+</li>
+<li>
+<p>修改完成后保存，双击运行，在文件加上右键，发现<code>使用 Visual Studio Code 打开</code>已出现，成功。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>VS Code设置和插件安装</p>
+<ul>
+<li>安装<code>Markdown Preview Github Styling</code> 插件
+<ul>
+<li>可以进行Markdown预览</li>
+<li>点击插件旁边的小齿轮，设置显示模式为light可以变换右侧预览窗口的颜色</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>新建<code>demo.md</code> 学习和测试 <code>markdown 语法</code></p>
+<ul>
+<li><a href="https://zhuanlan.zhihu.com/p/108984311"target="_blank" rel="external nofollow noopener noreferrer">markdown常用语法</a></li>
+</ul>
+</li>
+<li>
+<p>npm更换国内镜像源（淘宝）</p>
+<ul>
+<li>
+<p>CMD输入以下命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">npm config set registry https://registry.npm.taobao.org</span></span></code></pre></td></tr></table>
+</div>
+</div><p>使用下面的命令查看是否切换成功</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">npm get registry</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 class="heading-element" id="部署docsify"><span>部署docsify</span>
+  <a href="#%e9%83%a8%e7%bd%b2docsify" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3></li>
+</ul>
+</li>
+<li>
+<p>打开<a href="https://github.com/docsifyjs/docsify"target="_blank" rel="external nofollow noopener noreferrer">docsify官方GitHub</a>,下拉找到<code>Documentation</code>点击进入官方网站。</p>
+<ul>
+<li>或者可以直接进入其官网<a href="https://docsify.js.org/"target="_blank" rel="external nofollow noopener noreferrer">https://docsify.js.org/</a></li>
+<li>Translations 切换中文
+<ul>
+<li>完犊子，官方的中文翻译404了&hellip;
+<ul>
+<li>20220814上梯子可以显示了</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><code>docsify-cli</code>全局安装</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">npm i docsify-cli -g</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>初始化 docsify</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">docsify init ./docs</span></span></code></pre></td></tr></table>
+</div>
+</div><p>提示：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">docsify : 无法加载文件 C:\Users\Administrator\AppData\Roaming\npm\docsify.ps1，因为在此系统上禁止运行脚本。有关详细信息，
+</span></span><span class="line"><span class="cl">请参阅 https:/go.microsoft.com/fwlink/?LinkID=135170  docsify : 无法加载文件 C:\Users\Administrator\AppData\
+</span></span><span class="line"><span class="cl">Roaming\npm\docsify.ps1，因为在此系统上禁止运行脚本。</span></span></code></pre></td></tr></table>
+</div>
+</div><p>上网查了一下，是因为<code>windows 为了安全 默认的执行策略为 Restricted</code>,调整设置为<code>RemoteSigned</code>就可以了。具体操作如下：</p>
+<blockquote>
+<p>Visual Studio Code中选择任意md文件右键<code>在集成终端中打开</code></p>
+<blockquote>
+<p>获取默认的执行策略，终端中运行<code>get-executionpolicy</code>。</p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<blockquote>
+<p>设置执行策略,继续运行<code>Set-ExecutionPolicy RemoteSigned</code>,提示错误。</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>原因在于没有获得管理员权限，关闭Visual Studio Code,在其快捷方式上右键<code>以管理员身份运行</code>,重新运行即恢复正常。</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>下面是4种常用的执行策略</p>
+<blockquote>
+<p>Restricted：禁止运行任何脚本和配置文件。</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>AllSigned ：可以运行脚本，但要求所有脚本和配置文
+件由可信发布者签名，包括在本地计算机上编写的脚本。</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>RemoteSigned ：可以运行脚本，但要求从网络上下载的脚本和配置文件由可信发布者签名;不要求对已经运行和已在本地计算机编写的脚本进行数字签名。</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>Unrestricted ：可以运行未签名脚本。（危险！）</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<ul>
+<li>
+<p>重新初始化 docsify</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">docsify init ./docs</span></span></code></pre></td></tr></table>
+</div>
+</div><p>成功。自动新建了<code>docs</code>文件夹,其中有3个文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">index.html - 入口文件
+</span></span><span class="line"><span class="cl">README.md - 主页内容
+</span></span><span class="line"><span class="cl">.nojekyll - 防止 GitHub Pages 忽略以下划线开头的文件</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>启动本地服务</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">docsify serve docs</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>不出意外，出现了新的问题</p>
+<ul>
+<li>
+<p>页面不显示任何内容</p>
+<ul>
+<li>
+<p>各种尝试，各种失败，今晚就到这里吧。</p>
+</li>
+<li>
+<p>用Chrome检查<code>Network</code>，发现<code>docsify</code>的<code>script</code>和<code>vue.css</code>状态为<code>failed</code>。</p>
+<ul>
+<li>检查<code>index.html</code>发现这两个引用文件使用了<code>jsdelivr</code>的CDN，上网查询发现2021年12月份<code>jsdelivr</code>的备案被取消了，所以国内无法访问。需要考虑替换方案。</li>
+</ul>
+</li>
+<li>
+<p>将<code>cdn.jsdelivr.net/npm</code>全部替换为<code>unpkg.com</code>恢复正常</p>
+<ul>
+<li>
+<p>备选方案（来源知乎：<a href="https://zhuanlan.zhihu.com/p/517909552?utm_source=wechat_session&amp;utm_medium=social&amp;utm_oi=606048952009887744&amp;utm_campaign=shareopn"target="_blank" rel="external nofollow noopener noreferrer">jsdelivr的cdn挂了，很多依赖GitHub的网站打不开了，解决方法来了</a>）</p>
+<ul>
+<li>
+<p>很多GitHub文件的cdn也用的jsdelivr，将http://cdn.jsdelivr.net替换为http://fastly.jsdelivr.net 就行了。</p>
+</li>
+<li>
+<p>如果这个也挂了,打开<a href="https://ipaddress.com/website/raw.githubusercontent.com"target="_blank" rel="external nofollow noopener noreferrer">https://ipaddress.com/website/raw.githubusercontent.com</a>将ip地址复制到host文件<code>C:\Windows\System32\drivers\etc\hosts</code>即可。</p>
+<h3 class="heading-element" id="相关设置"><span>相关设置</span>
+  <a href="#%e7%9b%b8%e5%85%b3%e8%ae%be%e7%bd%ae" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>index.html设置</p>
+<ul>
+<li>
+<p><code>window.$docsify</code>修改，可以在右上角显示GitHub logo并可附带链接。</p>
+<ul>
+<li>
+<p><img loading="lazy" src='/img/githuplogo.png' alt="/img/githuplogo.png"></p>
+</li>
+<li>
+<p><code>name</code>为网站标题</p>
+</li>
+<li>
+<p><code>repo</code>为网站链接</p>
+</li>
+<li>
+<p>添加侧边栏</p>
+<ul>
+<li><code>loadSidebar: true</code>。注意，换行时需要以<code>,</code>结束上一行代码。</li>
+<li>新建<code>_sidebar.md</code>文件
+<ul>
+<li>在<code>_sidebar.md</code>文件里面写入侧边栏主目录，使用相对路径链接。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>显示目录</p>
+<ul>
+<li><code>subMaxLevel: 2</code>
+这里的<code>2</code>指的是侧边栏显示二级目录，即二号标题<code>##</code>，这样以来，一号标题<code>#</code>就会被隐藏，可以作为备注或描述使用。</li>
+</ul>
+</li>
+<li>
+<p>定制封面</p>
+<ul>
+<li><code>coverpage: true</code></li>
+<li>在根目录下新建<code>_coverpage.md</code>文件</li>
+</ul>
+</li>
+<li>
+<p>定制导航栏</p>
+<ul>
+<li>
+<p><code>loadNavbar: true</code></p>
+</li>
+<li>
+<p>在根目录下新建<code>_navbar.md</code>文件</p>
+<h2 class="heading-element" id="上传gitee仓库"><span>上传Gitee仓库</span>
+  <a href="#%e4%b8%8a%e4%bc%a0gitee%e4%bb%93%e5%ba%93" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><h3 class="heading-element" id="仓库配置"><span>仓库配置</span>
+  <a href="#%e4%bb%93%e5%ba%93%e9%85%8d%e7%bd%ae" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>登录<a href="https://gitee.com/"target="_blank" rel="external nofollow noopener noreferrer">Gitee</a></p>
+<ul>
+<li>如果未实名，需要先进行实名认证，1天内就可完成</li>
+</ul>
+</li>
+<li>
+<p>新建仓库</p>
+<ul>
+<li>可以选择<code>公开</code>或<code>私有</code>（新建仓库时无法选择，可以先建好仓库后修改）</li>
+<li>初始化仓库，开源许可选择<code>MIT</code>即可
+<code>MIT</code>许可简介：我写我的代码，你尽管拿去用，出了问题我不负责</li>
+<li>新建完仓库后，进入仓库管理，就可以设置开源了。</li>
+</ul>
+</li>
+<li>
+<p>Git上传推送</p>
+<ul>
+<li>
+<p>在在docs上级文件夹内右键<code>Git Bash Here</code></p>
+<ul>
+<li>
+<p>全局User配置(只用操作一次)</p>
+<ul>
+<li><code>git config --global user.name &quot;your_Name&quot;</code></li>
+<li><code>git config --global user.email &quot;your_email&quot;</code></li>
+</ul>
+</li>
+<li>
+<p>克隆远程仓库</p>
+<ul>
+<li>
+<p><code>git clone 远程仓库地址</code></p>
+<blockquote>
+<p>通过克隆远程仓库，可以直接自动绑定仓库，省去了绑定仓库的流程。</p>
+</blockquote>
+</li>
+<li>
+<p>将docs文件夹移动到克隆后的本地项目文件夹内（我新建的仓库项目叫<code>buray</code>,所以克隆后本地出现了<code>buray</code>文件夹）</p>
+</li>
+</ul>
+</li>
+<li>
+<p>将所有文件添加到暂存区</p>
+<ul>
+<li>在项目文件夹内右键<code>Git Bash Here</code></li>
+<li><code>git add *</code></li>
+</ul>
+</li>
+<li>
+<p>将暂存区的文件添加到本地仓库</p>
+<ul>
+<li><code>git commit -m &quot;注释&quot;</code></li>
+</ul>
+</li>
+<li>
+<p>将本地仓库推送到远程仓库(-f 强制推送)</p>
+<ul>
+<li>
+<p><code>git push -f origin master</code></p>
+<blockquote>
+<p>强制推送会覆盖远程仓库内的所有文件，如果是团队开发需谨慎使用。</p>
+</blockquote>
+</li>
+<li>
+<p>输入<code>Gitee</code>帐号密码，按下回车即可推送</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>开启 <code>Gitee Pages</code></p>
+<ul>
+<li>
+<p>登录<code>Gitee</code>进入仓库，点击服务开启<code>Gitee Pages</code></p>
+<h2 class="heading-element" id="宝塔面板同步gitee"><span>宝塔面板同步Gitee</span>
+  <a href="#%e5%ae%9d%e5%a1%94%e9%9d%a2%e6%9d%bf%e5%90%8c%e6%ad%a5gitee" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2></li>
+</ul>
+</li>
+<li>
+<p>实现效果：当Gitee仓库发生任何变化时，触发webhook将最新内容覆盖到服务器端（宝塔面板）</p>
+</li>
+<li>
+<p>注意：先不要在宝塔上<code>添加站点</code>,因为使用webhook会将整个仓库的内容都push过来，但仓库根目录实际并不是网站根目录，网站的根目录是<code>docs</code>文件夹，所以等整个webhook都设置完成并且测试没问题后再添加站点。当然先添加了也不要紧，后期到网站管理里面改一下根目录就可以了。</p>
+<h3 class="heading-element" id="宝塔终端生成公钥"><span>宝塔终端生成公钥</span>
+  <a href="#%e5%ae%9d%e5%a1%94%e7%bb%88%e7%ab%af%e7%94%9f%e6%88%90%e5%85%ac%e9%92%a5" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3></li>
+<li>
+<p>首先去宝塔终端查看是否有装git（一般默认是安装了的）
+<code>git --version</code></p>
+</li>
+<li>
+<p>如果没有就自行安装
+<code>yum install git</code></p>
+</li>
+<li>
+<p>生成公钥
+<code>ssh-keygen -t rsa -C &quot;你的邮箱地址&quot;</code></p>
+</li>
+<li>
+<p>查看公钥
+<code>cat ~/.ssh/id_rsa.pub</code></p>
+</li>
+<li>
+<p>复制公钥</p>
+<ul>
+<li>
+<p>从<code>ssh-rsa</code>开始一直复制到最后</p>
+<h3 class="heading-element" id="gitee仓库添加公钥"><span>Gitee仓库添加公钥</span>
+  <a href="#gitee%e4%bb%93%e5%ba%93%e6%b7%bb%e5%8a%a0%e5%85%ac%e9%92%a5" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3></li>
+</ul>
+</li>
+<li>
+<p>使用公钥就不用用户名密码了，更加方便</p>
+</li>
+<li>
+<p>进入仓库点击<code>管理</code>——<code>部署公钥管理</code>——<code>添加公钥</code></p>
+<ul>
+<li>
+<p>标题自己起一个，自己能看懂就行</p>
+</li>
+<li>
+<p>下面粘贴刚复制的公钥</p>
+<h3 class="heading-element" id="宝塔安装webhook插件并配置"><span>宝塔安装WebHook插件并配置</span>
+  <a href="#%e5%ae%9d%e5%a1%94%e5%ae%89%e8%a3%85webhook%e6%8f%92%e4%bb%b6%e5%b9%b6%e9%85%8d%e7%bd%ae" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3></li>
+</ul>
+</li>
+<li>
+<p>宝塔软件商店里搜索webhook并安装</p>
+</li>
+<li>
+<p>安装完成后点击设置，添加脚本</p>
+<ul>
+<li>
+<p>脚本代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="nb">echo</span> <span class="s2">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#输出当前时间</span>
+</span></span><span class="line"><span class="cl">date --date<span class="o">=</span><span class="s1">&#39;0 days ago&#39;</span> <span class="s2">&#34;+%Y-%m-%d %H:%M:%S&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;-------开始-------&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#判断宝塔WebHook参数是否存在</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">[</span> ! -n <span class="s2">&#34;buray&#34;</span> <span class="o">]</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">then</span> 
+</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;param参数错误&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;End&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">exit</span>
+</span></span><span class="line"><span class="cl"><span class="k">fi</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#服务器 git 项目路径</span>
+</span></span><span class="line"><span class="cl"><span class="nv">gitPath</span><span class="o">=</span><span class="s2">&#34;/www/wwwroot/buray&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#码云项目 git 网址</span>
+</span></span><span class="line"><span class="cl"><span class="nv">gitHttp</span><span class="o">=</span><span class="s2">&#34;git@gitee.com:buray/buray.git&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;路径：</span><span class="nv">$gitPath</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#判断项目路径是否存在</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">[</span> -d <span class="s2">&#34;</span><span class="nv">$gitPath</span><span class="s2">&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">cd</span> <span class="nv">$gitPath</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">#判断是否存在git目录</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="o">[</span> ! -d <span class="s2">&#34;.git&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">          <span class="nb">echo</span> <span class="s2">&#34;在该目录下克隆 git&#34;</span>
+</span></span><span class="line"><span class="cl">          git clone <span class="nv">$gitHttp</span> gittemp
+</span></span><span class="line"><span class="cl">          mv gittemp/.git .
+</span></span><span class="line"><span class="cl">          rm -rf gittemp
+</span></span><span class="line"><span class="cl">  <span class="k">fi</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#拉取最新的项目文件</span>
+</span></span><span class="line"><span class="cl">  git reset --hard origin/master
+</span></span><span class="line"><span class="cl"><span class="c1">#git clean -f</span>
+</span></span><span class="line"><span class="cl">  git pull origin master
+</span></span><span class="line"><span class="cl">  <span class="nb">echo</span> <span class="s2">&#34;拉取完成&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">#执行npm</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">#执行编译</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">#npm run build</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">#设置目录权限</span>
+</span></span><span class="line"><span class="cl">  chown -R www:www <span class="nv">$gitPath</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">echo</span> <span class="s2">&#34;-------结束--------&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">exit</span>
+</span></span><span class="line"><span class="cl"><span class="k">else</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">echo</span> <span class="s2">&#34;该项目路径不存在&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">echo</span> <span class="s2">&#34;End&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">exit</span>
+</span></span><span class="line"><span class="cl"><span class="k">fi</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>这个脚本代码需要说明一下，我在测试时遇到了各种问题</p>
+<blockquote>
+<p>网上很多教程，包括官方说法中<code>if [ ! -n &quot;buray&quot; ]</code>这里都是使用<code>if [ ! -n &quot;$1&quot; ]</code>,其中<code>$1</code>指的是<code>param</code>后面的仓库名称，但我这样操作后无论在终端测试还是在webhook测试都提示<code>param参数错误</code>,最后将脚本中所有的<code>$1</code>都固定为我的仓库名称<code>buray</code>这个报错才消失。</p>
+</blockquote>
+<blockquote>
+<p>所有的配置都完成后，在Gitee端测试没问题，在宝塔这边测试也提示<code>拉取完成</code>,但实际上并没有生效，代码也没有更新。自己啥也不懂，折腾了半晚上也没弄明白，最后瞎猫碰到死耗子，解决了。</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>首先，在网站根目录下（脚本执行目录）新建了一个<code>test.sh</code>文件，将脚本代码全部粘进去。</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>然后，登录终端，cd到网站根目录后，使用<code>bash test.sh</code>命令运行这个脚本。脚本运行到最后，弹出了一个窗口，提示<code>Merge branch ‘master’ of …</code>。脚本就是卡在这个步骤上面了。</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>上网一顿找，找到了<a href="https://blog.csdn.net/weixin_44094836/article/details/122058107"target="_blank" rel="external nofollow noopener noreferrer">解决方案</a>,在脚本中<code>git pull origin master</code>前面，加上一行<code>git config --global pull.rebase true</code>，问题得到了解决。</p>
+</blockquote>
+</blockquote>
+</li>
+<li>
+<p>网上说代码放进去了可能会被过滤，添加好后点击编辑再确认一下，如果被过滤就再把代码复制进去然后保存。不过反正我是没被过滤。</p>
+<div class="alert alert-warning"><p class="alert-title"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086.0l6.082 11.378A1.75 1.75.0 0114.082 15H1.918A1.75 1.75.0 01.375 12.425zm1.763.707a.25.25.0 00-.44.0L1.698 13.132a.25.25.0 00.22.368h12.164a.25.25.0 00.22-.368zm.53 3.996v2.5a.75.75.0 01-1.5.0v-2.5a.75.75.0 011.5.0zM9 11a1 1 0 11-2 0 1 1 0 012 0z"/></svg>警告</p><p>由于webhook后来出了问题，我把整个服务器重装了，顺便由Ubuntu20.04改成了CentOS8.2，结果在上面这步的时候出了问题，日志只显示了“开始”没有运行脚本，尝试bash了一下，提示<code>11.sh: line 47: syntax error: unexpected end of file</code>,47行是最后一行<code>fi</code>之后的空行，删除之后运行提示<code>11.sh: line 46: syntax error near unexpected token fi</code>。</p></div></li>
+<li>
+<p>参考了<a href="https://blog.csdn.net/u010735147/article/details/81066564"target="_blank" rel="external nofollow noopener noreferrer">解决执行脚本报syntax error: unexpected end of file或syntax error near unexpected token `fi&rsquo;错误的问题</a>得以解决：</p>
+<ul>
+<li>
+<p>两个问题都是由于.sh文件的格式为dos格式。而linux只能执行格式为unix格式的脚本。因为在dos/window下按一次回车键实际上输入的是“回车（CR)”和“换行（LF）”，而Linux/unix下按一次回车键只输入“换行（LF）”，所以修改的sh文件在每行都会多了一个CR，所以Linux下运行时就会报错找不到命令。</p>
+</li>
+<li>
+<p>我们可以查看该脚本文件的格式，方法是使用命令进入编辑文件：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">vim nginx_check.sh</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>直接输入下面的命令回车</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">:set ff</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>可以看到当前脚本格式是dos，我们需要把格式改为unix，方法是继续输入下面的命令回车：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">:set ff=unix</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>或者也可以输入<code>:set fileformat=unix</code></p>
+</li>
+<li>
+<p>然后我们再输入<code>:set ff</code>来查看格式，可以看到当前脚本格式变成了我们想要的&quot;unix&quot;了。</p>
+</li>
+<li>
+<p>输入<code>:wq</code>回车，保存并推出即可。</p>
+</li>
+<li>
+<p>这时再进行bash就正常了，直接在宝塔文件管理里面打开文件，全选复制粘贴到webhook设置里面，点击测试，一切恢复正常。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>重启一下宝塔，在终端输入命令<code>/etc/init.d/bt restart</code></p>
+<h3 class="heading-element" id="配置gitee的webhooks"><span>配置Gitee的WebHooks</span>
+  <a href="#%e9%85%8d%e7%bd%aegitee%e7%9a%84webhooks" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3></li>
+</ul>
+</li>
+<li>
+<p>宝塔进入软件商店，进入webhook，查看刚生成的密钥，复制<code>GET/POST:</code>后面的链接。</p>
+<blockquote>
+<p>注意<code>@param access_key string HOOK密钥 @param param string 自定义参数（在hook脚本中使用$1接收）</code>这两段不要复制。</p>
+</blockquote>
+</li>
+<li>
+<p>进入Gitee仓库，管理，WebHooks，添加WebHook</p>
+<blockquote>
+<p><code>URL</code>就是刚才复制的链接，注意要修改最后面<code>param=aaa</code>中的<code>aaa</code>为自己的仓库名。</p>
+<blockquote>
+<p>这个就是前面说的<code>$1</code>，由于我直接固定了，没用<code>$1</code>，所以理论上这个aaa我随便写或者不改也没啥影响。这里留个记号，说不准以后能用到。
+<code>WebHook密码/签名密钥</code>这里选择<code>WebHook密码</code>即可，后面填入webhook的密钥（去宝塔webhook查看密钥那里复制即可）。
+<code>选择事件</code>使用默认的<code>Push</code>和<code>激活</code>即可，点<code>添加</code>
+[!attention]
+20220828这两天发现webhook异常，日志显示拉取成功，gitee仓库的webhook日志也显示成功，但就是不更新。手动bash了一下脚本，更新正常。不知道是什么原因造成的。怀疑是近期宝塔面板的安全检测提醒部分目录权限问题，手动修改了部分目录的权限导致的，有时间得研究一下，实在不行就卸载webhook重新安装，重新走一遍这个流程试试。</p>
+</blockquote>
+</blockquote>
+</li>
+<li>
+<p>仔细测试了宝塔webhook和Gitee的webhook，发现Gitee的webhook日志里Response显示：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&lt;!doctype html&gt;
+</span></span><span class="line"><span class="cl">拒绝访问
+</span></span><span class="line"><span class="cl">抱歉,您没有访问权限
+</span></span><span class="line"><span class="cl">请使用正确的域名访问!
+</span></span><span class="line"><span class="cl">查看许可域名: cat /www/server/panel/data/domain.conf
+</span></span><span class="line"><span class="cl">关闭访问限制: rm -f /www/server/panel/data/domain.conf</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>原来域名没备案下来的时候我设置的webhook，使用的是服务器IP，现在我把IP访问关闭了，导致域名错误。</p>
+</li>
+<li>
+<p>回到宝塔面板打开webhook，查看密钥，果然密钥链接改成域名了，复制过来更新一下Gitee的webhook，测试，通信成功！</p>
+</li>
+<li>
+<p>不过高兴地太早了，网站并没有更新。检查两边的webhook日志，发现通信没问题。</p>
+</li>
+<li>
+<p>那么网站没更新，是脚本的问题</p>
+</li>
+<li>
+<p>bash测试了一下脚本，发现能够更新，不过<code>head</code>好像拉取的不对，但文件更新没有问题。而且最后出现了一行提示</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">chown: changing ownership of &#39;/www/wwwroot/docs/.user.ini&#39;: Operation not permitted</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>在<a href="https://laowangblog.com/user-ini-operation-not-permitted.html"target="_blank" rel="external nofollow noopener noreferrer">‘.user.ini’: Operation not permitted 权限不足无法操作.user.ini 的解决办法</a>这篇文章上找到了一点提示。</p>
+<ul>
+<li>
+<p>应该是前一段时间宝塔面板提醒我安全监测有几项高危的文件权限问题，我根据面板的提示进行了修改导致webhook插件没有权限，现在尝试恢复权限。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">chown -R www:www /www/wwwroot/docs</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>依旧提示</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">chown: changing ownership of &#39;/www/wwwroot/docs/.user.ini&#39;: Operation not permitted</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>不慌，有这个提示是正常的，这还是因为 .user.ini 权限问题，我们现在就是要解决这个问题，在修改 .user.ini 权限组或者删除 .user.ini 前，我们需要手动解除 .user.ini 文件的锁定：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">chattr -i /www/wwwroot/docs/.user.ini</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>然后再执行上面的修改权限命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">chown -R www:www /www/wwwroot/docs</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>这会儿没有错误提示了，随便更新个文件，看看能不能拉取过来</p>
+</li>
+<li>
+<p>不行，还是没拉取过来，再跑一下脚本，没再提示权限问题。这就有点脑大了，手工bash没问题，说明脚本也没问题，大概率还是webhook的权限问题啊。看日志提示<code>拉取成功</code>，说明脚本能够自动运行，检查网站目录，有的目录是644权限，全部改成755试试，本来就是个学习网站，数据多处有备份，也不怕攻击，何况没什么被攻击的价值😂。</p>
+</li>
+<li>
+<p>还是不行，这是要闹哪样！！！！卸载webhook，重新安装，重新配置试试。仍然是老样子，冷静！</p>
+</li>
+<li>
+<p>难道是前几天改的那几个文件的权限没有恢复正确？话说我也忘了之前是什么权限了啊，找个同样的环境安装一套宝塔看看。NAS有docker，安装个环境研究研究。</p>
+</li>
+<li>
+<p>尝试了按照新安装的bt修改文件权限，不行，而且发现了新的问题，不知道是什么原因nginx开机不自启动，必须手动启动。</p>
+</li>
+<li>
+<p>尝试重新设置公钥，依旧无法解决。放弃了，决定整个服务器重置。可惜之前没有备份，所有的东西都需要重新做，哎，长个心眼儿吧，以后要注意备份。</p>
+<div class="alert alert-note"><p class="alert-title"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"><path d="M0 8a8 8 0 1116 0A8 8 0 010 8zm8-6.5a6.5 6.5.0 100 13 6.5 6.5.0 000-13zM6.5 7.75A.75.75.0 017.25 7h1a.75.75.0 01.75.75v2.75h.25a.75.75.0 010 1.5h-2a.75.75.0 010-1.5h.25v-2h-.25a.75.75.0 01-.75-.75zM8 6a1 1 0 110-2 1 1 0 010 2z"/></svg>注意</p><p>考虑到这个服务器之前做过很多次奇奇怪怪的试验，直接重装了，从头慢慢捋了一遍，终于恢复正常了，赶紧备份系统镜像。
+[!attention]
+20220901发现webhook再度异常，每次更新都提示拉取成功，但每次都是拉取的同一个版本，就是第一次在ssh上bash时的那个版本，说实话这种基础的知识网上的内容太少了，最后受<a href="https://www.bt.cn/bbs/forum.php?mod=viewthread&amp;tid=7485"target="_blank" rel="external nofollow noopener noreferrer">使用WEBHOOK 拉取的问题求帮助</a>这篇帖子的提示，发现还是权限问题，在所有的命令前面加个sudo，使用root用户运行就好了。其实还有个问题，目前还没找到解决办法，就是每次拉取内容都能成功，但是提示的<code>HEAD is now at</code>却是上一个版本的，找一顿也没弄明白是怎么回事，管他呢，能更新就行。</p></div></li>
+<li>
+<p>最后成功的脚本如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="nb">echo</span> <span class="s2">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#输出当前时间</span>
+</span></span><span class="line"><span class="cl">date --date<span class="o">=</span><span class="s1">&#39;0 days ago&#39;</span> <span class="s2">&#34;+%Y-%m-%d %H:%M:%S&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;-------开始-------&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#判断宝塔WebHook参数是否存在</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">[</span> ! -n <span class="s2">&#34;buray&#34;</span> <span class="o">]</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">then</span> 
+</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;param参数错误&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;End&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">exit</span>
+</span></span><span class="line"><span class="cl"><span class="k">fi</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#服务器 git 项目路径</span>
+</span></span><span class="line"><span class="cl"><span class="nv">gitPath</span><span class="o">=</span><span class="s2">&#34;/www/wwwroot/buray&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#码云项目 git 网址</span>
+</span></span><span class="line"><span class="cl"><span class="nv">gitHttp</span><span class="o">=</span><span class="s2">&#34;git@gitee.com:buray/buray.git&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;路径：</span><span class="nv">$gitPath</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#判断项目路径是否存在</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">[</span> -d <span class="s2">&#34;</span><span class="nv">$gitPath</span><span class="s2">&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">cd</span> <span class="nv">$gitPath</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">#判断是否存在git目录</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="o">[</span> ! -d <span class="s2">&#34;.git&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">          <span class="nb">echo</span> <span class="s2">&#34;在该目录下克隆 git&#34;</span>
+</span></span><span class="line"><span class="cl">          sudo git clone <span class="nv">$gitHttp</span> gittemp
+</span></span><span class="line"><span class="cl">          sudo mv gittemp/.git .
+</span></span><span class="line"><span class="cl">          sudo rm -rf gittemp
+</span></span><span class="line"><span class="cl">  <span class="k">fi</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">echo</span> <span class="s2">&#34;拉取最新的项目文件&#34;</span>
+</span></span><span class="line"><span class="cl">  sudo git reset --hard origin/master
+</span></span><span class="line"><span class="cl">  sudo git pull        
+</span></span><span class="line"><span class="cl">  <span class="nb">echo</span> <span class="s2">&#34;设置目录权限&#34;</span>
+</span></span><span class="line"><span class="cl">  sudo chown -R www:www <span class="nv">$gitPath</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">echo</span> <span class="s2">&#34;End&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">exit</span>
+</span></span><span class="line"><span class="cl"><span class="k">else</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">echo</span> <span class="s2">&#34;该项目路径不存在&#34;</span>
+</span></span><span class="line"><span class="cl">          <span class="nb">echo</span> <span class="s2">&#34;新建项目目录&#34;</span>
+</span></span><span class="line"><span class="cl">  mkdir <span class="nv">$gitPath</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">cd</span> <span class="nv">$gitPath</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">#判断是否存在git目录</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="o">[</span> ! -d <span class="s2">&#34;.git&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">          <span class="nb">echo</span> <span class="s2">&#34;在该目录下克隆 git&#34;</span>
+</span></span><span class="line"><span class="cl">          sudo git clone <span class="nv">$gitHttp</span> gittemp
+</span></span><span class="line"><span class="cl">          sudo mv gittemp/.git .
+</span></span><span class="line"><span class="cl">          sudo rm -rf gittemp
+</span></span><span class="line"><span class="cl">  <span class="k">fi</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">echo</span> <span class="s2">&#34;拉取最新的项目文件&#34;</span>
+</span></span><span class="line"><span class="cl">  sudo git reset --hard origin/master
+</span></span><span class="line"><span class="cl">  sudo git pull
+</span></span><span class="line"><span class="cl">  <span class="nb">echo</span> <span class="s2">&#34;设置目录权限&#34;</span>
+</span></span><span class="line"><span class="cl">  sudo chown -R www:www <span class="nv">$gitPath</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">echo</span> <span class="s2">&#34;End&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">exit</span>
+</span></span><span class="line"><span class="cl"><span class="k">fi</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 class="heading-element" id="将gitee仓库clone到服务器的本地目录中"><span>将Gitee仓库clone到服务器的本地目录中</span>
+  <a href="#%e5%b0%86gitee%e4%bb%93%e5%ba%93clone%e5%88%b0%e6%9c%8d%e5%8a%a1%e5%99%a8%e7%9a%84%e6%9c%ac%e5%9c%b0%e7%9b%ae%e5%bd%95%e4%b8%ad" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3></li>
+</ul>
+</li>
+<li>
+<p>这一步实际上先做后做都行，不做我觉得应该也是可以的，但我没试过。</p>
+</li>
+<li>
+<p>终端cd到网站根目录<code>www/wwwroot</code>下，首次clone需要设置一下下面这些内容，一条命令一条命令的运行，好像就是全局设置作者信息，跟前面本地clone仓库一样。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">git config --global user.name &#34;用户名&#34;
+</span></span><span class="line"><span class="cl">git config --global user.email &#34;邮箱&#34;
+</span></span><span class="line"><span class="cl">git config --global credential.helper store //会生成.gitconfig 的文件
+</span></span><span class="line"><span class="cl">cat .gitconfig   //如果报错: No such file or directory，就用下一行的代码
+</span></span><span class="line"><span class="cl">cat ~/.gitconfig  //显示内容</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>然后将Gitee仓库clone下来</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">git clone https://gitee.com/XXX/XXX.git  //clone后面是仓库链接</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>据说第一次clone需要输入用户名和密码，不过我好像没有，可能以前输过。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Username for &#39;https://gitee.com&#39;: your@email.com
+</span></span><span class="line"><span class="cl">Password for &#39;https://xxxx@xxxx.com@gitee.com&#39;: yourPassword（看不到输入内容）</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 class="heading-element" id="测试"><span>测试</span>
+  <a href="#%e6%b5%8b%e8%af%95" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3></li>
+<li>
+<p>好了，都配置完了，测试就很简单了。</p>
+</li>
+<li>
+<p>Gitee的WebHooks测试</p>
+<blockquote>
+<p>WebHooks管理里面有个测试，点一下，在下面的<code>请求历史</code>里面显示出来日志，<code>密码请求</code>后面显示<code>200</code>就说明Gitee这边没啥问题了（我也不知道啥意思）
+上宝塔webhook，查看一下日志，应该就能看到刚才发起的测试运行日志。不过我这边一开始的时候显示<code>拉取完成</code>，但实际内容却没改，解决方案在上面<code>脚本</code>部分谢了。
+宝塔webhook这边也有个测试，也可以测试一下。
+当然，最终测试还是在本地push一些新文件到远程仓库，再上服务器上看看文件有没有同步更新。</p>
+</blockquote>
+<h2 class="heading-element" id="网站上线"><span>网站上线</span>
+  <a href="#%e7%bd%91%e7%ab%99%e4%b8%8a%e7%ba%bf" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2></li>
+<li>
+<p>其实上面操作结束后网站就已经上线了，这里有些小问题要处理一下。</p>
+<h3 class="heading-element" id="docsify上传到服务器宝塔面板"><span>docsify上传到服务器（宝塔面板）</span>
+  <a href="#docsify%e4%b8%8a%e4%bc%a0%e5%88%b0%e6%9c%8d%e5%8a%a1%e5%99%a8%e5%ae%9d%e5%a1%94%e9%9d%a2%e6%9d%bf" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3></li>
+<li>
+<p>宝塔面板，网站，添加站点，注意一下前面所说的<code>根目录</code>问题，<code>PHP版本</code>选择<code>纯静态</code>。</p>
+</li>
+<li>
+<p>打开首页显示404</p>
+<blockquote>
+<p>网上找的解决方案，出现这个问题主要是宝塔面板在添加站点是，默认设置了禁止访问<code>Readme.md</code>文件。
+宝塔找到对应的站点，配置文件，找到<code> #禁止访问的文件或目录</code>,把最后面的<code>|README.md</code>删掉后保存就可以了。</p>
+</blockquote>
+</li>
+</ul>
+</div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="更新于 2022-09-23 00:00:00">更新于 2022-09-23&nbsp;</span>
+      </div><div class="post-info-license">
+            <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a></span>
+          </div></div><div class="post-info-line">
+        <div class="post-info-md"><span><a href="/posts/docsify-notes/index.md" title="阅读原始文档" class="link-to-markdown">阅读原始文档</a></span></div>
+        <div class="post-info-share">
+          <span><a href="javascript:void(0);" title="分享到 X" data-sharer="twitter" data-url="http://localhost:1313/posts/docsify-notes/" data-title="Docsify学习笔记" data-hashtags="docsify,静态博客"><i class="fa-brands fa-x-twitter fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="http://localhost:1313/posts/docsify-notes/" data-hashtag="docsify"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="http://localhost:1313/posts/docsify-notes/" data-title="Docsify学习笔记"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
+  </span>
+        </div>
+      </div></div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href="/tags/docsify/" class="post-tag" title="标签 - Docsify">Docsify</a><a href="/tags/%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/" class="post-tag" title="标签 - 静态博客">静态博客</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div><div class="post-nav"><a href="/posts/markdown-notes/" class="post-nav-item" rel="prev" title="Markdown语法学习"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>Markdown语法学习</a><a href="/posts/disallow/" class="post-nav-item" rel="next" title="Gitee推送">Gitee推送<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article>
+
+  <aside class="toc" id="toc-auto" aria-label="目录"><h2 class="toc-title">目录&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2025</span><span class="author" itemprop="copyrightHolder">
+              <a href="http://www.burayw.top"target="_blank" rel="external nofollow noopener noreferrer">Buray</a></span></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="回到顶部"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">该网站在启用 JavaScript 的情况下效果最佳。</div>
+  </noscript>
+</div><link rel="preload" href="/lib/katex/katex.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/katex/katex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/fuse/fuse.min.js" defer></script><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script src="/lib/pangu/pangu.min.js" defer></script><script>window.config={"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验。"},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"pangu":{"enable":true,"selector":"article"},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/search.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":30,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"version":"v0.3.20"};</script><script src="/js/theme.min.js" defer></script></body>
+</html>

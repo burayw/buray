@@ -3,7 +3,7 @@
 
 # markdown语法学习
 
-- 本文大量参考[《Markdown常用语法汇总》](https://zhuanlan.zhihu.com/p/108984311)
+- Markdown是个好东西，可以通过简单语法实现快速排版，避免复杂软件操作，节省时间，支持键盘操作，无需频繁切换工具栏，实现输入与格式调整同步完成。
   
   ## 标题
 
@@ -188,6 +188,8 @@
   ```
   
   <img src="https://burayimg.heisenw.com/blog/img/a6c9b1f7-6da1-4978-bedf-29b03325cace.webp" width=10%>
+
+- 本文大量参考[《Markdown常用语法汇总》](https://zhuanlan.zhihu.com/p/108984311)
 
 
 ---
