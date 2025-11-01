@@ -32,5 +32,5 @@ mainSections = ['posts']
 ---
 
 > 作者: [Buray](http://www.burayw.top)  
-> URL: http://localhost:1313/posts/fixed-up-hugo-no-archives/  
+> URL: http://www.buray.top/posts/fixed-up-hugo-no-archives/  
 

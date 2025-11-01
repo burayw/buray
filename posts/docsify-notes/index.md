@@ -604,5 +604,5 @@
 ---
 
 > 作者: [Buray](http://www.burayw.top)  
-> URL: http://localhost:1313/posts/docsify-notes/  
+> URL: http://www.buray.top/posts/docsify-notes/  
 

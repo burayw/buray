@@ -21,5 +21,5 @@
 ---
 
 > 作者: [Buray](http://www.burayw.top)  
-> URL: http://localhost:1313/posts/partition-recovery/  
+> URL: http://www.buray.top/posts/partition-recovery/  
 
