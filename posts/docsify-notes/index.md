@@ -603,6 +603,6 @@
 
 ---
 
-> 作者: [Buray](http://www.burayw.top)  
+> 作者: [Buray](http://www.buray.top)  
 > URL: http://www.buray.top/posts/docsify-notes/  
 
