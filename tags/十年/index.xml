@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>十年 - 标签 - Buray&#39;s Blog</title>
+    <link>http://www.buray.top/tags/%E5%8D%81%E5%B9%B4/</link>
+    <description>Buray&#39;s Blog</description>
+    <generator>Hugo 0.152.2 &amp; FixIt v0.3.20</generator>
+    <language>zh-CN</language>
+    <managingEditor>buray@qq.com (Buray)</managingEditor>
+    <webMaster>buray@qq.com (Buray)</webMaster>
+    <lastBuildDate>Sun, 04 Jan 2009 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://www.buray.top/tags/%E5%8D%81%E5%B9%B4/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>十年感言</title>
+      <link>http://www.buray.top/posts/10years/</link>
+      <pubDate>Sun, 04 Jan 2009 00:00:00 +0000</pubDate><author>buray@qq.com (Buray)</author>
+      <guid>http://www.buray.top/posts/10years/</guid>
+      <category domain="http://www.buray.top/categories/%E9%9A%8F%E7%AC%94/">随笔</category>
+      <description>&lt;p&gt;【回忆1998年】&#xA;我读小学六年级，忘记是因为病还是因为一场官司班主任基本上没在学校，于是我们就成了没人管的野孩子。不过那时候一群皮孩子自己组织起来上音乐课就唱流行歌曲，上美术课就乱画，上体育课就出去欢，上语文数学自然就自己决定上音乐还是上美术还是上体育课，，哈哈哈~~~~&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

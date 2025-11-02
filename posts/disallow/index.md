@@ -1,64 +1,48 @@
-# Gitee推送
+# 禁止搜索引擎收录
 
-![](https://burayimg.heisenw.com/blog/img/b2262806-65aa-4c24-9090-8409eb0f5c15.webp)
 
-- 简化版推送是指每次推送都将本地所有文件完全覆盖远程仓库，团队使用可能会出问题，例如将别人的代码覆盖，个人使用会更加简便。不过由于是全部推送，体积很大的项目建议还是不要用了。
-- 原文出处:[15分钟快速生成免费超高逼格官方文档](https://www.bilibili.com/video/BV14U4y1x7jH?spm_id_from=333.337.search-card.all.click)
-## 正常Gitee推送
-- 全局User配置(只用操作一次)
-    ```
-    git config --global user.name "your_Name"
-    git config --global user.email "your_email"
-    ```
-- 初始化本地Git仓库
-    ```
-    git init
-    ```
+![](https://burayimg.heisenw.com/blog/img/b1fb23cf-7119-4f6a-afa1-19881abdf2c0.webp)
 
-- 绑定远程仓库
+- 因为做单位内部使用的网站，有部分内容不想公开，所以希望屏蔽所有搜索引擎，整理了网上的几种方法，参考[通过nginx禁止搜索引擎抓取和收录](https://www.rmnof.com/article/block-search-indexing/)这篇文章实现。
+  
+  ### 通过<meta>标签实现禁止搜索引擎索引：
+- 一般适用于某个网页的禁止，在`<head></head>`标签中添加以下<meta>标签实现。
+- 共用`head`文件的网站也可以使用这种方式屏蔽整站。
+  
+  ```
+  <meta name="robots" content="noindex"> //禁止所有搜索引擎索引
+  <meta name="googlebot" content="noindex"> //禁止google索引
+  <meta name="BaiduSpider" content="noindex"> //禁止百度索引
+  ```
+  
+  ### 通过robots.txt实现禁止搜索引擎索引：
+- 在网站根目录下新建`robots.txt`文件，在文件中写入以下代码。
+  - 一般搜索引擎在收录网站时会首先爬取根目录下的这个文件，但也有的搜索引擎不遵守这个规则。
+    
     ```
-    git remote add origin 远程仓库地址
+    User-agent: *
+    Disallow: /
     ```
-
-- 将所有文件添加到暂存区
-    ```
-    git add *
-    ```
-- 将暂存区的文件添加到本地仓库
-    ```
-    git commit -m "注释"
-    ```
-- 将远程仓库和本地仓库合并(如果合并失败整理好再push 或者 强制push)
-    ```
-    git pull origin master --allow-unrelated-histories
-    ```
-- 将本地仓库推送到远程仓库(-u 跟踪分支 -f 强制推送)
-    ```
-    git push -u origin master 
-    git push -f origin master
-    ```
-## 简化版Gitee推送
-- 全局User配置(只用操作一次)
-    ```
-    git config --global user.name "your_Name"
-    git config --global user.email "your_email"
-    ```
-- 克隆远程仓库
-    ```
-    git clone 远程仓库地址
-    ```
-- 将所有文件添加到暂存区
-    ```
-    git add *
-    ```
-- 将暂存区的文件添加到本地仓库
-    ```
-    git commit -m "注释"
-    ```
--   将本地仓库推送到远程仓库(-f 强制推送)
-    ```
-    git push -f origin master
-    ```
+    
+    ### 通过nginx配置文件禁止搜索引擎的UA访问：
+- 这位老师基本上整理齐全了所有搜索引擎的UA，可以根据需求删减或增加。return 403当然可以返回404甚至444，也可以使用deny all或者其他更骚的方法。
+  
+  ```
+  if ($http_user_agent ~* "qihoobot|Baiduspider|Googlebot|Googlebot-Mobile|Googlebot-Image|Mediapartners-Google|Adsbot-Google|Feedfetcher-Google|Yahoo! Slurp|Yahoo! Slurp China|YoudaoBot|Sosospider|Sogou spider|Sogou web spider|MSNBot|ia_archiver|Tomato Bot")
+    {
+        return 403;
+    }
+  ```
+  
+  ### 通过Apache的htaccess入口文件中配置指令，同理但不同语法。
+- 下面是从网上找的语法，我的是nginx，所以没测试。
+  
+  ```
+  ErrorDocument 503 “System Undergoing Maintenance”
+  RewriteEngine On
+  RewriteCond %{HTTP_USER_AGENT} (qihoobot|Baiduspider|Googlebot|Googlebot-Mobile|Googlebot-Image|Mediapartners-Google|Adsbot-Google|Feedfetcher-Google|Yahoo! Slurp|Yahoo! Slurp China|YoudaoBot|Sosospider|Sogou spider|Sogou web spider|MSNBot|ia_archiver|Tomato Bot) [NC]
+  RewriteRule .* – [R=403,L]
+  ```
 
 ---
 

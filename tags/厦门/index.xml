@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>厦门 - 标签 - Buray&#39;s Blog</title>
+    <link>http://www.buray.top/tags/%E5%8E%A6%E9%97%A8/</link>
+    <description>Buray&#39;s Blog</description>
+    <generator>Hugo 0.152.2 &amp; FixIt v0.3.20</generator>
+    <language>zh-CN</language>
+    <managingEditor>buray@qq.com (Buray)</managingEditor>
+    <webMaster>buray@qq.com (Buray)</webMaster>
+    <lastBuildDate>Mon, 28 May 2007 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://www.buray.top/tags/%E5%8E%A6%E9%97%A8/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>鹭岛印象</title>
+      <link>http://www.buray.top/posts/ludao/</link>
+      <pubDate>Mon, 28 May 2007 00:00:00 +0000</pubDate><author>buray@qq.com (Buray)</author>
+      <guid>http://www.buray.top/posts/ludao/</guid>
+      <category domain="http://www.buray.top/categories/%E9%9A%8F%E7%AC%94/">随笔</category>
+      <description>&lt;p&gt;从小向往江南，虽然不知道向往那里的什么，只是一个劲地盼着长大，去江南等长大了，乘着求学的列车，终于来到了“江南”——或者这里不能被称为江南，因为这里已经过去那个烟雨江南一千多公里了。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

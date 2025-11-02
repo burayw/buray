@@ -44,9 +44,9 @@
     </item>
     <item>
       <title>Gitee推送</title>
-      <link>http://www.buray.top/posts/disallow/</link>
+      <link>http://www.buray.top/posts/gitee-push/</link>
       <pubDate>Sat, 24 Sep 2022 00:00:00 +0000</pubDate><author>buray@qq.com (Buray)</author>
-      <guid>http://www.buray.top/posts/disallow/</guid>
+      <guid>http://www.buray.top/posts/gitee-push/</guid>
       <category domain="http://www.buray.top/categories/%E7%AC%94%E8%AE%B0/">笔记</category>
       <description>&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#39;https://burayimg.heisenw.com/blog/img/b2262806-65aa-4c24-9090-8409eb0f5c15.webp&#39; alt=&#34;https://burayimg.heisenw.com/blog/img/b2262806-65aa-4c24-9090-8409eb0f5c15.webp&#34;&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;简化版推送是指每次推送都将本地所有文件完全覆盖远程仓库，团队使用可能会出问题，例如将别人的代码覆盖，个人使用会更加简便。不过由于是全部推送，体积很大的项目建议还是不要用了。&lt;/li&gt;&#xA;&lt;li&gt;原文出处:&lt;a href=&#34;https://www.bilibili.com/video/BV14U4y1x7jH?spm_id_from=333.337.search-card.all.click&#34;target=&#34;_blank&#34; rel=&#34;external nofollow noopener noreferrer&#34;&gt;15分钟快速生成免费超高逼格官方文档&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 class=&#34;heading-element&#34; id=&#34;正常gitee推送&#34;&gt;&lt;span&gt;正常Gitee推送&lt;/span&gt;&#xA;  &lt;a href=&#34;#%e6%ad%a3%e5%b8%b8gitee%e6%8e%a8%e9%80%81&#34; class=&#34;heading-mark&#34;&gt;&#xA;    &lt;svg class=&#34;octicon octicon-link&#34; viewBox=&#34;0 0 16 16&#34; version=&#34;1.1&#34; width=&#34;16&#34; height=&#34;16&#34; aria-hidden=&#34;true&#34;&gt;&lt;path d=&#34;m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h2&gt;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;全局User配置(只用操作一次)&lt;/p&gt;</description>
     </item>
@@ -80,6 +80,46 @@
       <pubDate>Mon, 01 Nov 2021 00:00:00 +0000</pubDate><author>buray@qq.com (Buray)</author>
       <guid>http://www.buray.top/posts/readme/</guid>
       <description>&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#39;https://burayimg.heisenw.com/blog/img/e3fd7ac4-1192-40bd-bf2d-b35669e1be8e.webp&#39; alt=&#34;https://burayimg.heisenw.com/blog/img/e3fd7ac4-1192-40bd-bf2d-b35669e1be8e.webp&#34;&gt;&lt;/p&gt;&#xA;&lt;h2 class=&#34;heading-element&#34; id=&#34;君子不器-成己达人&#34;&gt;&lt;span&gt;君子不器 成己达人&lt;/span&gt;&#xA;  &lt;a href=&#34;#%e5%90%9b%e5%ad%90%e4%b8%8d%e5%99%a8-%e6%88%90%e5%b7%b1%e8%be%be%e4%ba%ba&#34; class=&#34;heading-mark&#34;&gt;&#xA;    &lt;svg class=&#34;octicon octicon-link&#34; viewBox=&#34;0 0 16 16&#34; version=&#34;1.1&#34; width=&#34;16&#34; height=&#34;16&#34; aria-hidden=&#34;true&#34;&gt;&lt;path d=&#34;m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h2&gt;&lt;p&gt;现在玩博客的都可以算是珍稀动物了吧&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>十年感言</title>
+      <link>http://www.buray.top/posts/10years/</link>
+      <pubDate>Sun, 04 Jan 2009 00:00:00 +0000</pubDate><author>buray@qq.com (Buray)</author>
+      <guid>http://www.buray.top/posts/10years/</guid>
+      <category domain="http://www.buray.top/categories/%E9%9A%8F%E7%AC%94/">随笔</category>
+      <description>&lt;p&gt;【回忆1998年】&#xA;我读小学六年级，忘记是因为病还是因为一场官司班主任基本上没在学校，于是我们就成了没人管的野孩子。不过那时候一群皮孩子自己组织起来上音乐课就唱流行歌曲，上美术课就乱画，上体育课就出去欢，上语文数学自然就自己决定上音乐还是上美术还是上体育课，，哈哈哈~~~~&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>几个奇怪的梦</title>
+      <link>http://www.buray.top/posts/dream2008/</link>
+      <pubDate>Fri, 28 Nov 2008 00:00:00 +0000</pubDate><author>buray@qq.com (Buray)</author>
+      <guid>http://www.buray.top/posts/dream2008/</guid>
+      <category domain="http://www.buray.top/categories/%E9%9A%8F%E7%AC%94/">随笔</category>
+      <description>&lt;p&gt;这一阵子病痛极多，于是夜里就睡得不好，梦做的特别多，一个接一个的，而且，异常清晰，又全是噩梦。&lt;/p&gt;&#xA;&lt;p&gt;跟朋友说了，朋友说，你可以写悬疑小说了，最近正红的那个七根胡和白少邪就是从做噩梦开始写的。我想我还没有那么大的才去做什么作家，只是觉得其中有两个梦着实是很离奇，就写出来了，倒有点像恐怖小说里的片段。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>雨</title>
+      <link>http://www.buray.top/posts/rain/</link>
+      <pubDate>Thu, 03 Apr 2008 00:00:00 +0000</pubDate><author>buray@qq.com (Buray)</author>
+      <guid>http://www.buray.top/posts/rain/</guid>
+      <category domain="http://www.buray.top/categories/%E9%9A%8F%E7%AC%94/">随笔</category>
+      <description>&lt;p&gt;说起来，三月的阳光一点都不明媚。在这多雨的南方城市，我算是了解了&amp;quot;三五霾地&amp;quot;的真正含义。虽然说厦门的雨季还要过两个月才会到来，却迫不及待似的早早潮湿了这片红色的土地。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>鹭岛印象</title>
+      <link>http://www.buray.top/posts/ludao/</link>
+      <pubDate>Mon, 28 May 2007 00:00:00 +0000</pubDate><author>buray@qq.com (Buray)</author>
+      <guid>http://www.buray.top/posts/ludao/</guid>
+      <category domain="http://www.buray.top/categories/%E9%9A%8F%E7%AC%94/">随笔</category>
+      <description>&lt;p&gt;从小向往江南，虽然不知道向往那里的什么，只是一个劲地盼着长大，去江南等长大了，乘着求学的列车，终于来到了“江南”——或者这里不能被称为江南，因为这里已经过去那个烟雨江南一千多公里了。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>献给20岁</title>
+      <link>http://www.buray.top/posts/20th/</link>
+      <pubDate>Sat, 10 Mar 2007 00:00:00 +0000</pubDate><author>buray@qq.com (Buray)</author>
+      <guid>http://www.buray.top/posts/20th/</guid>
+      <category domain="http://www.buray.top/categories/%E9%9A%8F%E7%AC%94/">随笔</category>
+      <description>&lt;p&gt;时光流逝，斗转星移，转瞬间二十岁了。&lt;/p&gt;&#xA;&lt;p&gt;懵懵懂懂的度过了义务教育的九年，等到上高中的时候，觉得自己长大了许多。然而大二都过去一半了，突然发现，曾经那么骄傲，那么目空一切的少年，如今才真正的长大。&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

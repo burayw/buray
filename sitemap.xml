@@ -97,7 +97,7 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>http://www.buray.top/posts/disallow/</loc>
+    <loc>http://www.buray.top/posts/gitee-push/</loc>
     <lastmod>2022-09-24T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -153,6 +153,78 @@
   <url>
     <loc>http://www.buray.top/posts/readme/</loc>
     <lastmod>2021-11-01T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.buray.top/tags/%E5%8D%81%E5%B9%B4/</loc>
+    <lastmod>2009-01-04T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.buray.top/posts/10years/</loc>
+    <lastmod>2009-01-04T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.buray.top/categories/%E9%9A%8F%E7%AC%94/</loc>
+    <lastmod>2009-01-04T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.buray.top/posts/dream2008/</loc>
+    <lastmod>2008-11-28T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.buray.top/tags/%E6%A2%A6/</loc>
+    <lastmod>2008-11-28T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.buray.top/posts/rain/</loc>
+    <lastmod>2008-04-03T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.buray.top/tags/%E9%9B%A8/</loc>
+    <lastmod>2008-04-03T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.buray.top/tags/%E9%B9%AD%E5%B2%9B/</loc>
+    <lastmod>2007-05-28T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.buray.top/posts/ludao/</loc>
+    <lastmod>2007-05-28T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.buray.top/tags/%E5%8E%A6%E9%97%A8/</loc>
+    <lastmod>2007-05-28T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.buray.top/tags/20%E5%B2%81/</loc>
+    <lastmod>2007-03-10T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.buray.top/posts/20th/</loc>
+    <lastmod>2007-03-10T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
