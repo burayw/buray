@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>使用Cloudflare R2 搭建免费图床 - Buray&#39;s Blog</title><meta name="author" content="Buray">
+<meta name="description" content="Cloudflare 配置 当然是先注册个Cloudflare账号，很简单，所以就略过了
+"><meta name="keywords" content='Cloudflare, R2, 对象存储, 免费图床, Python'>
+  <meta itemprop="name" content="使用Cloudflare R2 搭建免费图床">
+  <meta itemprop="description" content="Cloudflare 配置 当然是先注册个Cloudflare账号，很简单，所以就略过了">
+  <meta itemprop="datePublished" content="2025-11-05T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-11-05T00:00:00+00:00">
+  <meta itemprop="wordCount" content="3097">
+  <meta itemprop="keywords" content="Cloudflare,R2,对象存储,免费图床,Python"><meta property="og:url" content="http://www.buray.top/posts/cloudflare-r2/">
+  <meta property="og:site_name" content="Buray&#39;s Blog">
+  <meta property="og:title" content="使用Cloudflare R2 搭建免费图床">
+  <meta property="og:description" content="Cloudflare 配置 当然是先注册个Cloudflare账号，很简单，所以就略过了">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-11-05T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-11-05T00:00:00+00:00">
+    <meta property="article:tag" content="Cloudflare">
+    <meta property="article:tag" content="R2">
+    <meta property="article:tag" content="对象存储">
+    <meta property="article:tag" content="免费图床">
+    <meta property="article:tag" content="Python">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="使用Cloudflare R2 搭建免费图床">
+  <meta name="twitter:description" content="Cloudflare 配置 当然是先注册个Cloudflare账号，很简单，所以就略过了">
+<meta name="application-name" content="Buray&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="Buray&#39;s Blog"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" type="text/html" href="http://www.buray.top/posts/cloudflare-r2/" title="使用Cloudflare R2 搭建免费图床 - Buray&#39;s Blog" /><link rel="prev" type="text/html" href="http://www.buray.top/posts/hugo/" title="使用hugo、Github和Cloudflare免费搭建个人博客" /><link rel="alternate" type="text/markdown" href="http://www.buray.top/posts/cloudflare-r2/index.md" title="使用Cloudflare R2 搭建免费图床 - Buray's Blog"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "使用Cloudflare R2 搭建免费图床",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http:\/\/www.buray.top\/posts\/cloudflare-r2\/"
+    },"image": ["https:\/\/burayimg.heisenw.com\/blog\/img\/a6c9b1f7-6da1-4978-bedf-29b03325cace.webp"],"genre": "posts","keywords": "Cloudflare, R2, 对象存储, 免费图床, Python","wordcount":  3097 ,
+    "url": "http:\/\/www.buray.top\/posts\/cloudflare-r2\/","datePublished": "2025-11-05T00:00:00+00:00","dateModified": "2025-11-05T00:00:00+00:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "Buray"
+      },"description": ""
+  }
+  </script><script src="/js/head/color-scheme.min.js"></script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><div class="wrapper" data-page-style="normal"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="Buray&#39;s Blog"><img class="logo" src='/favicon.ico' alt="Buray&#39;s Blog" height="32" width="32"><span class="header-title-text">Buray&#39;s Blog</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a class="menu-link" href="/"><i class="fa-solid fa-house fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li class="menu-item">
+              <a class="menu-link" href="/archives/"><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 文档</a></li><li class="menu-item">
+              <a class="menu-link" href="/categories/"><i class="fa-solid fa-folder-tree fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li class="menu-item">
+              <a class="menu-link" href="/tags/"><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item">
+              <a class="menu-link" href="/posts/readme/"><i class="fa-solid fa-user fa-fw fa-sm" aria-hidden="true"></i> 关于</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索文章标题或内容……" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="Buray&#39;s Blog"><img class="logo" src='/favicon.ico' alt="Buray&#39;s Blog" height="26" width="26"><span class="header-title-text">Buray&#39;s Blog</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索文章标题或内容……" id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              取消
+            </a>
+          </li><li class="menu-item"><a class="menu-link" href="/"><i class="fa-solid fa-house fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li class="menu-item"><a class="menu-link" href="/archives/"><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 文档</a></li><li class="menu-item"><a class="menu-link" href="/categories/"><i class="fa-solid fa-folder-tree fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li class="menu-item"><a class="menu-link" href="/tags/"><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item"><a class="menu-link" href="/posts/readme/"><i class="fa-solid fa-user fa-fw fa-sm" aria-hidden="true"></i> 关于</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="切换主题"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><nav aria-label="breadcrumb" class="breadcrumb-container">
+    <ol class="breadcrumb"><li class="breadcrumb-item" data-separator="/"><a href="/" title="Buray&#39;s Blog">主页</a></li><li class="breadcrumb-item" data-separator="/"><a href="/posts/" title="Posts">文章</a></li><li class="breadcrumb-item active" data-separator="/" aria-current="page">使用Cloudflare R2 搭建免费图床</li>
+    </ol>
+  </nav><main class="container"><aside class="aside-collection animate__animated animate__fadeIn animate__faster" aria-label="合集"></aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>使用Cloudflare R2 搭建免费图床</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><a href="http://www.buray.top" title="作者"target="_blank" rel="external nofollow noopener noreferrer author" class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+    Buray</a></span><span class="post-included-in">&nbsp;收录于 <a href="/categories/%E7%AC%94%E8%AE%B0/" class="post-category" title="分类 - 笔记"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 笔记</a></span></div><div class="post-meta-line"><span title="发布于 2025-11-05 00:00:00"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2025-11-05">2025-11-05</time></span>&nbsp;<span title="3097 字"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 3100 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 7 分钟</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#cloudflare-配置">Cloudflare 配置</a></li>
+    <li><a href="#python-配置">Python 配置</a></li>
+    <li><a href="#图床使用">图床使用</a></li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><h2 class="heading-element" id="cloudflare-配置"><span>Cloudflare 配置</span>
+  <a href="#cloudflare-%e9%85%8d%e7%bd%ae" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><ul>
+<li>
+<p>当然是先注册个Cloudflare账号，很简单，所以就略过了</p>
+</li>
+<li>
+<p>登录CF后在左侧导航栏进入<code>存储和数据库</code>-<code>R2对象存储</code>-<code>概述</code>
+<img loading="lazy" src='https://burayimg.heisenw.com/blog/img/1b487d46-4421-4b07-aa0e-8f67f497222f.webp' alt="https://burayimg.heisenw.com/blog/img/1b487d46-4421-4b07-aa0e-8f67f497222f.webp"></p>
+<p>新用户的话会要求绑定支付账户，应为CF的存储桶每月免费流量是10G，对于做个博客来讲是足够用的，但是CF要求必须绑定支付协议才可以，以避免超量后没有支付。我是绑了Paypal，我的Paypal绑定的是一张交行的银联卡，里面木有钱，以防万一。</p>
+</li>
+<li>
+<p>点击右上角<code>创建存储桶</code>，起一个名字，要特别注意<code>位置</code>是不是<code>亚太地区</code>，如果不是，可以点击下面的<code>提供位置提示（可选）</code>选择<code>亚太地区</code>。
+<img loading="lazy" src='https://burayimg.heisenw.com/blog/img/934d6703-8b0d-4d15-9a7f-8478d22506d5.webp' alt="https://burayimg.heisenw.com/blog/img/934d6703-8b0d-4d15-9a7f-8478d22506d5.webp"></p>
+</li>
+<li>
+<p>进入刚创建的存储桶，点击<code>设置</code>，先设置一下<code>自定义域</code>，如果实在CF上面注册购买的域名，这里可以直接设置；如果不是，则需要先将你的域名DNS托管到CF上面，再设置这里。
+<img loading="lazy" src='https://burayimg.heisenw.com/blog/img/3176cde5-03e8-4e96-8226-d678ccadcca6.webp' alt="https://burayimg.heisenw.com/blog/img/3176cde5-03e8-4e96-8226-d678ccadcca6.webp">
+<code>.r2.cloudflarestorage.com/xxx</code>前面这段就是你的<code>account_id</code>，后面配置的时候会用得到。</p>
+</li>
+<li>
+<p>回到<code>存储和数据库</code>-<code>R2对象存储</code>-<code>概述</code>，右下角有<code>API Tokens</code>，点击<code>Manage</code>，进入后<code>创建Account API 令牌</code>，令牌名称可以自己起一个，权限选择<code>对象读和写</code>，其他的默认就可以，点击最下面的<code>创建Account API 令牌</code>。
+<img loading="lazy" src='https://burayimg.heisenw.com/blog/img/d4d21776-2710-4348-8825-14ed61a0c697.webp' alt="https://burayimg.heisenw.com/blog/img/d4d21776-2710-4348-8825-14ed61a0c697.webp"></p>
+</li>
+<li>
+<p>注意创建令牌后不要关闭页面，这个页面只显示这一次，关闭后就再也不找不到ID了。
+<img loading="lazy" src='https://burayimg.heisenw.com/blog/img/25d460fb-d456-4a1a-8ff9-5f0afe13be07.webp' alt="https://burayimg.heisenw.com/blog/img/25d460fb-d456-4a1a-8ff9-5f0afe13be07.webp"></p>
+</li>
+<li>
+<p><code>访问密钥 ID</code>就是<code>access_key_id</code></p>
+</li>
+<li>
+<p><code>机密访问密钥</code>就是<code>secret_access_key</code></p>
+</li>
+</ul>
+<h2 class="heading-element" id="python-配置"><span>Python 配置</span>
+  <a href="#python-%e9%85%8d%e7%bd%ae" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><ul>
+<li>脚本制作
+<ol>
+<li>新建文本文档，随便命个名（例如<code>r2</code>）,修改后缀为<code>.py</code>，用vscode打开。</li>
+<li>复制下面的脚本粘贴进去：</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span><span class="lnt">139
+</span><span class="lnt">140
+</span><span class="lnt">141
+</span><span class="lnt">142
+</span><span class="lnt">143
+</span><span class="lnt">144
+</span><span class="lnt">145
+</span><span class="lnt">146
+</span><span class="lnt">147
+</span><span class="lnt">148
+</span><span class="lnt">149
+</span><span class="lnt">150
+</span><span class="lnt">151
+</span><span class="lnt">152
+</span><span class="lnt">153
+</span><span class="lnt">154
+</span><span class="lnt">155
+</span><span class="lnt">156
+</span><span class="lnt">157
+</span><span class="lnt">158
+</span><span class="lnt">159
+</span><span class="lnt">160
+</span><span class="lnt">161
+</span><span class="lnt">162
+</span><span class="lnt">163
+</span><span class="lnt">164
+</span><span class="lnt">165
+</span><span class="lnt">166
+</span><span class="lnt">167
+</span><span class="lnt">168
+</span><span class="lnt">169
+</span><span class="lnt">170
+</span><span class="lnt">171
+</span><span class="lnt">172
+</span><span class="lnt">173
+</span><span class="lnt">174
+</span><span class="lnt">175
+</span><span class="lnt">176
+</span><span class="lnt">177
+</span><span class="lnt">178
+</span><span class="lnt">179
+</span><span class="lnt">180
+</span><span class="lnt">181
+</span><span class="lnt">182
+</span><span class="lnt">183
+</span><span class="lnt">184
+</span><span class="lnt">185
+</span><span class="lnt">186
+</span><span class="lnt">187
+</span><span class="lnt">188
+</span><span class="lnt">189
+</span><span class="lnt">190
+</span><span class="lnt">191
+</span><span class="lnt">192
+</span><span class="lnt">193
+</span><span class="lnt">194
+</span><span class="lnt">195
+</span><span class="lnt">196
+</span><span class="lnt">197
+</span><span class="lnt">198
+</span><span class="lnt">199
+</span><span class="lnt">200
+</span><span class="lnt">201
+</span><span class="lnt">202
+</span><span class="lnt">203
+</span><span class="lnt">204
+</span><span class="lnt">205
+</span><span class="lnt">206
+</span><span class="lnt">207
+</span><span class="lnt">208
+</span><span class="lnt">209
+</span><span class="lnt">210
+</span><span class="lnt">211
+</span><span class="lnt">212
+</span><span class="lnt">213
+</span><span class="lnt">214
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"> <span class="n">import</span> <span class="n">keyboard</span>
+</span></span><span class="line"><span class="cl"> <span class="n">import</span> <span class="n">pyperclip</span>
+</span></span><span class="line"><span class="cl"> <span class="n">from</span> <span class="n">PIL</span> <span class="n">import</span> <span class="n">ImageGrab</span><span class="p">,</span> <span class="ne">Image</span>
+</span></span><span class="line"><span class="cl"> <span class="n">import</span> <span class="n">io</span>
+</span></span><span class="line"><span class="cl"> <span class="n">import</span> <span class="n">boto3</span>
+</span></span><span class="line"><span class="cl"> <span class="n">from</span> <span class="n">botocore</span><span class="o">.</span><span class="n">config</span> <span class="n">import</span> <span class="n">Config</span>
+</span></span><span class="line"><span class="cl"> <span class="n">import</span> <span class="n">time</span>
+</span></span><span class="line"><span class="cl"> <span class="n">import</span> <span class="n">uuid</span>
+</span></span><span class="line"><span class="cl"> <span class="n">import</span> <span class="n">pyautogui</span>
+</span></span><span class="line"><span class="cl"> <span class="n">import</span> <span class="n">os</span>
+</span></span><span class="line"><span class="cl"> <span class="n">from</span> <span class="n">io</span> <span class="n">import</span> <span class="n">BytesIO</span>
+</span></span><span class="line"><span class="cl"> <span class="c1"># 示例配置</span>
+</span></span><span class="line"><span class="cl"> <span class="c1"># # R2 配置</span>
+</span></span><span class="line"><span class="cl"> <span class="c1"># R2_CONFIG = {</span>
+</span></span><span class="line"><span class="cl"> <span class="c1">#     &#39;account_id&#39;: &#39;你的account id&#39;,</span>
+</span></span><span class="line"><span class="cl"> <span class="c1">#     &#39;access_key_id&#39;: &#39;你的令牌key id&#39;,</span>
+</span></span><span class="line"><span class="cl"> <span class="c1">#     &#39;secret_access_key&#39;: &#39;你的令牌密码&#39;,</span>
+</span></span><span class="line"><span class="cl"> <span class="c1">#     &#39;bucket_name&#39;: &#39;桶名称&#39;</span>
+</span></span><span class="line"><span class="cl"> <span class="c1"># }</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="c1"># # OSS 配置</span>
+</span></span><span class="line"><span class="cl"> <span class="c1"># OSS_CONFIG = {</span>
+</span></span><span class="line"><span class="cl"> <span class="c1">#     &#39;url&#39;: &#39;sb-eo-r2.2x.nz&#39;,</span>
+</span></span><span class="line"><span class="cl"> <span class="c1">#     &#39;prefix&#39;: &#39;/fuwari-blog/img&#39;</span>
+</span></span><span class="line"><span class="cl"> <span class="c1"># }</span>
+</span></span><span class="line"><span class="cl"> <span class="c1">#########################################################</span>
+</span></span><span class="line"><span class="cl"> <span class="c1"># R2 配置</span>
+</span></span><span class="line"><span class="cl"> <span class="n">R2_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">     <span class="s1">&#39;account_id&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">     <span class="s1">&#39;access_key_id&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">     <span class="s1">&#39;secret_access_key&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">     <span class="s1">&#39;bucket_name&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span>
+</span></span><span class="line"><span class="cl"> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="c1"># OSS 配置</span>
+</span></span><span class="line"><span class="cl"> <span class="n">OSS_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">     <span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="s1">&#39;你的自定义域&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">     <span class="s1">&#39;prefix&#39;</span><span class="p">:</span> <span class="s1">&#39;存储路径&#39;</span>
+</span></span><span class="line"><span class="cl"> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"> <span class="c1">#########################################################</span>
+</span></span><span class="line"><span class="cl"> <span class="k">def</span> <span class="nf">init_r2_client</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">     <span class="s2">&#34;&#34;&#34;初始化 R2 客户端&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">     <span class="k">return</span> <span class="n">boto3</span><span class="o">.</span><span class="n">client</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">         <span class="s1">&#39;s3&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="n">endpoint_url</span><span class="o">=</span><span class="n">f</span><span class="s1">&#39;https://{R2_CONFIG[&#34;account_id&#34;]}.r2.cloudflarestorage.com&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="n">aws_access_key_id</span><span class="o">=</span><span class="n">R2_CONFIG</span><span class="p">[</span><span class="s1">&#39;access_key_id&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">         <span class="n">aws_secret_access_key</span><span class="o">=</span><span class="n">R2_CONFIG</span><span class="p">[</span><span class="s1">&#39;secret_access_key&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">         <span class="n">config</span><span class="o">=</span><span class="n">Config</span><span class="p">(</span><span class="n">signature_version</span><span class="o">=</span><span class="s1">&#39;s3v4&#39;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">         <span class="n">region_name</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span>
+</span></span><span class="line"><span class="cl">     <span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="k">def</span> <span class="nf">get_image_from_clipboard</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">     <span class="s2">&#34;&#34;&#34;从剪贴板获取图片&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">     <span class="n">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">         <span class="n">image</span> <span class="o">=</span> <span class="n">ImageGrab</span><span class="o">.</span><span class="n">grabclipboard</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">         <span class="k">if</span> <span class="n">image</span> <span class="n">is</span> <span class="n">None</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">             <span class="k">return</span> <span class="n">None</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">         <span class="c1"># 如果是列表（多个文件），取第一个</span>
+</span></span><span class="line"><span class="cl">         <span class="k">if</span> <span class="n">isinstance</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">list</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">             <span class="k">if</span> <span class="n">len</span><span class="p">(</span><span class="n">image</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                 <span class="c1"># 如果是图片文件路径，打开它</span>
+</span></span><span class="line"><span class="cl">                 <span class="n">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                     <span class="k">return</span> <span class="ne">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">image</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">                <span class="n">except</span> <span class="n">Exception</span> <span class="n">as</span> <span class="n">e</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                     <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&#34;打开图片文件失败: {e}&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                     <span class="k">return</span> <span class="n">None</span>
+</span></span><span class="line"><span class="cl">             <span class="k">return</span> <span class="n">None</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">         <span class="c1"># 如果直接是 Image 对象</span>
+</span></span><span class="line"><span class="cl">         <span class="k">if</span> <span class="n">isinstance</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="ne">Image</span><span class="o">.</span><span class="n">Image</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">             <span class="k">return</span> <span class="n">image</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">None</span>
+</span></span><span class="line"><span class="cl">     <span class="n">except</span> <span class="n">Exception</span> <span class="n">as</span> <span class="n">e</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">         <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&#34;获取剪贴板图片失败: {e}&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">         <span class="k">return</span> <span class="n">None</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="k">def</span> <span class="nf">convert_to_webp</span><span class="p">(</span><span class="n">image</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;将图片转换为 webp 格式&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">     <span class="k">if</span> <span class="ow">not</span> <span class="n">image</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">         <span class="k">return</span> <span class="n">None</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">     <span class="n">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">         <span class="n">buffer</span> <span class="o">=</span> <span class="n">BytesIO</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 确保图片是 RGB 模式</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">image</span><span class="o">.</span><span class="n">mode</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;RGBA&#39;</span><span class="p">,</span> <span class="s1">&#39;LA&#39;</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="n">background</span> <span class="o">=</span> <span class="ne">Image</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;RGB&#39;</span><span class="p">,</span> <span class="n">image</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">             <span class="n">background</span><span class="o">.</span><span class="n">paste</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">image</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">             <span class="n">image</span> <span class="o">=</span> <span class="n">background</span>
+</span></span><span class="line"><span class="cl">        <span class="k">elif</span> <span class="n">image</span><span class="o">.</span><span class="n">mode</span> <span class="o">!=</span> <span class="s1">&#39;RGB&#39;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">image</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">&#39;RGB&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">image</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s2">&#34;WEBP&#34;</span><span class="p">,</span> <span class="n">quality</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">         <span class="k">return</span> <span class="n">buffer</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">     <span class="n">except</span> <span class="n">Exception</span> <span class="n">as</span> <span class="n">e</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">         <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&#34;转换图片失败: {e}&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">None</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="k">def</span> <span class="nf">upload_to_r2</span><span class="p">(</span><span class="n">image_data</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">     <span class="s2">&#34;&#34;&#34;上传图片到 R2&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">     <span class="k">if</span> <span class="ow">not</span> <span class="n">image_data</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">None</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">client</span> <span class="o">=</span> <span class="n">init_r2_client</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># 生成基础文件名</span>
+</span></span><span class="line"><span class="cl">    <span class="n">base_filename</span> <span class="o">=</span> <span class="n">f</span><span class="s2">&#34;{uuid.uuid4()}.webp&#34;</span>
+</span></span><span class="line"><span class="cl">     <span class="n">filename</span> <span class="o">=</span> <span class="n">base_filename</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">      <span class="c1"># 检查文件是否已存在</span>
+</span></span><span class="line"><span class="cl">        <span class="n">attempt</span> <span class="o">=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">        <span class="k">while</span> <span class="n">True</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="c1"># 尝试获取文件信息，如果文件存在会返回数据，不存在会抛出异常</span>
+</span></span><span class="line"><span class="cl">                <span class="n">client</span><span class="o">.</span><span class="n">head_object</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">Bucket</span><span class="o">=</span><span class="n">R2_CONFIG</span><span class="p">[</span><span class="s1">&#39;bucket_name&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">Key</span><span class="o">=</span><span class="n">f</span><span class="s2">&#34;{OSS_CONFIG[&#39;prefix&#39;].strip(&#39;/&#39;)}/{filename}&#34;</span>
+</span></span><span class="line"><span class="cl">                <span class="p">)</span>
+</span></span><span class="line"><span class="cl">                 <span class="c1"># 如果文件存在，修改文件名</span>
+</span></span><span class="line"><span class="cl">                <span class="n">name_without_ext</span> <span class="o">=</span> <span class="n">base_filename</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">                <span class="n">filename</span> <span class="o">=</span> <span class="n">f</span><span class="s2">&#34;{name_without_ext}_{attempt}.webp&#34;</span>
+</span></span><span class="line"><span class="cl">                <span class="n">attempt</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">                <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&#34;文件名已存在，尝试重命名为: {filename}&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">except</span> <span class="n">client</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">ClientError</span> <span class="n">as</span> <span class="n">e</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                 <span class="c1"># 如果是 404 错误，说明文件不存在，可以使用这个文件名</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="n">e</span><span class="o">.</span><span class="n">response</span><span class="p">[</span><span class="s1">&#39;Error&#39;</span><span class="p">][</span><span class="s1">&#39;Code&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;404&#39;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">break</span>
+</span></span><span class="line"><span class="cl">                <span class="n">raise</span> <span class="n">e</span>  <span class="c1"># 其他错误则抛出</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># 上传文件</span>
+</span></span><span class="line"><span class="cl">        <span class="n">client</span><span class="o">.</span><span class="n">put_object</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Bucket</span><span class="o">=</span><span class="n">R2_CONFIG</span><span class="p">[</span><span class="s1">&#39;bucket_name&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Key</span><span class="o">=</span><span class="n">f</span><span class="s2">&#34;{OSS_CONFIG[&#39;prefix&#39;].strip(&#39;/&#39;)}/{filename}&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Body</span><span class="o">=</span><span class="n">image_data</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">ContentType</span><span class="o">=</span><span class="s1">&#39;image/webp&#39;</span>
+</span></span><span class="line"><span class="cl">         <span class="p">)</span>
+</span></span><span class="line"><span class="cl">         <span class="k">return</span> <span class="n">filename</span>
+</span></span><span class="line"><span class="cl">     <span class="n">except</span> <span class="n">Exception</span> <span class="n">as</span> <span class="n">e</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">         <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&#34;上传失败: {e}&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">None</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="k">def</span> <span class="nf">generate_markdown_link</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;生成 Markdown 图片链接&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">     <span class="k">if</span> <span class="ow">not</span> <span class="n">filename</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">None</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">     <span class="n">url</span> <span class="o">=</span> <span class="n">f</span><span class="s2">&#34;https://{OSS_CONFIG[&#39;url&#39;]}{OSS_CONFIG[&#39;prefix&#39;]}/{filename}&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">f</span><span class="s2">&#34;![]({url})&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="k">def</span> <span class="nf">type_markdown_link</span><span class="p">(</span><span class="n">markdown_link</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">     <span class="s2">&#34;&#34;&#34;模拟键盘输入 Markdown 链接&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="ow">not</span> <span class="n">markdown_link</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">         <span class="k">return</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">     <span class="n">pyperclip</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">markdown_link</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">pyautogui</span><span class="o">.</span><span class="n">hotkey</span><span class="p">(</span><span class="s1">&#39;ctrl&#39;</span><span class="p">,</span> <span class="s1">&#39;v&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="k">def</span> <span class="nf">handle_upload</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">     <span class="s2">&#34;&#34;&#34;处理图片上传的主函数&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">     <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">[{time.strftime(&#39;%Y-%m-</span><span class="si">%d</span><span class="s2"> %H:%M:%S&#39;)}] 收到粘贴请求&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">     <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;正在检查剪贴板...&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">     <span class="c1"># 获取剪贴板图片</span>
+</span></span><span class="line"><span class="cl">     <span class="n">image</span> <span class="o">=</span> <span class="n">get_image_from_clipboard</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">     <span class="k">if</span> <span class="ow">not</span> <span class="n">image</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">         <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;❌ 剪贴板中没有图片&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;✅ 获取到剪贴板图片&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">     <span class="c1"># 转换为 webp</span>
+</span></span><span class="line"><span class="cl">     <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;正在转换为 WebP 格式...&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">     <span class="n">image_data</span> <span class="o">=</span> <span class="n">convert_to_webp</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">     <span class="k">if</span> <span class="ow">not</span> <span class="n">image_data</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">         <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;❌ 图片转换失败&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">         <span class="k">return</span>
+</span></span><span class="line"><span class="cl">     <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&#34;✅ 转换完成，大小: {len(image_data)/1024:.2f}KB&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">     <span class="c1"># 上传到 R2</span>
+</span></span><span class="line"><span class="cl">     <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;正在上传到 R2...&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">     <span class="n">filename</span> <span class="o">=</span> <span class="n">upload_to_r2</span><span class="p">(</span><span class="n">image_data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">     <span class="k">if</span> <span class="ow">not</span> <span class="n">filename</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">         <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;❌ 上传失败&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">         <span class="k">return</span>
+</span></span><span class="line"><span class="cl">     <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&#34;✅ 上传成功，文件名: {filename}&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">     <span class="c1"># 生成并输入 Markdown 链接</span>
+</span></span><span class="line"><span class="cl">     <span class="n">markdown_link</span> <span class="o">=</span> <span class="n">generate_markdown_link</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">     <span class="k">if</span> <span class="n">markdown_link</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">         <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&#34;生成的 URL: https://{OSS_CONFIG[&#39;url&#39;]}{OSS_CONFIG[&#39;prefix&#39;]}/{filename}&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">         <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&#34;模拟键入: {markdown_link}&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">         <span class="n">type_markdown_link</span><span class="p">(</span><span class="n">markdown_link</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">         <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;✅ 操作完成&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">     <span class="s2">&#34;&#34;&#34;主函数&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">     <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;=&#34;</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">     <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;R2 图片上传插件已启动&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">     <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&#34;当前配置:&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">     <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&#34;- OSS 域名: {OSS_CONFIG[&#39;url&#39;]}&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">     <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&#34;- 存储路径: {OSS_CONFIG[&#39;prefix&#39;]}&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">     <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&#34;- R2 存储桶: {R2_CONFIG[&#39;bucket_name&#39;]}&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">     <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;使用 Ctrl+Alt+V 上传剪贴板中的图片&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">     <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;=&#34;</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">     <span class="c1"># 注册快捷键</span>
+</span></span><span class="line"><span class="cl">     <span class="n">keyboard</span><span class="o">.</span><span class="n">add_hotkey</span><span class="p">(</span><span class="s1">&#39;ctrl+alt+v&#39;</span><span class="p">,</span> <span class="n">handle_upload</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">     <span class="c1"># 保持程序运行</span>
+</span></span><span class="line"><span class="cl">     <span class="n">keyboard</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">     <span class="n">main</span><span class="p">()</span></span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="3">
+<li>编辑脚本中R2和OSS配置的内容
+<img loading="lazy" src='https://burayimg.heisenw.com/blog/img/6db33e04-da2d-433a-9be2-54379b69a955.webp' alt="https://burayimg.heisenw.com/blog/img/6db33e04-da2d-433a-9be2-54379b69a955.webp">
+只需要编辑图中红框部分即可。<br>
+account_id：前文提到的<code>.r2.cloudflarestorage.com/xxx</code>前面部分。
+access_key_id：前文提到的<code>访问密钥 ID</code>
+secret_access_key：前文提到的<code>机密访问密钥</code>
+bucket_name：你自己设置的<code>桶名称</code>
+OSS里面的url: 你的自定义域，这个根据你前面设定的自定义域填写即可，不用写<code>https//</code>。
+OSS里面的prefix：存储路径，可以自己定义，例如我的存储路径是<code>/blog/img</code>，这样上传的图片都会再这个存储桶的/blog/img/文件夹内。</li>
+</ol>
+</li>
+<li>下载安装最新版Python。<a href="https://www.python.org/"target="_blank" rel="external nofollow noopener noreferrer">Python官网</a>，建议安装<code>Stable Releases</code>里面的最新版本。
+<img loading="lazy" src='https://burayimg.heisenw.com/blog/img/632af889-fc74-43df-81da-01c776f7bded.webp' alt="https://burayimg.heisenw.com/blog/img/632af889-fc74-43df-81da-01c776f7bded.webp">
+安装的是以后特别注意勾选<code>Add Python to PATH</code>，不然安装完了还得手动添加变量，怪麻烦的。
+安装完了重启电脑</li>
+</ul>
+<h2 class="heading-element" id="图床使用"><span>图床使用</span>
+  <a href="#%e5%9b%be%e5%ba%8a%e4%bd%bf%e7%94%a8" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><ul>
+<li>将刚才配置的py脚本文件复制到需要的位置，例如我把我的脚本文件<code>r2.py</code>放在我hugo网站主目录<code>D:\hugo\buray</code>下，在此目录下打开<code>CMD</code>，输入<code>python r2.py</code>回车运行。</li>
+<li>会提示<code>ModuleNotFoundError</code>，就是模块缺失提示，使用pip安装提示缺失的库即可，具体的命令为<code>pip install xxxx</code>。例如第一个缺失模块提示一般是<code>ModuleNotFoundError: No module named 'keyboard'</code>，那么就接着输入<code>pip install keyboard</code>进行安装，安装完成后再运行<code>python r2.py</code>，会提示第二个缺失模块，依次安装即可。需要注意的是，期间会有一个提示<code>PIL</code>模块缺失，这个模块直接<code>pip install PIL</code>是安装不了的，因为<code>PIL</code>是一个简写，指的是<code>基于Python的图像处理库</code>，库名应该是<code>pillow</code>，安装这个库的时候使用<code>pip install pillow</code>，其他的缺失库都按照提示安装就行。</li>
+<li>全部安装后运行<code>python r2.py</code>会有如下提示：
+<img loading="lazy" src='https://img.heisenw.com/blog/img/39e45501-46ee-4c19-90bc-6e91469e3354.webp' alt="https://img.heisenw.com/blog/img/39e45501-46ee-4c19-90bc-6e91469e3354.webp"></li>
+<li>使用的时候也很简单，确保py脚本运行状态后，再md文件中使用<code>Ctrl+Alt+V</code>快捷键，图片就会自动上传到图床中，同时自动在你的md文件光标处输入图片链接：</li>
+<li><img loading="lazy" src='https://burayimg.heisenw.com/blog/img/c232914b-a194-4c6e-bdf7-9d5f202a854b.webp' alt="https://burayimg.heisenw.com/blog/img/c232914b-a194-4c6e-bdf7-9d5f202a854b.webp">
+<img loading="lazy" src='https://burayimg.heisenw.com/blog/img/288eacef-b1d3-4a36-94de-86d40726bf1d.webp' alt="https://burayimg.heisenw.com/blog/img/288eacef-b1d3-4a36-94de-86d40726bf1d.webp">
+这样就算大功告成了。</li>
+</ul>
+</div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="更新于 2025-11-05 00:00:00">更新于 2025-11-05&nbsp;</span>
+      </div><div class="post-info-license">
+            <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a></span>
+          </div></div><div class="post-info-line">
+        <div class="post-info-md"><span><a href="/posts/cloudflare-r2/index.md" title="阅读原始文档" class="link-to-markdown">阅读原始文档</a></span></div>
+        <div class="post-info-share">
+          <span><a href="javascript:void(0);" title="分享到 X" data-sharer="twitter" data-url="http://www.buray.top/posts/cloudflare-r2/" data-title="使用Cloudflare R2 搭建免费图床" data-hashtags="Cloudflare,R2,对象存储,免费图床,Python"><i class="fa-brands fa-x-twitter fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="http://www.buray.top/posts/cloudflare-r2/" data-hashtag="Cloudflare"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="http://www.buray.top/posts/cloudflare-r2/" data-title="使用Cloudflare R2 搭建免费图床"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
+  </span>
+        </div>
+      </div></div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href="/tags/cloudflare/" class="post-tag" title="标签 - Cloudflare">Cloudflare</a><a href="/tags/r2/" class="post-tag" title="标签 - R2">R2</a><a href="/tags/%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8/" class="post-tag" title="标签 - 对象存储">对象存储</a><a href="/tags/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A/" class="post-tag" title="标签 - 免费图床">免费图床</a><a href="/tags/python/" class="post-tag" title="标签 - Python">Python</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div><div class="post-nav"><a href="/posts/hugo/" class="post-nav-item" rel="prev" title="使用hugo、Github和Cloudflare免费搭建个人博客"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>使用hugo、Github和Cloudflare免费搭建个人博客</a></div>
+</div>
+</article>
+
+  <aside class="toc" id="toc-auto" aria-label="目录"><h2 class="toc-title">目录&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2022 - 2025</span><span class="author" itemprop="copyrightHolder">
+              <a href="http://www.buray.top"target="_blank" rel="external nofollow noopener noreferrer">Buray</a></span></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="回到顶部"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">该网站在启用 JavaScript 的情况下效果最佳。</div>
+  </noscript>
+</div><link rel="preload" href="/lib/katex/katex.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/katex/katex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/fuse/fuse.min.js" defer></script><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script src="/lib/pangu/pangu.min.js" defer></script><script>window.config={"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验。"},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"pangu":{"enable":true,"selector":"article"},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/search.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":30,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"version":"v0.3.20"};</script><script src="/js/theme.min.js" defer></script></body>
+</html>

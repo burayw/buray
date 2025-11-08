@@ -9,8 +9,8 @@
     <title>Buray&#39;s Blog</title><meta name="author" content="Buray">
 <meta name="description" content=""><meta name="keywords" content=', '>
   <meta itemprop="name" content="Buray&#39;s Blog">
-  <meta itemprop="datePublished" content="2025-10-29T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2025-10-29T00:00:00+00:00"><meta property="og:url" content="http://www.buray.top/">
+  <meta itemprop="datePublished" content="2025-11-05T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-11-05T00:00:00+00:00"><meta property="og:url" content="http://www.buray.top/">
   <meta property="og:site_name" content="Buray&#39;s Blog">
   <meta property="og:title" content="Buray&#39;s Blog">
   <meta property="og:locale" content="zh_CN">
@@ -100,13 +100,26 @@
     </a><a href="mailto:buray@qq.com" title="Email"target="_blank" rel="external nofollow noopener noreferrer me"><i class="fa-regular fa-envelope fa-fw" aria-hidden="true"></i>
     </a><a href="/index.xml" title="RSS"target="_blank" rel="external nofollow noopener noreferrer me"><i class="fa-solid fa-rss fa-fw" aria-hidden="true"></i>
     </a></div><h3 class="home-disclaimer">本博客没刻意做SEO，单纯分享一些学习笔记和随笔心得啥的，访问随缘。如果对你有用，那我很高兴，如果没用，还请移步。文章中有时会引用或借鉴一些文章，我尽量都把原始链接附上，如果有有损原作者利益的内容，请及时告知，我会妥善处置。</h3></div>
-<article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><h2 class="single-title" itemprop="name headline"><a href="/posts/cloudflare-r2/">使用Cloudflare R2 搭建免费图床</a>
+  </h2><div class="post-meta"><span class="post-author"><a href="http://www.buray.top" title="作者"target="_blank" rel="external nofollow noopener noreferrer author" class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+    Buray</a></span>&nbsp;<span class="post-publish" title='2025-11-05 00:00:00'>发布于 <time datetime="2025-11-05">2025-11-05</time></span><span class="post-included-in">&nbsp;收录于 <a href="/categories/%E7%AC%94%E8%AE%B0/" class="post-category" title="分类 - 笔记"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 笔记</a></span></div><div class="content">Cloudflare 配置 当然是先注册个Cloudflare账号，很简单，所以就略过了
+</div><div class="post-footer">
+    <a href="/posts/cloudflare-r2/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/cloudflare/' class="post-tag">Cloudflare</a><a href='/tags/r2/' class="post-tag">R2</a><a href='/tags/%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8/' class="post-tag">对象存储</a><a href='/tags/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A/' class="post-tag">免费图床</a><a href='/tags/python/' class="post-tag">Python</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h2 class="single-title" itemprop="name headline"><a href="/posts/hugo/">使用hugo、Github和Cloudflare免费搭建个人博客</a>
+  </h2><div class="post-meta"><span class="post-author"><a href="http://www.buray.top" title="作者"target="_blank" rel="external nofollow noopener noreferrer author" class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+    Buray</a></span>&nbsp;<span class="post-publish" title='2025-11-04 00:00:00'>发布于 <time datetime="2025-11-04">2025-11-04</time></span><span class="post-included-in">&nbsp;收录于 <a href="/categories/%E7%AC%94%E8%AE%B0/" class="post-category" title="分类 - 笔记"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 笔记</a></span></div><div class="content">前阵子给好大儿搭建博客的时候学着用hugo，边学边做，磕磕绊绊地好歹运行起来了，当时就想着，等做完了一定要做个笔记。
+前期准备 工具 Visual Studio Code
+微软出的代码编辑器，功能非常非常强大，同样也意味着相对臃肿，不过几乎可以做到all in one，几乎覆盖了所有的常见语言。 ⏬️VS Code官网下载⏬️ 插件 Chinese (Simplified) (简体中文) Language Pack简体中文语言包，爱国者的福音。 Markdown All in OneVS Code最受欢迎的markdown插件，集成了写作、预览、目录生成、快捷键、表格对齐、数学公式支持等众多功能。 Markdown Preview Enhanced提供Markdown实时预览 Paste Image不使用图床的情况下，可以直接使用粘贴功能插入图片，并自动把图片保存到md文件所在目录，我用图床，所以这个没安装
+上面4个插件都是即装即用，不需要额外设置，非常适合新手。 VS Code插件安装笔记 VS Code主界面左侧点击“扩展”图标，然后搜索插件，搜到后点击“安装”就可以了 工具网站 Emoji表情大全 icon图标下载 github 打开Github注册个github账号，现在大部分时间可以访问了，确实访问不了的，想办法科学。
+</div><div class="post-footer">
+    <a href="/posts/hugo/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/hugo/' class="post-tag">Hugo</a><a href='/tags/fixit/' class="post-tag">FixIt</a><a href='/tags/github/' class="post-tag">Github</a><a href='/tags/cloudflare/' class="post-tag">Cloudflare</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
       <a href="/posts/fixed-up-hugo-no-archives/" aria-label="解决HUGO文档（Archives）中不显示文章的问题"><img loading="eager" src='https://burayimg.heisenw.com/blog/img/fb2c6463-f0b0-43a1-866c-906c20e85a70.webp' sizes="(max-width: 680px) 100vw, (max-width: 960px) 80vw, (max-width: 1440px) 56vw, 800px" alt="Featured image for 解决HUGO文档（Archives）中不显示文章的问题" height="240" width="800"></a>
     </div><h2 class="single-title" itemprop="name headline"><a href="/posts/fixed-up-hugo-no-archives/">解决HUGO文档（Archives）中不显示文章的问题</a>
   </h2><div class="post-meta"><span class="post-author"><a href="http://www.buray.top" title="作者"target="_blank" rel="external nofollow noopener noreferrer author" class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
     Buray</a></span>&nbsp;<span class="post-publish" title='2025-10-29 00:00:00'>发布于 <time datetime="2025-10-29">2025-10-29</time></span><span class="post-included-in">&nbsp;收录于 <a href="/categories/%E7%AC%94%E8%AE%B0/" class="post-category" title="分类 - 笔记"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 笔记</a></span></div><div class="content">搭建这个博客用的HUGO，FixIt主题，按照文档配置好之后，发现主页没有文章列表，点进Archives里面也没有，自己没什么基础，百思不得其解，网上也没搜到解决方案。
 </div><div class="post-footer">
-    <a href="/posts/fixed-up-hugo-no-archives/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/hugo/' class="post-tag">HUGO</a><a href='/tags/fixit/' class="post-tag">FixIt</a></div></div>
+    <a href="/posts/fixed-up-hugo-no-archives/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/hugo/' class="post-tag">Hugo</a><a href='/tags/fixit/' class="post-tag">FixIt</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
       <a href="/posts/partition-recovery/" aria-label="失败的移动硬盘分区恢复"><img loading="eager" src='https://burayimg.heisenw.com/blog/img/79459d82-93a3-49ff-bcb1-4076e6392d0a.webp' sizes="(max-width: 680px) 100vw, (max-width: 960px) 80vw, (max-width: 1440px) 56vw, 800px" alt="Featured image for 失败的移动硬盘分区恢复" height="240" width="800"></a>
     </div><h2 class="single-title" itemprop="name headline"><a href="/posts/partition-recovery/">失败的移动硬盘分区恢复</a>
@@ -133,22 +146,6 @@
 将脚本另存为Gitee全推送.bat,存放在需要推送的文件夹里，每次双击运行，输入备注，确定推送就可以啦。 注意，要将编码方式改为ANSI，否则可能会出现中文乱码。 还有个方法，看起来挺好，不过我没那么多内容需要操作，所以就没用
 </div><div class="post-footer">
     <a href="/posts/auto-gitee/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/gitee/' class="post-tag">Gitee</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
-      <a href="/posts/gitee-push/" aria-label="Gitee推送"><img loading="eager" src='https://burayimg.heisenw.com/blog/img/b2262806-65aa-4c24-9090-8409eb0f5c15.webp' sizes="(max-width: 680px) 100vw, (max-width: 960px) 80vw, (max-width: 1440px) 56vw, 800px" alt="Featured image for Gitee推送" height="240" width="800"></a>
-    </div><h2 class="single-title" itemprop="name headline"><a href="/posts/gitee-push/">Gitee推送</a>
-  </h2><div class="post-meta"><span class="post-author"><a href="http://www.buray.top" title="作者"target="_blank" rel="external nofollow noopener noreferrer author" class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
-    Buray</a></span>&nbsp;<span class="post-publish" title='2022-09-24 00:00:00'>发布于 <time datetime="2022-09-24">2022-09-24</time></span><span class="post-included-in">&nbsp;收录于 <a href="/categories/%E7%AC%94%E8%AE%B0/" class="post-category" title="分类 - 笔记"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 笔记</a></span></div><div class="content">
-简化版推送是指每次推送都将本地所有文件完全覆盖远程仓库，团队使用可能会出问题，例如将别人的代码覆盖，个人使用会更加简便。不过由于是全部推送，体积很大的项目建议还是不要用了。 原文出处:15分钟快速生成免费超高逼格官方文档 正常Gitee推送 全局User配置(只用操作一次)
-</div><div class="post-footer">
-    <a href="/posts/gitee-push/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/gitee/' class="post-tag">Gitee</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
-      <a href="/posts/docsify-notes/" aria-label="docsify学习笔记"><img loading="eager" src='https://burayimg.heisenw.com/blog/img/bb3b1351-17dd-4e29-a810-ac70f6590340.webp' sizes="(max-width: 680px) 100vw, (max-width: 960px) 80vw, (max-width: 1440px) 56vw, 800px" alt="Featured image for docsify学习笔记" height="240" width="800"></a>
-    </div><h2 class="single-title" itemprop="name headline"><a href="/posts/docsify-notes/">Docsify学习笔记</a>
-  </h2><div class="post-meta"><span class="post-author"><a href="http://www.buray.top" title="作者"target="_blank" rel="external nofollow noopener noreferrer author" class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
-    Buray</a></span>&nbsp;<span class="post-publish" title='2022-09-23 00:00:00'>发布于 <time datetime="2022-09-23">2022-09-23</time></span><span class="post-included-in">&nbsp;收录于 <a href="/categories/%E7%AC%94%E8%AE%B0/" class="post-category" title="分类 - 笔记"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 笔记</a></span></div><div class="content">
-docsify本地部署 windows环境搭建 软件准备
-</div><div class="post-footer">
-    <a href="/posts/docsify-notes/">阅读全文</a><div class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href='/tags/docsify/' class="post-tag">Docsify</a><a href='/tags/%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/' class="post-tag">静态博客</a></div></div>
 </article><ul class="pagination"><li class="page-item active">
           <span class="page-link">
             <a href="/">1</a>

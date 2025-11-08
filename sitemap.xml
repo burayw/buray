@@ -2,43 +2,91 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://www.buray.top/</loc>
-    <lastmod>2025-10-29T00:00:00+00:00</lastmod>
+    <lastmod>2025-11-05T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://www.buray.top/categories/</loc>
-    <lastmod>2025-10-29T00:00:00+00:00</lastmod>
+    <lastmod>2025-11-05T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>http://www.buray.top/tags/fixit/</loc>
-    <lastmod>2025-10-29T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>http://www.buray.top/tags/hugo/</loc>
-    <lastmod>2025-10-29T00:00:00+00:00</lastmod>
+    <loc>http://www.buray.top/tags/cloudflare/</loc>
+    <lastmod>2025-11-05T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://www.buray.top/posts/</loc>
-    <lastmod>2025-10-29T00:00:00+00:00</lastmod>
+    <lastmod>2025-11-05T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.buray.top/tags/python/</loc>
+    <lastmod>2025-11-05T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.buray.top/tags/r2/</loc>
+    <lastmod>2025-11-05T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://www.buray.top/tags/</loc>
-    <lastmod>2025-10-29T00:00:00+00:00</lastmod>
+    <lastmod>2025-11-05T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://www.buray.top/categories/%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2025-10-29T00:00:00+00:00</lastmod>
+    <lastmod>2025-11-05T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.buray.top/tags/%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8/</loc>
+    <lastmod>2025-11-05T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.buray.top/tags/%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A/</loc>
+    <lastmod>2025-11-05T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.buray.top/posts/cloudflare-r2/</loc>
+    <lastmod>2025-11-05T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.buray.top/tags/fixit/</loc>
+    <lastmod>2025-11-04T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.buray.top/tags/github/</loc>
+    <lastmod>2025-11-04T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.buray.top/tags/hugo/</loc>
+    <lastmod>2025-11-04T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.buray.top/posts/hugo/</loc>
+    <lastmod>2025-11-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -97,7 +145,13 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>http://www.buray.top/posts/gitee-push/</loc>
+    <loc>http://www.buray.top/tags/git/</loc>
+    <lastmod>2022-09-24T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://www.buray.top/posts/git-push/</loc>
     <lastmod>2022-09-24T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -163,13 +217,13 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>http://www.buray.top/posts/10years/</loc>
+    <loc>http://www.buray.top/categories/%E9%9A%8F%E7%AC%94/</loc>
     <lastmod>2009-01-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>http://www.buray.top/categories/%E9%9A%8F%E7%AC%94/</loc>
+    <loc>http://www.buray.top/posts/10years/</loc>
     <lastmod>2009-01-04T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
