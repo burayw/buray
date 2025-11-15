@@ -6,17 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
     <meta name="robots" content="noodp" />
     <title>使用Cloudflare R2 搭建免费图床 - Buray&#39;s Blog</title><meta name="author" content="Buray">
-<meta name="description" content="Cloudflare 配置 当然是先注册个Cloudflare账号，很简单，所以就略过了
+<meta name="description" content="我觉得CF是世界上最良心的网络公司，他提供的免费功能几乎可以完全覆盖一个普通人对于网络发布的需求，而且质量很稳定很好。 Cloudflare 配置 当然是先注册个Cloudflare账号，很简单，所以就略过了
 "><meta name="keywords" content='Cloudflare, R2, 对象存储, 免费图床, Python'>
   <meta itemprop="name" content="使用Cloudflare R2 搭建免费图床">
-  <meta itemprop="description" content="Cloudflare 配置 当然是先注册个Cloudflare账号，很简单，所以就略过了">
+  <meta itemprop="description" content="我觉得CF是世界上最良心的网络公司，他提供的免费功能几乎可以完全覆盖一个普通人对于网络发布的需求，而且质量很稳定很好。 Cloudflare 配置 当然是先注册个Cloudflare账号，很简单，所以就略过了">
   <meta itemprop="datePublished" content="2025-11-05T00:00:00+00:00">
   <meta itemprop="dateModified" content="2025-11-05T00:00:00+00:00">
-  <meta itemprop="wordCount" content="3097">
+  <meta itemprop="wordCount" content="3182">
   <meta itemprop="keywords" content="Cloudflare,R2,对象存储,免费图床,Python"><meta property="og:url" content="http://www.buray.top/posts/cloudflare-r2/">
   <meta property="og:site_name" content="Buray&#39;s Blog">
   <meta property="og:title" content="使用Cloudflare R2 搭建免费图床">
-  <meta property="og:description" content="Cloudflare 配置 当然是先注册个Cloudflare账号，很简单，所以就略过了">
+  <meta property="og:description" content="我觉得CF是世界上最良心的网络公司，他提供的免费功能几乎可以完全覆盖一个普通人对于网络发布的需求，而且质量很稳定很好。 Cloudflare 配置 当然是先注册个Cloudflare账号，很简单，所以就略过了">
   <meta property="og:locale" content="zh_CN">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -30,11 +30,11 @@
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="使用Cloudflare R2 搭建免费图床">
-  <meta name="twitter:description" content="Cloudflare 配置 当然是先注册个Cloudflare账号，很简单，所以就略过了">
+  <meta name="twitter:description" content="我觉得CF是世界上最良心的网络公司，他提供的免费功能几乎可以完全覆盖一个普通人对于网络发布的需求，而且质量很稳定很好。 Cloudflare 配置 当然是先注册个Cloudflare账号，很简单，所以就略过了">
 <meta name="application-name" content="Buray&#39;s Blog">
 <meta name="apple-mobile-web-app-title" content="Buray&#39;s Blog"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" type="text/html" href="http://www.buray.top/posts/cloudflare-r2/" title="使用Cloudflare R2 搭建免费图床 - Buray&#39;s Blog" /><link rel="prev" type="text/html" href="http://www.buray.top/posts/hugo/" title="使用hugo、Github和Cloudflare免费搭建个人博客" /><link rel="alternate" type="text/markdown" href="http://www.buray.top/posts/cloudflare-r2/index.md" title="使用Cloudflare R2 搭建免费图床 - Buray's Blog"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" type="text/html" href="http://www.buray.top/posts/cloudflare-r2/" title="使用Cloudflare R2 搭建免费图床 - Buray&#39;s Blog" /><link rel="prev" type="text/html" href="http://www.buray.top/posts/fixed-up-hugo-no-archives/" title="解决HUGO文档（Archives）中不显示文章的问题" /><link rel="next" type="text/html" href="http://www.buray.top/posts/lxgw-font/" title="关于本站字体-霞鹜文楷" /><link rel="alternate" type="text/markdown" href="http://www.buray.top/posts/cloudflare-r2/index.md" title="使用Cloudflare R2 搭建免费图床 - Buray's Blog"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
   {
@@ -45,7 +45,7 @@
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "http:\/\/www.buray.top\/posts\/cloudflare-r2\/"
-    },"image": ["https:\/\/burayimg.heisenw.com\/blog\/img\/a6c9b1f7-6da1-4978-bedf-29b03325cace.webp"],"genre": "posts","keywords": "Cloudflare, R2, 对象存储, 免费图床, Python","wordcount":  3097 ,
+    },"image": ["https:\/\/burayimg.heisenw.com\/blog\/img\/a6c9b1f7-6da1-4978-bedf-29b03325cace.webp"],"genre": "posts","keywords": "Cloudflare, R2, 对象存储, 免费图床, Python","wordcount":  3182 ,
     "url": "http:\/\/www.buray.top\/posts\/cloudflare-r2\/","datePublished": "2025-11-05T00:00:00+00:00","dateModified": "2025-11-05T00:00:00+00:00","publisher": {
       "@type": "Organization",
       "name": ""},"author": {
@@ -125,7 +125,7 @@
     <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>使用Cloudflare R2 搭建免费图床</span>
       </h1></div><div class="post-meta">
       <div class="post-meta-line"><span class="post-author"><a href="http://www.buray.top" title="作者"target="_blank" rel="external nofollow noopener noreferrer author" class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
-    Buray</a></span><span class="post-included-in">&nbsp;收录于 <a href="/categories/%E7%AC%94%E8%AE%B0/" class="post-category" title="分类 - 笔记"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 笔记</a></span></div><div class="post-meta-line"><span title="发布于 2025-11-05 00:00:00"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2025-11-05">2025-11-05</time></span>&nbsp;<span title="3097 字"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 3100 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 7 分钟</span>&nbsp;</div>
+    Buray</a></span><span class="post-included-in">&nbsp;收录于 <a href="/categories/%E7%AC%94%E8%AE%B0/" class="post-category" title="分类 - 笔记"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 笔记</a></span></div><div class="post-meta-line"><span title="发布于 2025-11-05 00:00:00"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2025-11-05">2025-11-05</time></span>&nbsp;<span title="3182 字"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 3200 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 7 分钟</span>&nbsp;</div>
     </div><div class="details toc" id="toc-static" data-kept="false">
         <div class="details-summary toc-title">
           <span>目录</span>
@@ -133,12 +133,17 @@
         </div>
         <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
+    <li><a href="#我觉得cf是世界上最良心的网络公司他提供的免费功能几乎可以完全覆盖一个普通人对于网络发布的需求而且质量很稳定很好">我觉得CF是世界上最良心的网络公司，他提供的免费功能几乎可以完全覆盖一个普通人对于网络发布的需求，而且质量很稳定很好。</a></li>
     <li><a href="#cloudflare-配置">Cloudflare 配置</a></li>
     <li><a href="#python-配置">Python 配置</a></li>
     <li><a href="#图床使用">图床使用</a></li>
   </ul>
 </nav></div>
-      </div><div class="content" id="content"><h2 class="heading-element" id="cloudflare-配置"><span>Cloudflare 配置</span>
+      </div><div class="content" id="content"><h2 class="heading-element" id="我觉得cf是世界上最良心的网络公司他提供的免费功能几乎可以完全覆盖一个普通人对于网络发布的需求而且质量很稳定很好"><span>我觉得CF是世界上最良心的网络公司，他提供的免费功能几乎可以完全覆盖一个普通人对于网络发布的需求，而且质量很稳定很好。</span>
+  <a href="#%e6%88%91%e8%a7%89%e5%be%97cf%e6%98%af%e4%b8%96%e7%95%8c%e4%b8%8a%e6%9c%80%e8%89%af%e5%bf%83%e7%9a%84%e7%bd%91%e7%bb%9c%e5%85%ac%e5%8f%b8%e4%bb%96%e6%8f%90%e4%be%9b%e7%9a%84%e5%85%8d%e8%b4%b9%e5%8a%9f%e8%83%bd%e5%87%a0%e4%b9%8e%e5%8f%af%e4%bb%a5%e5%ae%8c%e5%85%a8%e8%a6%86%e7%9b%96%e4%b8%80%e4%b8%aa%e6%99%ae%e9%80%9a%e4%ba%ba%e5%af%b9%e4%ba%8e%e7%bd%91%e7%bb%9c%e5%8f%91%e5%b8%83%e7%9a%84%e9%9c%80%e6%b1%82%e8%80%8c%e4%b8%94%e8%b4%a8%e9%87%8f%e5%be%88%e7%a8%b3%e5%ae%9a%e5%be%88%e5%a5%bd" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><h2 class="heading-element" id="cloudflare-配置"><span>Cloudflare 配置</span>
   <a href="#cloudflare-%e9%85%8d%e7%bd%ae" class="heading-mark">
     <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
   </a>
@@ -156,7 +161,7 @@
 <img loading="lazy" src='https://burayimg.heisenw.com/blog/img/934d6703-8b0d-4d15-9a7f-8478d22506d5.webp' alt="https://burayimg.heisenw.com/blog/img/934d6703-8b0d-4d15-9a7f-8478d22506d5.webp"></p>
 </li>
 <li>
-<p>进入刚创建的存储桶，点击<code>设置</code>，先设置一下<code>自定义域</code>，如果实在CF上面注册购买的域名，这里可以直接设置；如果不是，则需要先将你的域名DNS托管到CF上面，再设置这里。
+<p>进入刚创建的存储桶，点击<code>设置</code>，先设置一下<code>自定义域</code>，如果实在CF上面注册购买的域名，这里可以直接设置；如果不是，则需要先将你的域名托管到CF上面，再设置这里。
 <img loading="lazy" src='https://burayimg.heisenw.com/blog/img/3176cde5-03e8-4e96-8226-d678ccadcca6.webp' alt="https://burayimg.heisenw.com/blog/img/3176cde5-03e8-4e96-8226-d678ccadcca6.webp">
 <code>.r2.cloudflarestorage.com/xxx</code>前面这段就是你的<code>account_id</code>，后面配置的时候会用得到。</p>
 </li>
@@ -620,19 +625,19 @@
 </div>
 </div><ol start="3">
 <li>编辑脚本中R2和OSS配置的内容
-<img loading="lazy" src='https://burayimg.heisenw.com/blog/img/6db33e04-da2d-433a-9be2-54379b69a955.webp' alt="https://burayimg.heisenw.com/blog/img/6db33e04-da2d-433a-9be2-54379b69a955.webp">
-只需要编辑图中红框部分即可。<br>
-account_id：前文提到的<code>.r2.cloudflarestorage.com/xxx</code>前面部分。
-access_key_id：前文提到的<code>访问密钥 ID</code>
-secret_access_key：前文提到的<code>机密访问密钥</code>
-bucket_name：你自己设置的<code>桶名称</code>
-OSS里面的url: 你的自定义域，这个根据你前面设定的自定义域填写即可，不用写<code>https//</code>。
+<img loading="lazy" src='https://burayimg.heisenw.com/blog/img/6db33e04-da2d-433a-9be2-54379b69a955.webp' alt="https://burayimg.heisenw.com/blog/img/6db33e04-da2d-433a-9be2-54379b69a955.webp"><br>
+只需要编辑图中红框部分即可。 <br>
+account_id：前文提到的<code>.r2.cloudflarestorage.com/xxx</code>前面部分。<br>
+access_key_id：前文提到的<code>访问密钥 ID</code><br>
+secret_access_key：前文提到的<code>机密访问密钥</code><br>
+bucket_name：你自己设置的<code>桶名称</code><br>
+OSS里面的url: 你的自定义域，这个根据你前面设定的自定义域填写即可，不用写<code>https//</code>。<br>
 OSS里面的prefix：存储路径，可以自己定义，例如我的存储路径是<code>/blog/img</code>，这样上传的图片都会再这个存储桶的/blog/img/文件夹内。</li>
 </ol>
 </li>
-<li>下载安装最新版Python。<a href="https://www.python.org/"target="_blank" rel="external nofollow noopener noreferrer">Python官网</a>，建议安装<code>Stable Releases</code>里面的最新版本。
-<img loading="lazy" src='https://burayimg.heisenw.com/blog/img/632af889-fc74-43df-81da-01c776f7bded.webp' alt="https://burayimg.heisenw.com/blog/img/632af889-fc74-43df-81da-01c776f7bded.webp">
-安装的是以后特别注意勾选<code>Add Python to PATH</code>，不然安装完了还得手动添加变量，怪麻烦的。
+<li>下载安装最新版Python。<a href="https://www.python.org/"target="_blank" rel="external nofollow noopener noreferrer">Python官网</a>，建议安装<code>Stable Releases</code>里面的最新版本。<br>
+<img loading="lazy" src='https://burayimg.heisenw.com/blog/img/632af889-fc74-43df-81da-01c776f7bded.webp' alt="https://burayimg.heisenw.com/blog/img/632af889-fc74-43df-81da-01c776f7bded.webp"><br>
+安装的是以后特别注意勾选<code>Add Python to PATH</code>，不然安装完了还得手动添加变量，怪麻烦的。<br>
 安装完了重启电脑</li>
 </ul>
 <h2 class="heading-element" id="图床使用"><span>图床使用</span>
@@ -641,14 +646,17 @@ OSS里面的prefix：存储路径，可以自己定义，例如我的存储路�
   </a>
 </h2><ul>
 <li>将刚才配置的py脚本文件复制到需要的位置，例如我把我的脚本文件<code>r2.py</code>放在我hugo网站主目录<code>D:\hugo\buray</code>下，在此目录下打开<code>CMD</code>，输入<code>python r2.py</code>回车运行。</li>
-<li>会提示<code>ModuleNotFoundError</code>，就是模块缺失提示，使用pip安装提示缺失的库即可，具体的命令为<code>pip install xxxx</code>。例如第一个缺失模块提示一般是<code>ModuleNotFoundError: No module named 'keyboard'</code>，那么就接着输入<code>pip install keyboard</code>进行安装，安装完成后再运行<code>python r2.py</code>，会提示第二个缺失模块，依次安装即可。需要注意的是，期间会有一个提示<code>PIL</code>模块缺失，这个模块直接<code>pip install PIL</code>是安装不了的，因为<code>PIL</code>是一个简写，指的是<code>基于Python的图像处理库</code>，库名应该是<code>pillow</code>，安装这个库的时候使用<code>pip install pillow</code>，其他的缺失库都按照提示安装就行。</li>
-<li>全部安装后运行<code>python r2.py</code>会有如下提示：
+<li>会提示<code>ModuleNotFoundError</code>，就是模块缺失提示，使用pip安装提示缺失的库即可，具体的命令为<code>pip install xxxx</code>。<br>
+例如第一个缺失模块提示一般是<code>ModuleNotFoundError: No module named 'keyboard'</code>，那么就接着输入<code>pip install keyboard</code>进行安装，安装完成后再运行<code>python r2.py</code>，会提示第二个缺失模块，依次安装即可。<br>
+需要注意的是，期间会有一个提示<code>PIL</code>模块缺失，这个模块直接<code>pip install PIL</code>是安装不了的，因为<code>PIL</code>是一个简写，指的是<code>基于Python的图像处理库</code>，库名应该是<code>pillow</code>，安装这个库的时候使用<code>pip install pillow</code>，其他的缺失库都按照提示安装就行。</li>
+<li>全部安装后运行<code>python r2.py</code>会有如下提示：<br>
 <img loading="lazy" src='https://img.heisenw.com/blog/img/39e45501-46ee-4c19-90bc-6e91469e3354.webp' alt="https://img.heisenw.com/blog/img/39e45501-46ee-4c19-90bc-6e91469e3354.webp"></li>
-<li>使用的时候也很简单，确保py脚本运行状态后，再md文件中使用<code>Ctrl+Alt+V</code>快捷键，图片就会自动上传到图床中，同时自动在你的md文件光标处输入图片链接：</li>
-<li><img loading="lazy" src='https://burayimg.heisenw.com/blog/img/c232914b-a194-4c6e-bdf7-9d5f202a854b.webp' alt="https://burayimg.heisenw.com/blog/img/c232914b-a194-4c6e-bdf7-9d5f202a854b.webp">
-<img loading="lazy" src='https://burayimg.heisenw.com/blog/img/288eacef-b1d3-4a36-94de-86d40726bf1d.webp' alt="https://burayimg.heisenw.com/blog/img/288eacef-b1d3-4a36-94de-86d40726bf1d.webp">
+<li>使用的时候也很简单，确保py脚本运行状态后，再md文件中使用<code>Ctrl+Alt+V</code>快捷键，图片就会自动上传到图床中，同时自动在你的md文件光标处输入图片链接：<br>
+<img loading="lazy" src='https://burayimg.heisenw.com/blog/img/c232914b-a194-4c6e-bdf7-9d5f202a854b.webp' alt="https://burayimg.heisenw.com/blog/img/c232914b-a194-4c6e-bdf7-9d5f202a854b.webp"><br>
+<img loading="lazy" src='https://burayimg.heisenw.com/blog/img/288eacef-b1d3-4a36-94de-86d40726bf1d.webp' alt="https://burayimg.heisenw.com/blog/img/288eacef-b1d3-4a36-94de-86d40726bf1d.webp"><br>
 这样就算大功告成了。</li>
 </ul>
+<p>本文主要学习二叉树树大神的<a href="https://blog.2b2x.cn/posts/hugo/"target="_blank" rel="external nofollow noopener noreferrer">Hugo博客搭建教程以及配置调优</a></p>
 </div><div class="post-footer" id="post-footer">
   <div class="post-info">
     <div class="post-info-line">
@@ -671,7 +679,7 @@ OSS里面的prefix：存储路径，可以自己定义，例如我的存储路�
     <section>
       <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
     </section>
-  </div><div class="post-nav"><a href="/posts/hugo/" class="post-nav-item" rel="prev" title="使用hugo、Github和Cloudflare免费搭建个人博客"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>使用hugo、Github和Cloudflare免费搭建个人博客</a></div>
+  </div><div class="post-nav"><a href="/posts/fixed-up-hugo-no-archives/" class="post-nav-item" rel="prev" title="解决HUGO文档（Archives）中不显示文章的问题"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>解决HUGO文档（Archives）中不显示文章的问题</a><a href="/posts/lxgw-font/" class="post-nav-item" rel="next" title="关于本站字体-霞鹜文楷">关于本站字体-霞鹜文楷<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article>
 

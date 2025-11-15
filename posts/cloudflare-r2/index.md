@@ -1,6 +1,6 @@
 # 使用Cloudflare R2 搭建免费图床
 
-
+## 我觉得CF是世界上最良心的网络公司，他提供的免费功能几乎可以完全覆盖一个普通人对于网络发布的需求，而且质量很稳定很好。
 ## Cloudflare 配置
 - 当然是先注册个Cloudflare账号，很简单，所以就略过了
 - 登录CF后在左侧导航栏进入`存储和数据库`-`R2对象存储`-`概述`
@@ -10,7 +10,7 @@
 
 - 点击右上角`创建存储桶`，起一个名字，要特别注意`位置`是不是`亚太地区`，如果不是，可以点击下面的`提供位置提示（可选）`选择`亚太地区`。
   ![](https://burayimg.heisenw.com/blog/img/934d6703-8b0d-4d15-9a7f-8478d22506d5.webp)
-- 进入刚创建的存储桶，点击`设置`，先设置一下`自定义域`，如果实在CF上面注册购买的域名，这里可以直接设置；如果不是，则需要先将你的域名DNS托管到CF上面，再设置这里。
+- 进入刚创建的存储桶，点击`设置`，先设置一下`自定义域`，如果实在CF上面注册购买的域名，这里可以直接设置；如果不是，则需要先将你的域名托管到CF上面，再设置这里。
   ![](https://burayimg.heisenw.com/blog/img/3176cde5-03e8-4e96-8226-d678ccadcca6.webp)
   `.r2.cloudflarestorage.com/xxx`前面这段就是你的`account_id`，后面配置的时候会用得到。
 - 回到`存储和数据库`-`R2对象存储`-`概述`，右下角有`API Tokens`，点击`Manage`，进入后`创建Account API 令牌`，令牌名称可以自己起一个，权限选择`对象读和写`，其他的默认就可以，点击最下面的`创建Account API 令牌`。
@@ -240,27 +240,31 @@
         main()
      ```
     3. 编辑脚本中R2和OSS配置的内容
-   ![](https://burayimg.heisenw.com/blog/img/6db33e04-da2d-433a-9be2-54379b69a955.webp)
-   只需要编辑图中红框部分即可。  
-    account_id：前文提到的`.r2.cloudflarestorage.com/xxx`前面部分。
-    access_key_id：前文提到的`访问密钥 ID`
-    secret_access_key：前文提到的`机密访问密钥`
-    bucket_name：你自己设置的`桶名称`
-    OSS里面的url: 你的自定义域，这个根据你前面设定的自定义域填写即可，不用写`https//`。
-    OSS里面的prefix：存储路径，可以自己定义，例如我的存储路径是`/blog/img`，这样上传的图片都会再这个存储桶的/blog/img/文件夹内。
-- 下载安装最新版Python。[Python官网](https://www.python.org/)，建议安装`Stable Releases`里面的最新版本。
-  ![](https://burayimg.heisenw.com/blog/img/632af889-fc74-43df-81da-01c776f7bded.webp)
-  安装的是以后特别注意勾选`Add Python to PATH`，不然安装完了还得手动添加变量，怪麻烦的。
-  安装完了重启电脑
+   ![](https://burayimg.heisenw.com/blog/img/6db33e04-da2d-433a-9be2-54379b69a955.webp)  
+   只需要编辑图中红框部分即可。    
+    account_id：前文提到的`.r2.cloudflarestorage.com/xxx`前面部分。  
+    access_key_id：前文提到的`访问密钥 ID`  
+    secret_access_key：前文提到的`机密访问密钥`  
+    bucket_name：你自己设置的`桶名称`  
+    OSS里面的url: 你的自定义域，这个根据你前面设定的自定义域填写即可，不用写`https//`。  
+    OSS里面的prefix：存储路径，可以自己定义，例如我的存储路径是`/blog/img`，这样上传的图片都会再这个存储桶的/blog/img/文件夹内。  
+- 下载安装最新版Python。[Python官网](https://www.python.org/)，建议安装`Stable Releases`里面的最新版本。  
+  ![](https://burayimg.heisenw.com/blog/img/632af889-fc74-43df-81da-01c776f7bded.webp)  
+  安装的是以后特别注意勾选`Add Python to PATH`，不然安装完了还得手动添加变量，怪麻烦的。  
+  安装完了重启电脑  
 ## 图床使用
-- 将刚才配置的py脚本文件复制到需要的位置，例如我把我的脚本文件`r2.py`放在我hugo网站主目录`D:\hugo\buray`下，在此目录下打开`CMD`，输入`python r2.py`回车运行。
-- 会提示`ModuleNotFoundError`，就是模块缺失提示，使用pip安装提示缺失的库即可，具体的命令为`pip install xxxx`。例如第一个缺失模块提示一般是`ModuleNotFoundError: No module named 'keyboard'`，那么就接着输入`pip install keyboard`进行安装，安装完成后再运行`python r2.py`，会提示第二个缺失模块，依次安装即可。需要注意的是，期间会有一个提示`PIL`模块缺失，这个模块直接`pip install PIL`是安装不了的，因为`PIL`是一个简写，指的是`基于Python的图像处理库`，库名应该是`pillow`，安装这个库的时候使用`pip install pillow`，其他的缺失库都按照提示安装就行。
-- 全部安装后运行`python r2.py`会有如下提示：
-  ![](https://img.heisenw.com/blog/img/39e45501-46ee-4c19-90bc-6e91469e3354.webp)
-- 使用的时候也很简单，确保py脚本运行状态后，再md文件中使用`Ctrl+Alt+V`快捷键，图片就会自动上传到图床中，同时自动在你的md文件光标处输入图片链接：
-- ![](https://burayimg.heisenw.com/blog/img/c232914b-a194-4c6e-bdf7-9d5f202a854b.webp)
-  ![](https://burayimg.heisenw.com/blog/img/288eacef-b1d3-4a36-94de-86d40726bf1d.webp)
-这样就算大功告成了。
+- 将刚才配置的py脚本文件复制到需要的位置，例如我把我的脚本文件`r2.py`放在我hugo网站主目录`D:\hugo\buray`下，在此目录下打开`CMD`，输入`python r2.py`回车运行。  
+- 会提示`ModuleNotFoundError`，就是模块缺失提示，使用pip安装提示缺失的库即可，具体的命令为`pip install xxxx`。  
+  例如第一个缺失模块提示一般是`ModuleNotFoundError: No module named 'keyboard'`，那么就接着输入`pip install keyboard`进行安装，安装完成后再运行`python r2.py`，会提示第二个缺失模块，依次安装即可。  
+  需要注意的是，期间会有一个提示`PIL`模块缺失，这个模块直接`pip install PIL`是安装不了的，因为`PIL`是一个简写，指的是`基于Python的图像处理库`，库名应该是`pillow`，安装这个库的时候使用`pip install pillow`，其他的缺失库都按照提示安装就行。  
+- 全部安装后运行`python r2.py`会有如下提示：  
+  ![](https://img.heisenw.com/blog/img/39e45501-46ee-4c19-90bc-6e91469e3354.webp)  
+- 使用的时候也很简单，确保py脚本运行状态后，再md文件中使用`Ctrl+Alt+V`快捷键，图片就会自动上传到图床中，同时自动在你的md文件光标处输入图片链接：  
+  ![](https://burayimg.heisenw.com/blog/img/c232914b-a194-4c6e-bdf7-9d5f202a854b.webp)  
+  ![](https://burayimg.heisenw.com/blog/img/288eacef-b1d3-4a36-94de-86d40726bf1d.webp)  
+  这样就算大功告成了。  
+
+本文主要学习二叉树树大神的[Hugo博客搭建教程以及配置调优](https://blog.2b2x.cn/posts/hugo/)
 
 ---
 
