@@ -46,6 +46,39 @@
     $code-font-family: Fira Mono, $code-font-family;
     ```
 - Stack主题安装霞鹜文楷字体 
+ 
+  先用最简单的方法，在`\themes\hugo-theme-stack\layouts\partials\head`里修改`custom.html`，写入字段`<link>`（或者写在本文件夹下其他文件也可以的，例如`style.html`，不过为了防止后期遗忘，建议所有自定义的内容都写在`custom.html`）：
+  ```
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-web/style.css" />
+  <style>
+    body {
+      font-family: "LXGW WenKai Screen";
+      font-weight: normal;
+    }
+  </style>
+  ```
+  但是并没能够完全更换全站字体，网站主题改了，文章列表和文章内的字体并没有更换成功。
+  然后找到[Stack主题说明文档中字体部分的表述](https://stack.jimmycai.com/config/header-footer#example-custom-font-family-for-article-content)，有专门提到修改Stack主题文章字体的描述，还是在`custom.html`写入下面的内容：
+  ```
+  <style>
+    /* Overwrite CSS variable */
+    :root {
+        --article-font-family: "LXGW WenKai Screen", var(--base-font-family);
+    }
+  </style>  
+  <script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-web/style.css";
+    
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+    
+        document.head.appendChild(customFont);
+    }());
+  </script>
+  ```
+  成功。
 
 
 
