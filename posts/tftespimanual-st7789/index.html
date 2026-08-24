@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>TFT_eSPI ST7789(2.4寸) ESP32‑S3 使用手册 - Buray&#39;s Blog</title><meta name="author" content="Buray">
+<meta name="description" content="TFT_eSPI ST7789 2.4寸屏 ESP32‑S3 使用手册 针对ESP32‑S3 &#43; ST7789 SPI屏幕，解决白屏、编译报错、引脚配置问题。
+"><meta name="keywords" content='单片机, ESP32, Arduino, TFT_eSPI'>
+	<meta itemprop="name" content="TFT_eSPI ST7789(2.4寸) ESP32‑S3 使用手册">
+	<meta itemprop="description" content="TFT_eSPI ST7789 2.4寸屏 ESP32‑S3 使用手册 针对ESP32‑S3 &#43; ST7789 SPI屏幕，解决白屏、编译报错、引脚配置问题。">
+	<meta itemprop="datePublished" content="2026-08-24T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-08-24T00:00:00+00:00">
+	<meta itemprop="wordCount" content="1666">
+	<meta itemprop="keywords" content="单片机,ESP32,Arduino,TFT_eSPI"><meta property="og:url" content="http://www.buray.top/posts/tftespimanual-st7789/">
+	<meta property="og:site_name" content="Buray&#39;s Blog">
+	<meta property="og:title" content="TFT_eSPI ST7789(2.4寸) ESP32‑S3 使用手册">
+	<meta property="og:description" content="TFT_eSPI ST7789 2.4寸屏 ESP32‑S3 使用手册 针对ESP32‑S3 &#43; ST7789 SPI屏幕，解决白屏、编译报错、引脚配置问题。">
+	<meta property="og:locale" content="zh_CN">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-08-24T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-08-24T00:00:00+00:00">
+		<meta property="article:tag" content="单片机">
+		<meta property="article:tag" content="ESP32">
+		<meta property="article:tag" content="Arduino">
+		<meta property="article:tag" content="TFT_eSPI">
+
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="TFT_eSPI ST7789(2.4寸) ESP32‑S3 使用手册">
+	<meta name="twitter:description" content="TFT_eSPI ST7789 2.4寸屏 ESP32‑S3 使用手册 针对ESP32‑S3 &#43; ST7789 SPI屏幕，解决白屏、编译报错、引脚配置问题。">
+<meta name="application-name" content="Buray&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="Buray&#39;s Blog"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" type="text/html" href="http://www.buray.top/posts/tftespimanual-st7789/" title="TFT_eSPI ST7789(2.4寸) ESP32‑S3 使用手册 - Buray&#39;s Blog" /><link rel="prev" type="text/html" href="http://www.buray.top/posts/qnap-fnos/" title="威联通NAS虚拟机安装飞牛系统" /><link rel="next" type="text/html" href="http://www.buray.top/posts/arduinojsonmanual/" title="ArduinoJson &amp; ESP32‑S3 JSON解析使用手册" /><link rel="alternate" type="text/markdown" href="http://www.buray.top/posts/tftespimanual-st7789/index.md" title="TFT_eSPI ST7789(2.4寸) ESP32‑S3 使用手册 - Buray's Blog"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "TFT_eSPI ST7789(2.4寸) ESP32‑S3 使用手册",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http:\/\/www.buray.top\/posts\/tftespimanual-st7789\/"
+    },"image": ["https:\/\/burayimg.heisenw.com\/blog\/img\/a6c9b1f7-6da1-4978-bedf-29b03325cace.webp"],"genre": "posts","keywords": "单片机, ESP32, Arduino, TFT_eSPI","wordcount":  1666 ,
+    "url": "http:\/\/www.buray.top\/posts\/tftespimanual-st7789\/","datePublished": "2026-08-24T00:00:00+00:00","dateModified": "2026-08-24T00:00:00+00:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "Buray"
+      },"description": ""
+  }
+  </script><script src="/js/head/color-scheme.min.js"></script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><div class="wrapper" data-page-style="normal"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="Buray&#39;s Blog"><img class="logo" src='/favicon.ico' alt="Buray&#39;s Blog" height="32" width="32"><span class="header-title-text">Buray&#39;s Blog</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a class="menu-link" href="/"><i class="fa-solid fa-house fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li class="menu-item">
+              <a class="menu-link" href="/archives/"><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 文档</a></li><li class="menu-item">
+              <a class="menu-link" href="/categories/"><i class="fa-solid fa-folder-tree fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li class="menu-item">
+              <a class="menu-link" href="/tags/"><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item">
+              <a class="menu-link" href="/posts/readme/"><i class="fa-solid fa-user fa-fw fa-sm" aria-hidden="true"></i> 关于</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索文章标题或内容……" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="Buray&#39;s Blog"><img class="logo" src='/favicon.ico' alt="Buray&#39;s Blog" height="26" width="26"><span class="header-title-text">Buray&#39;s Blog</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索文章标题或内容……" id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              取消
+            </a>
+          </li><li class="menu-item"><a class="menu-link" href="/"><i class="fa-solid fa-house fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li class="menu-item"><a class="menu-link" href="/archives/"><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 文档</a></li><li class="menu-item"><a class="menu-link" href="/categories/"><i class="fa-solid fa-folder-tree fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li class="menu-item"><a class="menu-link" href="/tags/"><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item"><a class="menu-link" href="/posts/readme/"><i class="fa-solid fa-user fa-fw fa-sm" aria-hidden="true"></i> 关于</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="切换主题"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><nav aria-label="breadcrumb" class="breadcrumb-container">
+    <ol class="breadcrumb"><li class="breadcrumb-item" data-separator="/"><a href="/" title="Buray&#39;s Blog">主页</a></li><li class="breadcrumb-item" data-separator="/"><a href="/posts/" title="Posts">文章</a></li><li class="breadcrumb-item active" data-separator="/" aria-current="page">TFT_eSPI ST7789(2.4寸) ESP32‑S3 使用手册</li>
+    </ol>
+  </nav><main class="container"><aside class="aside-collection animate__animated animate__fadeIn animate__faster" aria-label="合集"></aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>TFT_eSPI ST7789(2.4寸) ESP32‑S3 使用手册</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><a href="http://www.buray.top" title="作者"target="_blank" rel="external nofollow noopener noreferrer author" class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+    Buray</a></span><span class="post-included-in">&nbsp;收录于 <a href="/categories/%E7%AC%94%E8%AE%B0/" class="post-category" title="分类 - 笔记"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 笔记</a></span></div><div class="post-meta-line"><span title="发布于 2026-08-24 00:00:00"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2026-08-24">2026-08-24</time></span>&nbsp;<span title="1666 字"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 1700 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 4 分钟</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#目录">目录</a></li>
+    <li><a href="#1硬件接线说明">1.硬件接线说明</a></li>
+    <li><a href="#2user_setuph关键配置">2.User_Setup.h关键配置</a></li>
+    <li><a href="#3-屏幕方向-setrotation">3. 屏幕方向 setRotation</a></li>
+    <li><a href="#4-基础绘图-api">4. 基础绘图 API</a></li>
+    <li><a href="#5-文字显示-api">5. 文字显示 API</a></li>
+    <li><a href="#6-颜色-565-转换">6. 颜色 565 转换</a></li>
+    <li><a href="#7-最小可运行测试代码">7. 最小可运行测试代码</a></li>
+    <li><a href="#8-常见编译报错处理">8. 常见编译报错处理</a>
+      <ul>
+        <li><a href="#报错-1no-matching-function-for-call-to-tft_espibegin">报错 1：<code>no matching function for call to &#39;TFT_eSPI::begin(...)&#39;</code></a></li>
+        <li><a href="#报错-2drawarc-no-matching-function">报错 2：<code>drawArc no matching function</code></a></li>
+        <li><a href="#报错-3缩小转换-narrowing-conversion-uint16_t">报错 3：缩小转换 narrowing conversion uint16_t</a></li>
+      </ul>
+    </li>
+    <li><a href="#9-硬件故障排查白屏花屏无显示">9. 硬件故障排查（白屏、花屏、无显示）</a>
+      <ul>
+        <li><a href="#现象背光亮但是全黑无任何图像">现象：背光亮，但是全黑无任何图像</a></li>
+        <li><a href="#现象花屏乱码">现象：花屏乱码</a></li>
+      </ul>
+    </li>
+    <li><a href="#附录-a常用预定义颜色表">附录 A：常用预定义颜色表</a></li>
+    <li><a href="#附录-b屏幕项目最佳实践">附录 B：屏幕项目最佳实践</a></li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><h2 class="heading-element" id="tft_espi-st7789-24寸屏-esp32s3-使用手册"><span>TFT_eSPI ST7789 2.4寸屏 ESP32‑S3 使用手册</span>
+  <a href="#tft_espi-st7789-24%e5%af%b8%e5%b1%8f-esp32s3-%e4%bd%bf%e7%94%a8%e6%89%8b%e5%86%8c" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><blockquote>
+<p>针对ESP32‑S3 + ST7789 SPI屏幕，解决白屏、编译报错、引脚配置问题。</p>
+</blockquote>
+<h2 class="heading-element" id="目录"><span>目录</span>
+  <a href="#%e7%9b%ae%e5%bd%95" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><ul>
+<li><a href="#tft_espi-st7789-24%e5%af%b8%e5%b1%8f-esp32s3-%e4%bd%bf%e7%94%a8%e6%89%8b%e5%86%8c">TFT_eSPI ST7789 2.4寸屏 ESP32‑S3 使用手册</a>
+<ul>
+<li><a href="#%e7%9b%ae%e5%bd%95">目录</a></li>
+<li><a href="#1%e7%a1%ac%e4%bb%b6%e6%8e%a5%e7%ba%bf%e8%af%b4%e6%98%8e">1.硬件接线说明</a></li>
+<li><a href="#2user_setuph%e5%85%b3%e9%94%ae%e9%85%8d%e7%bd%ae">2.User_Setup.h关键配置</a></li>
+<li><a href="#3-%e5%b1%8f%e5%b9%95%e6%96%b9%e5%90%91-setrotation">3. 屏幕方向 setRotation</a></li>
+<li><a href="#4-%e5%9f%ba%e7%a1%80%e7%bb%98%e5%9b%be-api">4. 基础绘图 API</a></li>
+<li><a href="#5-%e6%96%87%e5%ad%97%e6%98%be%e7%a4%ba-api">5. 文字显示 API</a></li>
+<li><a href="#6-%e9%a2%9c%e8%89%b2-565-%e8%bd%ac%e6%8d%a2">6. 颜色 565 转换</a></li>
+<li><a href="#7-%e6%9c%80%e5%b0%8f%e5%8f%af%e8%bf%90%e8%a1%8c%e6%b5%8b%e8%af%95%e4%bb%a3%e7%a0%81">7. 最小可运行测试代码</a></li>
+<li><a href="#8-%e5%b8%b8%e8%a7%81%e7%bc%96%e8%af%91%e6%8a%a5%e9%94%99%e5%a4%84%e7%90%86">8. 常见编译报错处理</a>
+<ul>
+<li><a href="#%e6%8a%a5%e9%94%99-1no-matching-function-for-call-to-tft_espibegin">报错 1：<code>no matching function for call to 'TFT_eSPI::begin(...)'</code></a></li>
+<li><a href="#%e6%8a%a5%e9%94%99-2drawarc-no-matching-function">报错 2：<code>drawArc no matching function</code></a></li>
+<li><a href="#%e6%8a%a5%e9%94%99-3%e7%bc%a9%e5%b0%8f%e8%bd%ac%e6%8d%a2-narrowing-conversion-uint16_t">报错 3：缩小转换 narrowing conversion uint16_t</a></li>
+</ul>
+</li>
+<li><a href="#9-%e7%a1%ac%e4%bb%b6%e6%95%85%e9%9a%9c%e6%8e%92%e6%9f%a5%e7%99%bd%e5%b1%8f%e8%8a%b1%e5%b1%8f%e6%97%a0%e6%98%be%e7%a4%ba">9. 硬件故障排查（白屏、花屏、无显示）</a>
+<ul>
+<li><a href="#%e7%8e%b0%e8%b1%a1%e8%83%8c%e5%85%89%e4%ba%ae%e4%bd%86%e6%98%af%e5%85%a8%e9%bb%91%e6%97%a0%e4%bb%bb%e4%bd%95%e5%9b%be%e5%83%8f">现象：背光亮，但是全黑无任何图像</a></li>
+<li><a href="#%e7%8e%b0%e8%b1%a1%e8%8a%b1%e5%b1%8f%e4%b9%b1%e7%a0%81">现象：花屏乱码</a></li>
+</ul>
+</li>
+<li><a href="#%e9%99%84%e5%bd%95-a%e5%b8%b8%e7%94%a8%e9%a2%84%e5%ae%9a%e4%b9%89%e9%a2%9c%e8%89%b2%e8%a1%a8">附录 A：常用预定义颜色表</a></li>
+<li><a href="#%e9%99%84%e5%bd%95-b%e5%b1%8f%e5%b9%95%e9%a1%b9%e7%9b%ae%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5">附录 B：屏幕项目最佳实践</a></li>
+</ul>
+</li>
+</ul>
+<h2 class="heading-element" id="1硬件接线说明"><span>1.硬件接线说明</span>
+  <a href="#1%e7%a1%ac%e4%bb%b6%e6%8e%a5%e7%ba%bf%e8%af%b4%e6%98%8e" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>ST7789 SPI屏，ESP32‑S3，<strong>S3没有GPIO32/33/34，避开strapping引脚GPIO0,GPIO45,GPIO46</strong></p>
+<table>
+	<thead>
+			<tr>
+					<th>ST7789屏引脚</th>
+					<th>ESP32‑S3推荐GPIO</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>VCC</td>
+					<td>3.3V <strong>禁止接5V</strong></td>
+			</tr>
+			<tr>
+					<td>GND</td>
+					<td>GND</td>
+			</tr>
+			<tr>
+					<td>SCLK(SCL)</td>
+					<td>GPIO12</td>
+			</tr>
+			<tr>
+					<td>MOSI(SDA)</td>
+					<td>GPIO11</td>
+			</tr>
+			<tr>
+					<td>CS</td>
+					<td>GPIO10</td>
+			</tr>
+			<tr>
+					<td>DC(A0)</td>
+					<td>GPIO9</td>
+			</tr>
+			<tr>
+					<td>RST(RES)</td>
+					<td>GPIO8</td>
+			</tr>
+			<tr>
+					<td>BL(背光)</td>
+					<td>GPIO7</td>
+			</tr>
+	</tbody>
+</table>
+<blockquote>
+<p>⚠️注意：
+1.屏幕必须3.3V供电，很多ST7789模块不支持5V输入，接5V直接烧毁；
+2.MISO引脚ST7789不需要，不用接线；
+3.BL背光：部分模块是高电平点亮，少数低电平点亮，白屏时优先测试背光。</p>
+</blockquote>
+<h2 class="heading-element" id="2user_setuph关键配置"><span>2.User_Setup.h关键配置</span>
+  <a href="#2user_setuph%e5%85%b3%e9%94%ae%e9%85%8d%e7%bd%ae" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><blockquote>
+<p>TFT_eSPI引脚<strong>不能只写在代码里，必须修改库内User_Setup.h</strong>，这是绝大多数白屏根源。</p>
+</blockquote>
+<p>打开库文件：<code>TFT_eSPI/User_Setup.h</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#define ST7789_DRIVER
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cp">#define TFT_WIDTH  240
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define TFT_HEIGHT 320
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cp">#define TFT_SPI_PORT 1
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cp">#define TFT_SCLK  12
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define TFT_MOSI  11
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define TFT_CS    10
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define TFT_DC     9
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define TFT_RST    8
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 如果RST接到开发板RST，设置-1
+</span></span></span><span class="line"><span class="cl"><span class="c1">//#define TFT_RST  -1
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cp">#define TFT_BACKLIGHT_ON HIGH
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cp">#define SPI_FREQUENCY  40000000
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define SPI_READ_FREQUENCY  20000000</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>修改完成后保存，重启 ArduinoIDE。</p>
+<h2 class="heading-element" id="3-屏幕方向-setrotation"><span>3. 屏幕方向 setRotation</span>
+  <a href="#3-%e5%b1%8f%e5%b9%95%e6%96%b9%e5%90%91-setrotation" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">tft.setRotation(0);</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>0：竖屏 240 (w) ×320 (h)</li>
+<li>1：横屏 320 (w) ×240 (h)</li>
+<li>2：竖屏倒置</li>
+<li>3：横屏倒置</li>
+</ul>
+<blockquote>
+<p>修改 rotation 之后，屏幕坐标会自动切换，不需要手动交换宽高。</p>
+</blockquote>
+<h2 class="heading-element" id="4-基础绘图-api"><span>4. 基础绘图 API</span>
+  <a href="#4-%e5%9f%ba%e7%a1%80%e7%bb%98%e5%9b%be-api" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">tft.fillScreen(color);           //全屏填充颜色
+</span></span><span class="line"><span class="cl">tft.drawPixel(x,y,color);        //画点
+</span></span><span class="line"><span class="cl">tft.drawLine(x1,y1,x2,y2,color); //画线
+</span></span><span class="line"><span class="cl">tft.drawRect(x,y,w,h,color);     //空心矩形
+</span></span><span class="line"><span class="cl">tft.fillRect(x,y,w,h,color);     //实心矩形
+</span></span><span class="line"><span class="cl">tft.drawCircle(x,y,r,color);     //空心圆
+</span></span><span class="line"><span class="cl">tft.fillCircle(x,y,r,color);     //实心圆
+</span></span><span class="line"><span class="cl">tft.drawRoundRect(x,y,w,h,r,color);  //圆角矩形空心
+</span></span><span class="line"><span class="cl">tft.fillRoundRect(x,y,w,h,r,color);  //圆角矩形实心</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 class="heading-element" id="5-文字显示-api"><span>5. 文字显示 API</span>
+  <a href="#5-%e6%96%87%e5%ad%97%e6%98%be%e7%a4%ba-api" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">tft.setTextColor(fgColor,bgColor); //文字前景色，背景色；背景写TFT_BLACK透明
+</span></span><span class="line"><span class="cl">tft.setTextSize(size);             //字号 1~7放大倍数
+</span></span><span class="line"><span class="cl">tft.setCursor(x,y);                //文字光标坐标
+</span></span><span class="line"><span class="cl">tft.println(&#34;hello&#34;);
+</span></span><span class="line"><span class="cl">tft.print(&#34;test&#34;);</span></span></code></pre></td></tr></table>
+</div>
+</div><p>示例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">tft.setTextColor(TFT_WHITE,TFT_BLACK);
+</span></span><span class="line"><span class="cl">tft.setTextSize(2);
+</span></span><span class="line"><span class="cl">tft.setCursor(10,10);
+</span></span><span class="line"><span class="cl">tft.println(&#34;ESP32‑S3 ST7789&#34;);</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 class="heading-element" id="6-颜色-565-转换"><span>6. 颜色 565 转换</span>
+  <a href="#6-%e9%a2%9c%e8%89%b2-565-%e8%bd%ac%e6%8d%a2" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>TFT 屏幕使用 RGB565 16 位颜色</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">uint16_t c = tft.color565(R,G,B);
+</span></span><span class="line"><span class="cl">//R/G/B 范围0‑255</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 class="heading-element" id="7-最小可运行测试代码"><span>7. 最小可运行测试代码</span>
+  <a href="#7-%e6%9c%80%e5%b0%8f%e5%8f%af%e8%bf%90%e8%a1%8c%e6%b5%8b%e8%af%95%e4%bb%a3%e7%a0%81" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;TFT_eSPI.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="n">TFT_eSPI</span> <span class="n">tft</span> <span class="o">=</span> <span class="nf">TFT_eSPI</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cp">#define BL_PIN 7
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">setup</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">Serial</span><span class="p">.</span><span class="nf">begin</span><span class="p">(</span><span class="mi">115200</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">pinMode</span><span class="p">(</span><span class="n">BL_PIN</span><span class="p">,</span><span class="n">OUTPUT</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">digitalWrite</span><span class="p">(</span><span class="n">BL_PIN</span><span class="p">,</span><span class="n">HIGH</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">tft</span><span class="p">.</span><span class="nf">init</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="n">tft</span><span class="p">.</span><span class="nf">setRotation</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">tft</span><span class="p">.</span><span class="nf">fillScreen</span><span class="p">(</span><span class="n">TFT_BLACK</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">tft</span><span class="p">.</span><span class="nf">setTextColor</span><span class="p">(</span><span class="n">TFT_WHITE</span><span class="p">,</span><span class="n">TFT_BLACK</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">tft</span><span class="p">.</span><span class="nf">setTextSize</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">tft</span><span class="p">.</span><span class="nf">setCursor</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">40</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">tft</span><span class="p">.</span><span class="nf">println</span><span class="p">(</span><span class="s">&#34;ST7789 OK&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">tft</span><span class="p">.</span><span class="nf">drawCircle</span><span class="p">(</span><span class="mi">120</span><span class="p">,</span><span class="mi">160</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="n">TFT_RED</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">loop</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 class="heading-element" id="8-常见编译报错处理"><span>8. 常见编译报错处理</span>
+  <a href="#8-%e5%b8%b8%e8%a7%81%e7%bc%96%e8%af%91%e6%8a%a5%e9%94%99%e5%a4%84%e7%90%86" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><h3 class="heading-element" id="报错-1no-matching-function-for-call-to-tft_espibegin"><span>报错 1：<code>no matching function for call to 'TFT_eSPI::begin(...)'</code></span>
+  <a href="#%e6%8a%a5%e9%94%99-1no-matching-function-for-call-to-tft_espibegin" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><blockquote>
+<p>新版 TFT_eSPI 不再支持在<code>.begin()</code>传入引脚；引脚全部交由 User_Setup.h 管理，代码只写<code>tft.init()</code>。</p>
+</blockquote>
+<h3 class="heading-element" id="报错-2drawarc-no-matching-function"><span>报错 2：<code>drawArc no matching function</code></span>
+  <a href="#%e6%8a%a5%e9%94%99-2drawarc-no-matching-function" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><blockquote>
+<p>低版本 TFT_eSPI 没有 drawArc 函数，不要使用该接口，改用圆 + 线段实现圆弧。</p>
+</blockquote>
+<h3 class="heading-element" id="报错-3缩小转换-narrowing-conversion-uint16_t"><span>报错 3：缩小转换 narrowing conversion uint16_t</span>
+  <a href="#%e6%8a%a5%e9%94%99-3%e7%bc%a9%e5%b0%8f%e8%bd%ac%e6%8d%a2-narrowing-conversion-uint16_t" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><blockquote>
+<p>数组字面量数值超出 uint16 范围，把数组类型改为<code>uint32_t</code>。</p>
+</blockquote>
+<h2 class="heading-element" id="9-硬件故障排查白屏花屏无显示"><span>9. 硬件故障排查（白屏、花屏、无显示）</span>
+  <a href="#9-%e7%a1%ac%e4%bb%b6%e6%95%85%e9%9a%9c%e6%8e%92%e6%9f%a5%e7%99%bd%e5%b1%8f%e8%8a%b1%e5%b1%8f%e6%97%a0%e6%98%be%e7%a4%ba" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><ol>
+<li><strong>背光是否点亮</strong>：测量 BL 引脚电平；部分屏幕 BL 低电平点亮，调换 HIGH/LOW 测试。</li>
+<li><strong>供电 3.3V！不要接 5V</strong>，很多 ST7789 模块 5V 会白屏损坏。</li>
+<li>User_Setup.h 引脚必须和实际接线一一对应，<strong>只在代码 define 引脚无效</strong>。</li>
+<li>RST 引脚必须接线，或者 User_Setup 设置 TFT_RST=-1 接系统复位。</li>
+<li>SPI 频率降低，把<code>SPI_FREQUENCY</code>改为 20000000 测试，排除走线干扰。</li>
+<li>避开 strapping 引脚 GPIO0、GPIO45、GPIO46，不要用作屏幕信号线。</li>
+<li>S3 没有 GPIO32/33/34，老 ESP32 代码直接复制过来会完全无输出。</li>
+<li>接线接触不良，杜邦线换一批。</li>
+</ol>
+<h3 class="heading-element" id="现象背光亮但是全黑无任何图像"><span>现象：背光亮，但是全黑无任何图像</span>
+  <a href="#%e7%8e%b0%e8%b1%a1%e8%83%8c%e5%85%89%e4%ba%ae%e4%bd%86%e6%98%af%e5%85%a8%e9%bb%91%e6%97%a0%e4%bb%bb%e4%bd%95%e5%9b%be%e5%83%8f" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><ul>
+<li>DC、CS 引脚接错是最高概率原因，核对 User_Setup 和硬件。</li>
+</ul>
+<h3 class="heading-element" id="现象花屏乱码"><span>现象：花屏乱码</span>
+  <a href="#%e7%8e%b0%e8%b1%a1%e8%8a%b1%e5%b1%8f%e4%b9%b1%e7%a0%81" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><ul>
+<li>SCLK/MOSI 接反；SPI 频率过高；接线接触不良。</li>
+</ul>
+<h2 class="heading-element" id="附录-a常用预定义颜色表"><span>附录 A：常用预定义颜色表</span>
+  <a href="#%e9%99%84%e5%bd%95-a%e5%b8%b8%e7%94%a8%e9%a2%84%e5%ae%9a%e4%b9%89%e9%a2%9c%e8%89%b2%e8%a1%a8" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">TFT_BLACK       0x0000
+</span></span><span class="line"><span class="cl">TFT_NAVY        0x000F
+</span></span><span class="line"><span class="cl">TFT_DARKGREEN   0x03E0
+</span></span><span class="line"><span class="cl">TFT_DARKCYAN    0x03EF
+</span></span><span class="line"><span class="cl">TFT_MAROON      0x7800
+</span></span><span class="line"><span class="cl">TFT_PURPLE      0x780F
+</span></span><span class="line"><span class="cl">TFT_OLIVE       0x7BE0
+</span></span><span class="line"><span class="cl">TFT_LIGHTGREY   0xC618
+</span></span><span class="line"><span class="cl">TFT_DARKGREY    0x7BEF
+</span></span><span class="line"><span class="cl">TFT_BLUE        0x001F
+</span></span><span class="line"><span class="cl">TFT_GREEN       0x07E0
+</span></span><span class="line"><span class="cl">TFT_CYAN        0x07FF
+</span></span><span class="line"><span class="cl">TFT_RED         0xF800
+</span></span><span class="line"><span class="cl">TFT_MAGENTA     0xF81F
+</span></span><span class="line"><span class="cl">TFT_YELLOW      0xFFE0
+</span></span><span class="line"><span class="cl">TFT_WHITE       0xFFFF</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 class="heading-element" id="附录-b屏幕项目最佳实践"><span>附录 B：屏幕项目最佳实践</span>
+  <a href="#%e9%99%84%e5%bd%95-b%e5%b1%8f%e5%b9%95%e9%a1%b9%e7%9b%ae%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><ol>
+<li>WiFi 联网必须增加超时，禁止死循环等待 WiFi，否则屏幕直接卡死白屏。</li>
+<li>loop 中不要频繁调用 fillScreen 全屏刷新，会闪烁，尽量局部 fillRect 刷新。</li>
+<li>农历大数组注意类型，防止 uint16 溢出编译报错。</li>
+<li>不要在中断回调里面执行屏幕绘图，会 SPI 冲突死机。</li>
+<li>开发阶段优先跑最小测试代码，确认屏幕点亮，再叠加 WiFi、NTP、农历业务。</li>
+</ol>
+</div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="更新于 2026-08-24 00:00:00">更新于 2026-08-24&nbsp;</span>
+      </div><div class="post-info-license">
+            <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a></span>
+          </div></div><div class="post-info-line">
+        <div class="post-info-md"><span><a href="/posts/tftespimanual-st7789/index.md" title="阅读原始文档" class="link-to-markdown">阅读原始文档</a></span></div>
+        <div class="post-info-share">
+          <span><a href="javascript:void(0);" title="分享到 X" data-sharer="twitter" data-url="http://www.buray.top/posts/tftespimanual-st7789/" data-title="TFT_eSPI ST7789(2.4寸) ESP32‑S3 使用手册" data-hashtags="单片机,ESP32,Arduino,TFT_eSPI"><i class="fa-brands fa-x-twitter fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="http://www.buray.top/posts/tftespimanual-st7789/" data-hashtag="单片机"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="http://www.buray.top/posts/tftespimanual-st7789/" data-title="TFT_eSPI ST7789(2.4寸) ESP32‑S3 使用手册"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
+  </span>
+        </div>
+      </div></div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href="/tags/%E5%8D%95%E7%89%87%E6%9C%BA/" class="post-tag" title="标签 - 单片机">单片机</a><a href="/tags/esp32/" class="post-tag" title="标签 - ESP32">ESP32</a><a href="/tags/arduino/" class="post-tag" title="标签 - Arduino">Arduino</a><a href="/tags/tft_espi/" class="post-tag" title="标签 - TFT_eSPI">TFT_eSPI</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div><div class="post-nav"><a href="/posts/qnap-fnos/" class="post-nav-item" rel="prev" title="威联通NAS虚拟机安装飞牛系统"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>威联通NAS虚拟机安装飞牛系统</a><a href="/posts/arduinojsonmanual/" class="post-nav-item" rel="next" title="ArduinoJson &amp; ESP32‑S3 JSON解析使用手册">ArduinoJson &amp; ESP32‑S3 JSON解析使用手册<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article>
+
+  <aside class="toc" id="toc-auto" aria-label="目录"><h2 class="toc-title">目录&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2022 - 2026</span><span class="author" itemprop="copyrightHolder">
+              <a href="http://www.buray.top"target="_blank" rel="external nofollow noopener noreferrer">Buray</a></span></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="回到顶部"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">该网站在启用 JavaScript 的情况下效果最佳。</div>
+  </noscript>
+</div><link rel="preload" href="/lib/katex/katex.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/katex/katex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/fuse/fuse.min.js" defer></script><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script src="/lib/pangu/pangu.min.js" defer></script><script src="/js/flyfish.js" defer></script><script>window.config={"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验。"},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"pangu":{"enable":true,"selector":"article"},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/search.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":30,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"version":"v0.3.20"};</script><script src="/js/theme.min.js" defer></script></body>
+</html>

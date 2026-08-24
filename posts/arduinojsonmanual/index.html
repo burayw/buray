@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>ArduinoJson &amp; ESP32‑S3 JSON解析使用手册 - Buray&#39;s Blog</title><meta name="author" content="Buray">
+<meta name="description" content="ArduinoJson ESP32‑S3 JSON解析手册 常用于网络天气接口、HTTP返回数据解析；配合ESP32‑S3 HTTPClient做天气数据提取。
+"><meta name="keywords" content='单片机, ESP32, Arduino, JSON'>
+	<meta itemprop="name" content="ArduinoJson & ESP32‑S3 JSON解析使用手册">
+	<meta itemprop="description" content="ArduinoJson ESP32‑S3 JSON解析手册 常用于网络天气接口、HTTP返回数据解析；配合ESP32‑S3 HTTPClient做天气数据提取。">
+	<meta itemprop="datePublished" content="2026-08-24T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-08-24T00:00:00+00:00">
+	<meta itemprop="wordCount" content="1766">
+	<meta itemprop="keywords" content="单片机,ESP32,Arduino,JSON"><meta property="og:url" content="http://www.buray.top/posts/arduinojsonmanual/">
+	<meta property="og:site_name" content="Buray&#39;s Blog">
+	<meta property="og:title" content="ArduinoJson & ESP32‑S3 JSON解析使用手册">
+	<meta property="og:description" content="ArduinoJson ESP32‑S3 JSON解析手册 常用于网络天气接口、HTTP返回数据解析；配合ESP32‑S3 HTTPClient做天气数据提取。">
+	<meta property="og:locale" content="zh_CN">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-08-24T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-08-24T00:00:00+00:00">
+		<meta property="article:tag" content="单片机">
+		<meta property="article:tag" content="ESP32">
+		<meta property="article:tag" content="Arduino">
+		<meta property="article:tag" content="JSON">
+
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="ArduinoJson & ESP32‑S3 JSON解析使用手册">
+	<meta name="twitter:description" content="ArduinoJson ESP32‑S3 JSON解析手册 常用于网络天气接口、HTTP返回数据解析；配合ESP32‑S3 HTTPClient做天气数据提取。">
+<meta name="application-name" content="Buray&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="Buray&#39;s Blog"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" type="text/html" href="http://www.buray.top/posts/arduinojsonmanual/" title="ArduinoJson &amp; ESP32‑S3 JSON解析使用手册 - Buray&#39;s Blog" /><link rel="prev" type="text/html" href="http://www.buray.top/posts/tftespimanual-st7789/" title="TFT_eSPI ST7789(2.4寸) ESP32‑S3 使用手册" /><link rel="next" type="text/html" href="http://www.buray.top/posts/arduinoesp32s3manual/" title="Arduino &amp; ESP32‑S3 中文函数参考手册" /><link rel="alternate" type="text/markdown" href="http://www.buray.top/posts/arduinojsonmanual/index.md" title="ArduinoJson & ESP32‑S3 JSON解析使用手册 - Buray's Blog"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "ArduinoJson \u0026 ESP32‑S3 JSON解析使用手册",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http:\/\/www.buray.top\/posts\/arduinojsonmanual\/"
+    },"image": ["https:\/\/burayimg.heisenw.com\/blog\/img\/a6c9b1f7-6da1-4978-bedf-29b03325cace.webp"],"genre": "posts","keywords": "单片机, ESP32, Arduino, JSON","wordcount":  1766 ,
+    "url": "http:\/\/www.buray.top\/posts\/arduinojsonmanual\/","datePublished": "2026-08-24T00:00:00+00:00","dateModified": "2026-08-24T00:00:00+00:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "Buray"
+      },"description": ""
+  }
+  </script><script src="/js/head/color-scheme.min.js"></script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><div class="wrapper" data-page-style="normal"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="Buray&#39;s Blog"><img class="logo" src='/favicon.ico' alt="Buray&#39;s Blog" height="32" width="32"><span class="header-title-text">Buray&#39;s Blog</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a class="menu-link" href="/"><i class="fa-solid fa-house fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li class="menu-item">
+              <a class="menu-link" href="/archives/"><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 文档</a></li><li class="menu-item">
+              <a class="menu-link" href="/categories/"><i class="fa-solid fa-folder-tree fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li class="menu-item">
+              <a class="menu-link" href="/tags/"><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item">
+              <a class="menu-link" href="/posts/readme/"><i class="fa-solid fa-user fa-fw fa-sm" aria-hidden="true"></i> 关于</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索文章标题或内容……" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="Buray&#39;s Blog"><img class="logo" src='/favicon.ico' alt="Buray&#39;s Blog" height="26" width="26"><span class="header-title-text">Buray&#39;s Blog</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索文章标题或内容……" id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              取消
+            </a>
+          </li><li class="menu-item"><a class="menu-link" href="/"><i class="fa-solid fa-house fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li class="menu-item"><a class="menu-link" href="/archives/"><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 文档</a></li><li class="menu-item"><a class="menu-link" href="/categories/"><i class="fa-solid fa-folder-tree fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li class="menu-item"><a class="menu-link" href="/tags/"><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item"><a class="menu-link" href="/posts/readme/"><i class="fa-solid fa-user fa-fw fa-sm" aria-hidden="true"></i> 关于</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="切换主题"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><nav aria-label="breadcrumb" class="breadcrumb-container">
+    <ol class="breadcrumb"><li class="breadcrumb-item" data-separator="/"><a href="/" title="Buray&#39;s Blog">主页</a></li><li class="breadcrumb-item" data-separator="/"><a href="/posts/" title="Posts">文章</a></li><li class="breadcrumb-item active" data-separator="/" aria-current="page">ArduinoJson &amp; ESP32‑S3 JSON解析使用手册</li>
+    </ol>
+  </nav><main class="container"><aside class="aside-collection animate__animated animate__fadeIn animate__faster" aria-label="合集"></aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>ArduinoJson &amp; ESP32‑S3 JSON解析使用手册</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><a href="http://www.buray.top" title="作者"target="_blank" rel="external nofollow noopener noreferrer author" class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+    Buray</a></span><span class="post-included-in">&nbsp;收录于 <a href="/categories/%E7%AC%94%E8%AE%B0/" class="post-category" title="分类 - 笔记"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 笔记</a></span></div><div class="post-meta-line"><span title="发布于 2026-08-24 00:00:00"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2026-08-24">2026-08-24</time></span>&nbsp;<span title="1766 字"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 1800 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 4 分钟</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#目录">目录</a></li>
+    <li><a href="#1库安装">1.库安装</a></li>
+    <li><a href="#2-核心概念">2. 核心概念</a></li>
+    <li><a href="#3-内存分配静态--动态">3. 内存分配（静态 / 动态）</a>
+      <ul>
+        <li><a href="#staticjsondocument-静态栈内存固定大小">StaticJsonDocument 静态（栈内存，固定大小）</a></li>
+        <li><a href="#dynamicjsondocument-动态堆内存推荐-esp32s3">DynamicJsonDocument 动态（堆内存，推荐 ESP32‑S3）</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-解析-json-字符串读取">4. 解析 JSON 字符串（读取）</a></li>
+    <li><a href="#5-构建输出-json生成">5. 构建输出 JSON（生成）</a></li>
+    <li><a href="#6-数组读取">6. 数组读取</a></li>
+    <li><a href="#7-嵌套对象解析">7. 嵌套对象解析</a></li>
+    <li><a href="#8-配合-httpclient-获取网络-json-完整示例">8. 配合 HTTPClient 获取网络 JSON 完整示例</a></li>
+    <li><a href="#9-常见编译--运行报错">9. 常见编译 &amp; 运行报错</a>
+      <ul>
+        <li><a href="#1-找不到-deserializejson">1. 找不到 <code>deserializeJson</code></a></li>
+        <li><a href="#2-解析返回outofmemory">2. 解析返回<code>OutOfMemory</code></a></li>
+        <li><a href="#3-字段读取得到空字符串">3. 字段读取得到空字符串</a></li>
+        <li><a href="#4-崩溃重启-guru-meditation-error">4. 崩溃重启 Guru Meditation Error</a></li>
+      </ul>
+    </li>
+    <li><a href="#10-内存踩坑要点">10. 内存踩坑要点</a></li>
+    <li><a href="#附录-a常用-api-速查表">附录 A：常用 API 速查表</a>
+      <ul>
+        <li><a href="#解析相关">解析相关</a></li>
+        <li><a href="#数组">数组</a></li>
+        <li><a href="#对象">对象</a></li>
+        <li><a href="#序列化输出">序列化输出</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><h2 class="heading-element" id="arduinojson-esp32s3-json解析手册"><span>ArduinoJson ESP32‑S3 JSON解析手册</span>
+  <a href="#arduinojson-esp32s3-json%e8%a7%a3%e6%9e%90%e6%89%8b%e5%86%8c" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><blockquote>
+<p>常用于网络天气接口、HTTP返回数据解析；配合ESP32‑S3 HTTPClient做天气数据提取。</p>
+</blockquote>
+<h2 class="heading-element" id="目录"><span>目录</span>
+  <a href="#%e7%9b%ae%e5%bd%95" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><ul>
+<li><a href="#arduinojson-esp32s3-json%e8%a7%a3%e6%9e%90%e6%89%8b%e5%86%8c">ArduinoJson ESP32‑S3 JSON解析手册</a>
+<ul>
+<li><a href="#%e7%9b%ae%e5%bd%95">目录</a></li>
+<li><a href="#1%e5%ba%93%e5%ae%89%e8%a3%85">1.库安装</a></li>
+<li><a href="#2-%e6%a0%b8%e5%bf%83%e6%a6%82%e5%bf%b5">2. 核心概念</a></li>
+<li><a href="#3-%e5%86%85%e5%ad%98%e5%88%86%e9%85%8d%e9%9d%99%e6%80%81--%e5%8a%a8%e6%80%81">3. 内存分配（静态 / 动态）</a>
+<ul>
+<li><a href="#staticjsondocument-%e9%9d%99%e6%80%81%e6%a0%88%e5%86%85%e5%ad%98%e5%9b%ba%e5%ae%9a%e5%a4%a7%e5%b0%8f">StaticJsonDocument 静态（栈内存，固定大小）</a></li>
+<li><a href="#dynamicjsondocument-%e5%8a%a8%e6%80%81%e5%a0%86%e5%86%85%e5%ad%98%e6%8e%a8%e8%8d%90-esp32s3">DynamicJsonDocument 动态（堆内存，推荐 ESP32‑S3）</a></li>
+</ul>
+</li>
+<li><a href="#4-%e8%a7%a3%e6%9e%90-json-%e5%ad%97%e7%ac%a6%e4%b8%b2%e8%af%bb%e5%8f%96">4. 解析 JSON 字符串（读取）</a></li>
+<li><a href="#5-%e6%9e%84%e5%bb%ba%e8%be%93%e5%87%ba-json%e7%94%9f%e6%88%90">5. 构建输出 JSON（生成）</a></li>
+<li><a href="#6-%e6%95%b0%e7%bb%84%e8%af%bb%e5%8f%96">6. 数组读取</a></li>
+<li><a href="#7-%e5%b5%8c%e5%a5%97%e5%af%b9%e8%b1%a1%e8%a7%a3%e6%9e%90">7. 嵌套对象解析</a></li>
+<li><a href="#8-%e9%85%8d%e5%90%88-httpclient-%e8%8e%b7%e5%8f%96%e7%bd%91%e7%bb%9c-json-%e5%ae%8c%e6%95%b4%e7%a4%ba%e4%be%8b">8. 配合 HTTPClient 获取网络 JSON 完整示例</a></li>
+<li><a href="#9-%e5%b8%b8%e8%a7%81%e7%bc%96%e8%af%91--%e8%bf%90%e8%a1%8c%e6%8a%a5%e9%94%99">9. 常见编译 &amp; 运行报错</a>
+<ul>
+<li><a href="#1-%e6%89%be%e4%b8%8d%e5%88%b0-deserializejson">1. 找不到 <code>deserializeJson</code></a></li>
+<li><a href="#2-%e8%a7%a3%e6%9e%90%e8%bf%94%e5%9b%9eoutofmemory">2. 解析返回<code>OutOfMemory</code></a></li>
+<li><a href="#3-%e5%ad%97%e6%ae%b5%e8%af%bb%e5%8f%96%e5%be%97%e5%88%b0%e7%a9%ba%e5%ad%97%e7%ac%a6%e4%b8%b2">3. 字段读取得到空字符串</a></li>
+<li><a href="#4-%e5%b4%a9%e6%ba%83%e9%87%8d%e5%90%af-guru-meditation-error">4. 崩溃重启 Guru Meditation Error</a></li>
+</ul>
+</li>
+<li><a href="#10-%e5%86%85%e5%ad%98%e8%b8%a9%e5%9d%91%e8%a6%81%e7%82%b9">10. 内存踩坑要点</a></li>
+<li><a href="#%e9%99%84%e5%bd%95-a%e5%b8%b8%e7%94%a8-api-%e9%80%9f%e6%9f%a5%e8%a1%a8">附录 A：常用 API 速查表</a>
+<ul>
+<li><a href="#%e8%a7%a3%e6%9e%90%e7%9b%b8%e5%85%b3">解析相关</a></li>
+<li><a href="#%e6%95%b0%e7%bb%84">数组</a></li>
+<li><a href="#%e5%af%b9%e8%b1%a1">对象</a></li>
+<li><a href="#%e5%ba%8f%e5%88%97%e5%8c%96%e8%be%93%e5%87%ba">序列化输出</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 class="heading-element" id="1库安装"><span>1.库安装</span>
+  <a href="#1%e5%ba%93%e5%ae%89%e8%a3%85" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>Arduino库管理器搜索：<code>ArduinoJson</code></p>
+<blockquote>
+<p>建议版本：V7.x，不要使用老旧V5版本，API语法不一样。</p>
+</blockquote>
+<p>头文件引入</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;ArduinoJson.h&gt;</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 class="heading-element" id="2-核心概念"><span>2. 核心概念</span>
+  <a href="#2-%e6%a0%b8%e5%bf%83%e6%a6%82%e5%bf%b5" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><ul>
+<li><code>JsonDocument</code>：JSON 文档容器，存放整个 json 对象 / 数组；V7 推荐使用<code>DynamicJsonDocument</code>或者<code>StaticJsonDocument</code></li>
+<li><code>JsonObject</code>：JSON 对象 <code>{&quot;key&quot;:&quot;value&quot;}</code></li>
+<li><code>JsonArray</code>：JSON 数组 <code>[1,2,3]</code></li>
+<li><code>JsonVariant</code>：通用类型，可以代表字符串、数字、布尔、null</li>
+</ul>
+<blockquote>
+<p>⚠️V7 重大变化：不再使用<code>deserializeJson(doc,input)</code>返回 bool，返回<code>DeserializationError</code>对象。</p>
+</blockquote>
+<h2 class="heading-element" id="3-内存分配静态--动态"><span>3. 内存分配（静态 / 动态）</span>
+  <a href="#3-%e5%86%85%e5%ad%98%e5%88%86%e9%85%8d%e9%9d%99%e6%80%81--%e5%8a%a8%e6%80%81" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><h3 class="heading-element" id="staticjsondocument-静态栈内存固定大小"><span>StaticJsonDocument 静态（栈内存，固定大小）</span>
+  <a href="#staticjsondocument-%e9%9d%99%e6%80%81%e6%a0%88%e5%86%85%e5%ad%98%e5%9b%ba%e5%ae%9a%e5%a4%a7%e5%b0%8f" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>适合已知 json 最大体积，速度快。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">StaticJsonDocument&lt;1024&gt; doc;</span></span></code></pre></td></tr></table>
+</div>
+</div><p>尖括号内为缓冲区字节大小，根据 json 报文大小设置。</p>
+<h3 class="heading-element" id="dynamicjsondocument-动态堆内存推荐-esp32s3"><span>DynamicJsonDocument 动态（堆内存，推荐 ESP32‑S3）</span>
+  <a href="#dynamicjsondocument-%e5%8a%a8%e6%80%81%e5%a0%86%e5%86%85%e5%ad%98%e6%8e%a8%e8%8d%90-esp32s3" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>内存自动分配，适合网络接口，不知道报文确切大小。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">DynamicJsonDocument doc(2048);</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>ESP32‑S3 内存充足，一般设置 2048~4096 足够天气接口使用。</p>
+</blockquote>
+<h2 class="heading-element" id="4-解析-json-字符串读取"><span>4. 解析 JSON 字符串（读取）</span>
+  <a href="#4-%e8%a7%a3%e6%9e%90-json-%e5%ad%97%e7%ac%a6%e4%b8%b2%e8%af%bb%e5%8f%96" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>示例 JSON 字符串</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  &#34;city&#34;:&#34;Qingdao&#34;,
+</span></span><span class="line"><span class="cl">  &#34;temp&#34;:24.5,
+</span></span><span class="line"><span class="cl">  &#34;humidity&#34;:60
+</span></span><span class="line"><span class="cl">}</span></span></code></pre></td></tr></table>
+</div>
+</div><p>解析代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="c1">#include &lt;ArduinoJson.h&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">void</span> <span class="n">parseDemo</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">  <span class="k">const</span> <span class="n">char</span><span class="o">*</span> <span class="n">jsonStr</span> <span class="o">=</span> <span class="sa">R</span><span class="s2">&#34;({&#34;</span><span class="n">city</span><span class="s2">&#34;:&#34;</span><span class="n">Qingdao</span><span class="s2">&#34;,&#34;</span><span class="n">temp</span><span class="s2">&#34;:24.5,&#34;</span><span class="n">humidity</span><span class="s2">&#34;:60})&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">DynamicJsonDocument</span> <span class="n">doc</span><span class="p">(</span><span class="mi">1024</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">DeserializationError</span> <span class="n">err</span> <span class="o">=</span> <span class="n">deserializeJson</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">jsonStr</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">(</span><span class="n">err</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Serial</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="s2">&#34;JSON解析失败：&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Serial</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="n">err</span><span class="o">.</span><span class="n">c_str</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="ne">String</span> <span class="n">city</span> <span class="o">=</span> <span class="n">doc</span><span class="p">[</span><span class="s2">&#34;city&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">as</span><span class="o">&lt;</span><span class="ne">String</span><span class="o">&gt;</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="ne">float</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">doc</span><span class="p">[</span><span class="s2">&#34;temp&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">as</span><span class="o">&lt;</span><span class="ne">float</span><span class="o">&gt;</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="ne">int</span> <span class="n">hum</span> <span class="o">=</span> <span class="n">doc</span><span class="p">[</span><span class="s2">&#34;humidity&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">as</span><span class="o">&lt;</span><span class="ne">int</span><span class="o">&gt;</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">Serial</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="n">city</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">Serial</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="n">temp</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">Serial</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="n">hum</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 class="heading-element" id="5-构建输出-json生成"><span>5. 构建输出 JSON（生成）</span>
+  <a href="#5-%e6%9e%84%e5%bb%ba%e8%be%93%e5%87%ba-json%e7%94%9f%e6%88%90" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">DynamicJsonDocument doc(512);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">doc[&#34;name&#34;] = &#34;ESP32‑S3&#34;;
+</span></span><span class="line"><span class="cl">doc[&#34;voltage&#34;] = 3.3;
+</span></span><span class="line"><span class="cl">doc[&#34;online&#34;] = true;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">String out;
+</span></span><span class="line"><span class="cl">serializeJson(doc, out);
+</span></span><span class="line"><span class="cl">Serial.println(out);</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 class="heading-element" id="6-数组读取"><span>6. 数组读取</span>
+  <a href="#6-%e6%95%b0%e7%bb%84%e8%af%bb%e5%8f%96" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>JSON 示例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">{&#34;week&#34;:[&#34;周一&#34;,&#34;周二&#34;,&#34;周三&#34;]}</span></span></code></pre></td></tr></table>
+</div>
+</div><p>代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">JsonArray arr = doc[&#34;week&#34;];
+</span></span><span class="line"><span class="cl">for(int i=0;i&lt;arr.size();i++){
+</span></span><span class="line"><span class="cl">  String item = arr[i].as&lt;String&gt;();
+</span></span><span class="line"><span class="cl">  Serial.println(item);
+</span></span><span class="line"><span class="cl">}</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 class="heading-element" id="7-嵌套对象解析"><span>7. 嵌套对象解析</span>
+  <a href="#7-%e5%b5%8c%e5%a5%97%e5%af%b9%e8%b1%a1%e8%a7%a3%e6%9e%90" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>JSON 示例</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  &#34;weather&#34;:{
+</span></span><span class="line"><span class="cl">    &#34;cond&#34;:&#34;晴&#34;,
+</span></span><span class="line"><span class="cl">    &#34;temp&#34;:26
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">}</span></span></code></pre></td></tr></table>
+</div>
+</div><p>读取：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">JsonObject weather = doc[&#34;weather&#34;];
+</span></span><span class="line"><span class="cl">String cond = weather[&#34;cond&#34;].as&lt;String&gt;();
+</span></span><span class="line"><span class="cl">int temp = weather[&#34;temp&#34;].as&lt;int&gt;();</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 class="heading-element" id="8-配合-httpclient-获取网络-json-完整示例"><span>8. 配合 HTTPClient 获取网络 JSON 完整示例</span>
+  <a href="#8-%e9%85%8d%e5%90%88-httpclient-%e8%8e%b7%e5%8f%96%e7%bd%91%e7%bb%9c-json-%e5%ae%8c%e6%95%b4%e7%a4%ba%e4%be%8b" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><blockquote>
+<p>用于天气接口获取数据，注意：WiFi 必须先连接成功。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="c1">#include &lt;WiFi.h&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#include &lt;HTTPClient.h&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#include &lt;ArduinoJson.h&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">const</span> <span class="n">char</span><span class="o">*</span> <span class="n">ssid</span> <span class="o">=</span> <span class="s2">&#34;你的wifi&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">const</span> <span class="n">char</span><span class="o">*</span> <span class="n">password</span> <span class="o">=</span> <span class="s2">&#34;你的密码&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">void</span> <span class="n">setup</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">Serial</span><span class="o">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">115200</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">WiFi</span><span class="o">.</span><span class="n">begin</span><span class="p">(</span><span class="n">ssid</span><span class="p">,</span> <span class="n">password</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="ne">int</span> <span class="n">t</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">while</span><span class="p">(</span><span class="n">WiFi</span><span class="o">.</span><span class="n">status</span><span class="p">()</span> <span class="o">!=</span> <span class="n">WL_CONNECTED</span> <span class="o">&amp;&amp;</span> <span class="n">t</span><span class="o">&lt;</span><span class="mi">20</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">    <span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">t</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">void</span> <span class="n">getWeatherJson</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">WiFi</span><span class="o">.</span><span class="n">isConnected</span><span class="p">())</span> <span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="ne">HTTPClient</span> <span class="n">http</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">http</span><span class="o">.</span><span class="n">begin</span><span class="p">(</span><span class="s2">&#34;http://xxx/api&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="ne">int</span> <span class="n">httpCode</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="n">GET</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">(</span><span class="n">httpCode</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">    <span class="ne">String</span> <span class="n">payload</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="n">getString</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">DynamicJsonDocument</span> <span class="n">doc</span><span class="p">(</span><span class="mi">2048</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">DeserializationError</span> <span class="n">err</span> <span class="o">=</span> <span class="n">deserializeJson</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">payload</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">err</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">      <span class="o">//</span><span class="err">提取字段</span>
+</span></span><span class="line"><span class="cl">      <span class="ne">String</span> <span class="n">cond</span> <span class="o">=</span> <span class="n">doc</span><span class="p">[</span><span class="s2">&#34;cond&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">as</span><span class="o">&lt;</span><span class="ne">String</span><span class="o">&gt;</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">      <span class="n">Serial</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="n">cond</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="n">http</span><span class="o">.</span><span class="n">end</span><span class="p">();</span> <span class="o">//</span><span class="err">必须释放</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">void</span> <span class="n">loop</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 class="heading-element" id="9-常见编译--运行报错"><span>9. 常见编译 &amp; 运行报错</span>
+  <a href="#9-%e5%b8%b8%e8%a7%81%e7%bc%96%e8%af%91--%e8%bf%90%e8%a1%8c%e6%8a%a5%e9%94%99" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><h3 class="heading-element" id="1-找不到-deserializejson"><span>1. 找不到 <code>deserializeJson</code></span>
+  <a href="#1-%e6%89%be%e4%b8%8d%e5%88%b0-deserializejson" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><ul>
+<li>库版本 V5 和 V7API 不同；库管理器升级 ArduinoJson 到 7.x。</li>
+</ul>
+<h3 class="heading-element" id="2-解析返回outofmemory"><span>2. 解析返回<code>OutOfMemory</code></span>
+  <a href="#2-%e8%a7%a3%e6%9e%90%e8%bf%94%e5%9b%9eoutofmemory" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><blockquote>
+<p>DynamicJsonDocument 缓冲区设置太小，报文超过分配内存，调大构造参数。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">DynamicJsonDocument doc(4096);</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 class="heading-element" id="3-字段读取得到空字符串"><span>3. 字段读取得到空字符串</span>
+  <a href="#3-%e5%ad%97%e6%ae%b5%e8%af%bb%e5%8f%96%e5%be%97%e5%88%b0%e7%a9%ba%e5%ad%97%e7%ac%a6%e4%b8%b2" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><ol>
+<li>key 名称大小写严格匹配，json 区分大小写；</li>
+<li>嵌套层级错误，没有取到父 JsonObject；</li>
+<li>http 返回不是合法 json，打印 payload 看原始返回内容。</li>
+</ol>
+<h3 class="heading-element" id="4-崩溃重启-guru-meditation-error"><span>4. 崩溃重启 Guru Meditation Error</span>
+  <a href="#4-%e5%b4%a9%e6%ba%83%e9%87%8d%e5%90%af-guru-meditation-error" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><ul>
+<li>JsonDocument 对象不要定义在中断函数内部；</li>
+<li>不要返回 JsonDocument 内部的 char * 临时指针；</li>
+<li>缓冲区过小，内存溢出。</li>
+</ul>
+<h2 class="heading-element" id="10-内存踩坑要点"><span>10. 内存踩坑要点</span>
+  <a href="#10-%e5%86%85%e5%ad%98%e8%b8%a9%e5%9d%91%e8%a6%81%e7%82%b9" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><ol>
+<li>ESP32‑S3 优先使用<code>DynamicJsonDocument</code>，栈空间有限，避免超大 StaticJsonDocument；</li>
+<li>HTTP 拿到的 payload 不要无限保存，解析完成后及时释放；</li>
+<li>不要在 loop 高频循环内反复创建超大 JsonDocument，尽量全局或者局部使用，自动释放；</li>
+<li>解析完不要保留<code>c_str()</code>指针，doc 销毁后指针失效；需要保存就复制到 String 变量。</li>
+</ol>
+<h2 class="heading-element" id="附录-a常用-api-速查表"><span>附录 A：常用 API 速查表</span>
+  <a href="#%e9%99%84%e5%bd%95-a%e5%b8%b8%e7%94%a8-api-%e9%80%9f%e6%9f%a5%e8%a1%a8" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><h3 class="heading-element" id="解析相关"><span>解析相关</span>
+  <a href="#%e8%a7%a3%e6%9e%90%e7%9b%b8%e5%85%b3" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>表格</p>
+<table>
+	<thead>
+			<tr>
+					<th>接口</th>
+					<th>说明</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>deserializeJson(doc,input)</code></td>
+					<td>解析 json 文本到文档对象</td>
+			</tr>
+			<tr>
+					<td><code>err.c_str()</code></td>
+					<td>获取解析错误字符串</td>
+			</tr>
+			<tr>
+					<td><code>doc[&quot;key&quot;].as&lt;T&gt;()</code></td>
+					<td>取出并强制转换类型，T 可以 String,int,float,bool</td>
+			</tr>
+			<tr>
+					<td><code>doc[&quot;key&quot;].is&lt;T&gt;()</code></td>
+					<td>判断字段是否为对应类型</td>
+			</tr>
+	</tbody>
+</table>
+<h3 class="heading-element" id="数组"><span>数组</span>
+  <a href="#%e6%95%b0%e7%bb%84" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>表格</p>
+<table>
+	<thead>
+			<tr>
+					<th>接口</th>
+					<th>说明</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>JsonArray arr = doc[&quot;arr&quot;];</code></td>
+					<td>获取数组对象</td>
+			</tr>
+			<tr>
+					<td><code>arr.size()</code></td>
+					<td>数组元素个数</td>
+			</tr>
+			<tr>
+					<td><code>arr[i]</code></td>
+					<td>取下标 i 元素</td>
+			</tr>
+	</tbody>
+</table>
+<h3 class="heading-element" id="对象"><span>对象</span>
+  <a href="#%e5%af%b9%e8%b1%a1" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>表格</p>
+<table>
+	<thead>
+			<tr>
+					<th>接口</th>
+					<th>说明</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>JsonObject obj = doc[&quot;obj&quot;];</code></td>
+					<td>获取嵌套对象</td>
+			</tr>
+			<tr>
+					<td><code>obj.containsKey(&quot;key&quot;)</code></td>
+					<td>判断 key 是否存在</td>
+			</tr>
+	</tbody>
+</table>
+<h3 class="heading-element" id="序列化输出"><span>序列化输出</span>
+  <a href="#%e5%ba%8f%e5%88%97%e5%8c%96%e8%be%93%e5%87%ba" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>表格</p>
+<table>
+	<thead>
+			<tr>
+					<th>接口</th>
+					<th>说明</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>serializeJson(doc, string)</code></td>
+					<td>输出 json 到 String 变量</td>
+			</tr>
+			<tr>
+					<td><code>serializeJsonPretty(doc, string)</code></td>
+					<td>格式化带换行便于调试打印</td>
+			</tr>
+	</tbody>
+</table>
+</div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="更新于 2026-08-24 00:00:00">更新于 2026-08-24&nbsp;</span>
+      </div><div class="post-info-license">
+            <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a></span>
+          </div></div><div class="post-info-line">
+        <div class="post-info-md"><span><a href="/posts/arduinojsonmanual/index.md" title="阅读原始文档" class="link-to-markdown">阅读原始文档</a></span></div>
+        <div class="post-info-share">
+          <span><a href="javascript:void(0);" title="分享到 X" data-sharer="twitter" data-url="http://www.buray.top/posts/arduinojsonmanual/" data-title="ArduinoJson &amp; ESP32‑S3 JSON解析使用手册" data-hashtags="单片机,ESP32,Arduino,JSON"><i class="fa-brands fa-x-twitter fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="http://www.buray.top/posts/arduinojsonmanual/" data-hashtag="单片机"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="http://www.buray.top/posts/arduinojsonmanual/" data-title="ArduinoJson &amp; ESP32‑S3 JSON解析使用手册"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
+  </span>
+        </div>
+      </div></div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href="/tags/%E5%8D%95%E7%89%87%E6%9C%BA/" class="post-tag" title="标签 - 单片机">单片机</a><a href="/tags/esp32/" class="post-tag" title="标签 - ESP32">ESP32</a><a href="/tags/arduino/" class="post-tag" title="标签 - Arduino">Arduino</a><a href="/tags/json/" class="post-tag" title="标签 - JSON">JSON</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div><div class="post-nav"><a href="/posts/tftespimanual-st7789/" class="post-nav-item" rel="prev" title="TFT_eSPI ST7789(2.4寸) ESP32‑S3 使用手册"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>TFT_eSPI ST7789(2.4寸) ESP32‑S3 使用手册</a><a href="/posts/arduinoesp32s3manual/" class="post-nav-item" rel="next" title="Arduino &amp; ESP32‑S3 中文函数参考手册">Arduino &amp; ESP32‑S3 中文函数参考手册<i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article>
+
+  <aside class="toc" id="toc-auto" aria-label="目录"><h2 class="toc-title">目录&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2022 - 2026</span><span class="author" itemprop="copyrightHolder">
+              <a href="http://www.buray.top"target="_blank" rel="external nofollow noopener noreferrer">Buray</a></span></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="回到顶部"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">该网站在启用 JavaScript 的情况下效果最佳。</div>
+  </noscript>
+</div><link rel="preload" href="/lib/katex/katex.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/katex/katex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/fuse/fuse.min.js" defer></script><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script src="/lib/pangu/pangu.min.js" defer></script><script src="/js/flyfish.js" defer></script><script>window.config={"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验。"},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"pangu":{"enable":true,"selector":"article"},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/search.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":30,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"version":"v0.3.20"};</script><script src="/js/theme.min.js" defer></script></body>
+</html>

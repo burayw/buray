@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Hugo - 标签 - Buray&#39;s Blog</title>
+    <title>HUGO - 标签 - Buray&#39;s Blog</title>
     <link>http://www.buray.top/tags/hugo/</link>
     <description>Buray&#39;s Blog</description>
-    <generator>Hugo 0.152.2 &amp; FixIt v0.3.20</generator>
+    <generator>Hugo 0.165.0 &amp; FixIt v0.3.20</generator>
     <language>zh-CN</language>
     <managingEditor>buray@qq.com (Buray)</managingEditor>
     <webMaster>buray@qq.com (Buray)</webMaster>

@@ -1,0 +1,1359 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>Arduino &amp; ESP32‑S3 中文函数参考手册 - Buray&#39;s Blog</title><meta name="author" content="Buray">
+<meta name="description" content="Arduino &amp; ESP32‑S3 中文函数参考手册 面向 Uno / ESP32 / ESP32‑S3，侧重创客日常开发API。
+"><meta name="keywords" content='单片机, ESP32, Arduino, 函数'>
+	<meta itemprop="name" content="Arduino & ESP32‑S3 中文函数参考手册">
+	<meta itemprop="description" content="Arduino &amp; ESP32‑S3 中文函数参考手册 面向 Uno / ESP32 / ESP32‑S3，侧重创客日常开发API。">
+	<meta itemprop="datePublished" content="2026-08-24T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-08-24T00:00:00+00:00">
+	<meta itemprop="wordCount" content="3282">
+	<meta itemprop="keywords" content="单片机,ESP32,Arduino,函数"><meta property="og:url" content="http://www.buray.top/posts/arduinoesp32s3manual/">
+	<meta property="og:site_name" content="Buray&#39;s Blog">
+	<meta property="og:title" content="Arduino & ESP32‑S3 中文函数参考手册">
+	<meta property="og:description" content="Arduino &amp; ESP32‑S3 中文函数参考手册 面向 Uno / ESP32 / ESP32‑S3，侧重创客日常开发API。">
+	<meta property="og:locale" content="zh_CN">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-08-24T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-08-24T00:00:00+00:00">
+		<meta property="article:tag" content="单片机">
+		<meta property="article:tag" content="ESP32">
+		<meta property="article:tag" content="Arduino">
+		<meta property="article:tag" content="函数">
+
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Arduino & ESP32‑S3 中文函数参考手册">
+	<meta name="twitter:description" content="Arduino &amp; ESP32‑S3 中文函数参考手册 面向 Uno / ESP32 / ESP32‑S3，侧重创客日常开发API。">
+<meta name="application-name" content="Buray&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="Buray&#39;s Blog"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" type="text/html" href="http://www.buray.top/posts/arduinoesp32s3manual/" title="Arduino &amp; ESP32‑S3 中文函数参考手册 - Buray&#39;s Blog" /><link rel="prev" type="text/html" href="http://www.buray.top/posts/arduinojsonmanual/" title="ArduinoJson &amp; ESP32‑S3 JSON解析使用手册" /><link rel="alternate" type="text/markdown" href="http://www.buray.top/posts/arduinoesp32s3manual/index.md" title="Arduino & ESP32‑S3 中文函数参考手册 - Buray's Blog"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Arduino \u0026 ESP32‑S3 中文函数参考手册",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http:\/\/www.buray.top\/posts\/arduinoesp32s3manual\/"
+    },"image": ["https:\/\/burayimg.heisenw.com\/blog\/img\/a6c9b1f7-6da1-4978-bedf-29b03325cace.webp"],"genre": "posts","keywords": "单片机, ESP32, Arduino, 函数","wordcount":  3282 ,
+    "url": "http:\/\/www.buray.top\/posts\/arduinoesp32s3manual\/","datePublished": "2026-08-24T00:00:00+00:00","dateModified": "2026-08-24T00:00:00+00:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "Buray"
+      },"description": ""
+  }
+  </script><script src="/js/head/color-scheme.min.js"></script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><div class="wrapper" data-page-style="normal"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="Buray&#39;s Blog"><img class="logo" src='/favicon.ico' alt="Buray&#39;s Blog" height="32" width="32"><span class="header-title-text">Buray&#39;s Blog</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a class="menu-link" href="/"><i class="fa-solid fa-house fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li class="menu-item">
+              <a class="menu-link" href="/archives/"><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 文档</a></li><li class="menu-item">
+              <a class="menu-link" href="/categories/"><i class="fa-solid fa-folder-tree fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li class="menu-item">
+              <a class="menu-link" href="/tags/"><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item">
+              <a class="menu-link" href="/posts/readme/"><i class="fa-solid fa-user fa-fw fa-sm" aria-hidden="true"></i> 关于</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索文章标题或内容……" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="Buray&#39;s Blog"><img class="logo" src='/favicon.ico' alt="Buray&#39;s Blog" height="26" width="26"><span class="header-title-text">Buray&#39;s Blog</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索文章标题或内容……" id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              取消
+            </a>
+          </li><li class="menu-item"><a class="menu-link" href="/"><i class="fa-solid fa-house fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li class="menu-item"><a class="menu-link" href="/archives/"><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 文档</a></li><li class="menu-item"><a class="menu-link" href="/categories/"><i class="fa-solid fa-folder-tree fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li class="menu-item"><a class="menu-link" href="/tags/"><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item"><a class="menu-link" href="/posts/readme/"><i class="fa-solid fa-user fa-fw fa-sm" aria-hidden="true"></i> 关于</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="切换主题"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><nav aria-label="breadcrumb" class="breadcrumb-container">
+    <ol class="breadcrumb"><li class="breadcrumb-item" data-separator="/"><a href="/" title="Buray&#39;s Blog">主页</a></li><li class="breadcrumb-item" data-separator="/"><a href="/posts/" title="Posts">文章</a></li><li class="breadcrumb-item active" data-separator="/" aria-current="page">Arduino &amp; ESP32‑S3 中文函数参考手册</li>
+    </ol>
+  </nav><main class="container"><aside class="aside-collection animate__animated animate__fadeIn animate__faster" aria-label="合集"></aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>Arduino &amp; ESP32‑S3 中文函数参考手册</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><a href="http://www.buray.top" title="作者"target="_blank" rel="external nofollow noopener noreferrer author" class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+    Buray</a></span><span class="post-included-in">&nbsp;收录于 <a href="/categories/%E7%AC%94%E8%AE%B0/" class="post-category" title="分类 - 笔记"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 笔记</a></span></div><div class="post-meta-line"><span title="发布于 2026-08-24 00:00:00"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2026-08-24">2026-08-24</time></span>&nbsp;<span title="3282 字"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 3300 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 7 分钟</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#目录">目录</a></li>
+    <li><a href="#1-程序基础结构">1. 程序基础结构</a>
+      <ul>
+        <li><a href="#setup"><code>setup()</code></a></li>
+        <li><a href="#loop"><code>loop()</code></a></li>
+      </ul>
+    </li>
+    <li><a href="#2-数字-io-输入输出">2. 数字 IO 输入输出</a></li>
+    <li><a href="#3-模拟-io-adc--ledcpwm">3. 模拟 IO ADC / LEDC‑PWM</a>
+      <ul>
+        <li><a href="#ledc-硬件-pwmesp32s3-专用">LEDC 硬件 PWM（ESP32‑S3 专用）</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-时间与延时函数">4. 时间与延时函数</a></li>
+    <li><a href="#5-串口-serial-通信">5. 串口 Serial 通信</a></li>
+    <li><a href="#6-外部中断">6. 外部中断</a></li>
+    <li><a href="#7-数学工具函数">7. 数学工具函数</a></li>
+    <li><a href="#8-位操作">8. 位操作</a></li>
+    <li><a href="#9-随机数工具">9. 随机数工具</a></li>
+    <li><a href="#10-string-字符串对象">10. String 字符串对象</a></li>
+    <li><a href="#11-spi-总线esp32s3">11. SPI 总线（ESP32‑S3）</a></li>
+    <li><a href="#12-i2c-twi-总线">12. I2C (TWI) 总线</a></li>
+    <li><a href="#13-esp32s3-wifi-基础">13. ESP32‑S3 WiFi 基础</a></li>
+    <li><a href="#14-esp32s3-ntp-网络时间">14. ESP32‑S3 NTP 网络时间</a></li>
+    <li><a href="#15-esp32s3-httpclient-http-请求">15. ESP32‑S3 HTTPClient HTTP 请求</a></li>
+    <li><a href="#16-esp32s3-flash-文件系统-spiffs--littlefs">16. ESP32‑S3 Flash 文件系统 SPIFFS / LittleFS</a></li>
+    <li><a href="#17-常用系统常量">17. 常用系统常量</a></li>
+    <li><a href="#18-esp32s3-开发板重点注意事项">18. ESP32‑S3 开发板重点注意事项</a></li>
+    <li><a href="#附录-a通用最小代码模板">附录 A：通用最小代码模板</a></li>
+    <li><a href="#附录-b常见踩坑清单">附录 B：常见踩坑清单</a></li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><h2 class="heading-element" id="arduino--esp32s3-中文函数参考手册"><span>Arduino &amp; ESP32‑S3 中文函数参考手册</span>
+  <a href="#arduino--esp32s3-%e4%b8%ad%e6%96%87%e5%87%bd%e6%95%b0%e5%8f%82%e8%80%83%e6%89%8b%e5%86%8c" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><blockquote>
+<p>面向 Uno / ESP32 / ESP32‑S3，侧重创客日常开发API。</p>
+</blockquote>
+<h2 class="heading-element" id="目录"><span>目录</span>
+  <a href="#%e7%9b%ae%e5%bd%95" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><ul>
+<li><a href="#arduino--esp32s3-%e4%b8%ad%e6%96%87%e5%87%bd%e6%95%b0%e5%8f%82%e8%80%83%e6%89%8b%e5%86%8c">Arduino &amp; ESP32‑S3 中文函数参考手册</a>
+<ul>
+<li><a href="#%e7%9b%ae%e5%bd%95">目录</a></li>
+<li><a href="#1-%e7%a8%8b%e5%ba%8f%e5%9f%ba%e7%a1%80%e7%bb%93%e6%9e%84">1. 程序基础结构</a>
+<ul>
+<li><a href="#setup"><code>setup()</code></a></li>
+<li><a href="#loop"><code>loop()</code></a></li>
+</ul>
+</li>
+<li><a href="#2-%e6%95%b0%e5%ad%97-io-%e8%be%93%e5%85%a5%e8%be%93%e5%87%ba">2. 数字 IO 输入输出</a></li>
+<li><a href="#3-%e6%a8%a1%e6%8b%9f-io-adc--ledcpwm">3. 模拟 IO ADC / LEDC‑PWM</a>
+<ul>
+<li><a href="#ledc-%e7%a1%ac%e4%bb%b6-pwmesp32s3-%e4%b8%93%e7%94%a8">LEDC 硬件 PWM（ESP32‑S3 专用）</a></li>
+</ul>
+</li>
+<li><a href="#4-%e6%97%b6%e9%97%b4%e4%b8%8e%e5%bb%b6%e6%97%b6%e5%87%bd%e6%95%b0">4. 时间与延时函数</a></li>
+<li><a href="#5-%e4%b8%b2%e5%8f%a3-serial-%e9%80%9a%e4%bf%a1">5. 串口 Serial 通信</a></li>
+<li><a href="#6-%e5%a4%96%e9%83%a8%e4%b8%ad%e6%96%ad">6. 外部中断</a></li>
+<li><a href="#7-%e6%95%b0%e5%ad%a6%e5%b7%a5%e5%85%b7%e5%87%bd%e6%95%b0">7. 数学工具函数</a></li>
+<li><a href="#8-%e4%bd%8d%e6%93%8d%e4%bd%9c">8. 位操作</a></li>
+<li><a href="#9-%e9%9a%8f%e6%9c%ba%e6%95%b0%e5%b7%a5%e5%85%b7">9. 随机数工具</a></li>
+<li><a href="#10-string-%e5%ad%97%e7%ac%a6%e4%b8%b2%e5%af%b9%e8%b1%a1">10. String 字符串对象</a></li>
+<li><a href="#11-spi-%e6%80%bb%e7%ba%bfesp32s3">11. SPI 总线（ESP32‑S3）</a></li>
+<li><a href="#12-i2c-twi-%e6%80%bb%e7%ba%bf">12. I2C (TWI) 总线</a></li>
+<li><a href="#13-esp32s3-wifi-%e5%9f%ba%e7%a1%80">13. ESP32‑S3 WiFi 基础</a></li>
+<li><a href="#14-esp32s3-ntp-%e7%bd%91%e7%bb%9c%e6%97%b6%e9%97%b4">14. ESP32‑S3 NTP 网络时间</a></li>
+<li><a href="#15-esp32s3-httpclient-http-%e8%af%b7%e6%b1%82">15. ESP32‑S3 HTTPClient HTTP 请求</a></li>
+<li><a href="#16-esp32s3-flash-%e6%96%87%e4%bb%b6%e7%b3%bb%e7%bb%9f-spiffs--littlefs">16. ESP32‑S3 Flash 文件系统 SPIFFS / LittleFS</a></li>
+<li><a href="#17-%e5%b8%b8%e7%94%a8%e7%b3%bb%e7%bb%9f%e5%b8%b8%e9%87%8f">17. 常用系统常量</a></li>
+<li><a href="#18-esp32s3-%e5%bc%80%e5%8f%91%e6%9d%bf%e9%87%8d%e7%82%b9%e6%b3%a8%e6%84%8f%e4%ba%8b%e9%a1%b9">18. ESP32‑S3 开发板重点注意事项</a></li>
+<li><a href="#%e9%99%84%e5%bd%95-a%e9%80%9a%e7%94%a8%e6%9c%80%e5%b0%8f%e4%bb%a3%e7%a0%81%e6%a8%a1%e6%9d%bf">附录 A：通用最小代码模板</a></li>
+<li><a href="#%e9%99%84%e5%bd%95-b%e5%b8%b8%e8%a7%81%e8%b8%a9%e5%9d%91%e6%b8%85%e5%8d%95">附录 B：常见踩坑清单</a></li>
+</ul>
+</li>
+</ul>
+<h2 class="heading-element" id="1-程序基础结构"><span>1. 程序基础结构</span>
+  <a href="#1-%e7%a8%8b%e5%ba%8f%e5%9f%ba%e7%a1%80%e7%bb%93%e6%9e%84" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><h3 class="heading-element" id="setup"><span><code>setup()</code></span>
+  <a href="#setup" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// 上电/复位后，仅执行一次
+</span></span></span><span class="line"><span class="cl">  <span class="c1">// 放置：引脚初始化、串口开启、外设初始化、WiFi初始化
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 class="heading-element" id="loop"><span><code>loop()</code></span>
+  <a href="#loop" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">void loop() {
+</span></span><span class="line"><span class="cl">  // 无限循环执行，主业务逻辑
+</span></span><span class="line"><span class="cl">}</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>规则：Arduino 程序必须同时存在 <code>setup()</code> 和 <code>loop()</code>。</p>
+</blockquote>
+<h2 class="heading-element" id="2-数字-io-输入输出"><span>2. 数字 IO 输入输出</span>
+  <a href="#2-%e6%95%b0%e5%ad%97-io-%e8%be%93%e5%85%a5%e8%be%93%e5%87%ba" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>表格</p>
+<table>
+	<thead>
+			<tr>
+					<th>函数</th>
+					<th>调用语法</th>
+					<th>说明</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>pinMode()</code></td>
+					<td><code>pinMode(pin, mode)</code></td>
+					<td>设置引脚工作模式</td>
+			</tr>
+			<tr>
+					<td><code>digitalWrite()</code></td>
+					<td><code>digitalWrite(pin, value)</code></td>
+					<td>输出高低电平</td>
+			</tr>
+			<tr>
+					<td><code>digitalRead()</code></td>
+					<td><code>int val = digitalRead(pin)</code></td>
+					<td>读取引脚电平</td>
+			</tr>
+	</tbody>
+</table>
+<p><strong>mode 可选值</strong></p>
+<ul>
+<li><code>OUTPUT</code>：输出模式</li>
+<li><code>INPUT</code>：普通输入</li>
+<li><code>INPUT_PULLUP</code>：开启内部上拉输入</li>
+</ul>
+<p><strong>value 电平</strong></p>
+<ul>
+<li><code>HIGH</code>：高电平</li>
+<li><code>LOW</code>：低电平</li>
+</ul>
+<p>示例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">#define LED_PIN 2
+</span></span><span class="line"><span class="cl">#define KEY_PIN 10
+</span></span><span class="line"><span class="cl">void setup() {
+</span></span><span class="line"><span class="cl">  pinMode(LED_PIN, OUTPUT);
+</span></span><span class="line"><span class="cl">  pinMode(KEY_PIN, INPUT_PULLUP);
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">void loop() {
+</span></span><span class="line"><span class="cl">  int keyState = digitalRead(KEY_PIN);
+</span></span><span class="line"><span class="cl">  digitalWrite(LED_PIN, keyState);
+</span></span><span class="line"><span class="cl">}</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p><code>INPUT_PULLUP</code>：按键一端接引脚，另一端接 GND，不需要外部上拉电阻。</p>
+</blockquote>
+<h2 class="heading-element" id="3-模拟-io-adc--ledcpwm"><span>3. 模拟 IO ADC / LEDC‑PWM</span>
+  <a href="#3-%e6%a8%a1%e6%8b%9f-io-adc--ledcpwm" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>表格</p>
+<table>
+	<thead>
+			<tr>
+					<th>函数</th>
+					<th>调用语法</th>
+					<th>说明</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>analogRead()</code></td>
+					<td><code>int val = analogRead(pin)</code></td>
+					<td>ADC 读取引脚电压</td>
+			</tr>
+	</tbody>
+</table>
+<blockquote>
+<p>⚠️电压返回范围</p>
+<ul>
+<li>Arduino Uno：<code>0‑1023</code>（10bit）</li>
+<li>ESP32‑S3：<code>0‑4095</code>（12bit）</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>⚠️ESP32‑S3 <strong>不支持标准 <code>analogWrite()</code></strong>，PWM 使用 <code>ledc</code> 系列 API</p>
+</blockquote>
+<h3 class="heading-element" id="ledc-硬件-pwmesp32s3-专用"><span>LEDC 硬件 PWM（ESP32‑S3 专用）</span>
+  <a href="#ledc-%e7%a1%ac%e4%bb%b6-pwmesp32s3-%e4%b8%93%e7%94%a8" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>表格</p>
+<table>
+	<thead>
+			<tr>
+					<th>函数</th>
+					<th>语法</th>
+					<th>说明</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>ledcSetup()</code></td>
+					<td><code>ledcSetup(channel, freq, resolution)</code></td>
+					<td>配置 PWM 通道</td>
+			</tr>
+			<tr>
+					<td><code>ledcAttachPin()</code></td>
+					<td><code>ledcAttachPin(pin, channel)</code></td>
+					<td>将引脚绑定到 PWM 通道</td>
+			</tr>
+			<tr>
+					<td><code>ledcDetachPin()</code></td>
+					<td><code>ledcDetachPin(pin)</code></td>
+					<td>解除引脚 PWM 绑定</td>
+			</tr>
+			<tr>
+					<td><code>ledcWrite()</code></td>
+					<td><code>ledcWrite(channel, duty)</code></td>
+					<td>设置 PWM 占空比输出</td>
+			</tr>
+			<tr>
+					<td><code>ledcRead()</code></td>
+					<td><code>uint32_t ledcRead(channel)</code></td>
+					<td>获取通道当前占空比</td>
+			</tr>
+	</tbody>
+</table>
+<ul>
+<li>channel：0‑7，共 8 个 PWM 通道</li>
+<li>freq：PWM 频率，单位 Hz</li>
+<li>resolution：分辨率 1‑14 位；8 位常用，范围 <code>0‑255</code></li>
+</ul>
+<p>示例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">#define PWM_PIN 7
+</span></span><span class="line"><span class="cl">#define CH 0
+</span></span><span class="line"><span class="cl">void setup(){
+</span></span><span class="line"><span class="cl">  ledcSetup(CH, 5000, 8);
+</span></span><span class="line"><span class="cl">  ledcAttachPin(PWM_PIN, CH);
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">void loop(){
+</span></span><span class="line"><span class="cl">  ledcWrite(CH, 128); //50%占空比
+</span></span><span class="line"><span class="cl">}</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 class="heading-element" id="4-时间与延时函数"><span>4. 时间与延时函数</span>
+  <a href="#4-%e6%97%b6%e9%97%b4%e4%b8%8e%e5%bb%b6%e6%97%b6%e5%87%bd%e6%95%b0" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>表格</p>
+<table>
+	<thead>
+			<tr>
+					<th>函数</th>
+					<th>返回类型</th>
+					<th>说明</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>delay(ms)</code></td>
+					<td><code>void</code></td>
+					<td>阻塞延时，单位毫秒</td>
+			</tr>
+			<tr>
+					<td><code>delayMicroseconds(us)</code></td>
+					<td><code>void</code></td>
+					<td>阻塞延时，单位微秒</td>
+			</tr>
+			<tr>
+					<td><code>millis()</code></td>
+					<td><code>unsigned long</code></td>
+					<td>返回上电运行毫秒数，约 49.7 天溢出归零</td>
+			</tr>
+			<tr>
+					<td><code>micros()</code></td>
+					<td><code>unsigned long</code></td>
+					<td>返回上电运行微秒数，约 71 分钟溢出归零</td>
+			</tr>
+	</tbody>
+</table>
+<blockquote>
+<p>重点：<code>millis()</code> 是无符号长整型，计时变量必须用 <code>unsigned long</code>，否则会出现逻辑错误。</p>
+</blockquote>
+<p>✅非阻塞计时模板（不阻塞程序）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">unsigned long lastTime = 0;
+</span></span><span class="line"><span class="cl">void loop(){
+</span></span><span class="line"><span class="cl">  if(millis() - lastTime &gt;= 1000){
+</span></span><span class="line"><span class="cl">    lastTime = millis();
+</span></span><span class="line"><span class="cl">    // 每1000ms执行一次
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">}</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 class="heading-element" id="5-串口-serial-通信"><span>5. 串口 Serial 通信</span>
+  <a href="#5-%e4%b8%b2%e5%8f%a3-serial-%e9%80%9a%e4%bf%a1" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>ESP32‑S3 有多路硬件串口：</p>
+<ul>
+<li><code>Serial</code>：USB 虚拟串口（程序打印调试）</li>
+<li><code>Serial1</code>、<code>Serial2</code>：硬件 UART，可自定义引脚</li>
+</ul>
+<p>表格</p>
+<table>
+	<thead>
+			<tr>
+					<th>函数</th>
+					<th>语法</th>
+					<th>说明</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>Serial.begin(baud)</code></td>
+					<td><code>Serial.begin(115200)</code></td>
+					<td>初始化串口，波特率</td>
+			</tr>
+			<tr>
+					<td><code>Serial.print(val)</code></td>
+					<td><code>Serial.print(val)</code></td>
+					<td>输出，不换行</td>
+			</tr>
+			<tr>
+					<td><code>Serial.println(val)</code></td>
+					<td><code>Serial.println(val)</code></td>
+					<td>输出，自动换行</td>
+			</tr>
+			<tr>
+					<td><code>Serial.available()</code></td>
+					<td><code>int n = Serial.available()</code></td>
+					<td>获取接收缓冲区字节数</td>
+			</tr>
+			<tr>
+					<td><code>Serial.read()</code></td>
+					<td><code>char c = Serial.read()</code></td>
+					<td>读取单字节；无数据返回 <code>-1</code></td>
+			</tr>
+			<tr>
+					<td><code>Serial.peek()</code></td>
+					<td><code>char c = Serial.peek()</code></td>
+					<td>查看缓冲区第一个字节，不取出</td>
+			</tr>
+			<tr>
+					<td><code>Serial.write(buf,len)</code></td>
+					<td><code>Serial.write(data, length)</code></td>
+					<td>输出原始二进制字节</td>
+			</tr>
+			<tr>
+					<td><code>Serial.end()</code></td>
+					<td><code>Serial.end()</code></td>
+					<td>关闭串口</td>
+			</tr>
+	</tbody>
+</table>
+<p>简单接收示例</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">void setup(){
+</span></span><span class="line"><span class="cl">  Serial.begin(115200);
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">void loop(){
+</span></span><span class="line"><span class="cl">  if(Serial.available()&gt;0){
+</span></span><span class="line"><span class="cl">    char ch = Serial.read();
+</span></span><span class="line"><span class="cl">    Serial.print(&#34;recv:&#34;);
+</span></span><span class="line"><span class="cl">    Serial.println(ch);
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">}</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 class="heading-element" id="6-外部中断"><span>6. 外部中断</span>
+  <a href="#6-%e5%a4%96%e9%83%a8%e4%b8%ad%e6%96%ad" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>表格</p>
+<table>
+	<thead>
+			<tr>
+					<th>函数</th>
+					<th>语法</th>
+					<th>说明</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>attachInterrupt()</code></td>
+					<td><code>attachInterrupt(pin, ISR_func, mode)</code></td>
+					<td>绑定外部中断</td>
+			</tr>
+			<tr>
+					<td><code>detachInterrupt()</code></td>
+					<td><code>detachInterrupt(pin)</code></td>
+					<td>解除中断绑定</td>
+			</tr>
+			<tr>
+					<td><code>noInterrupts()</code></td>
+					<td><code>noInterrupts()</code></td>
+					<td>全局关闭中断，保护临界代码</td>
+			</tr>
+			<tr>
+					<td><code>interrupts()</code></td>
+					<td><code>interrupts()</code></td>
+					<td>全局打开中断</td>
+			</tr>
+	</tbody>
+</table>
+<p>触发模式：</p>
+<ul>
+<li><code>RISING</code>：上升沿</li>
+<li><code>FALLING</code>：下降沿</li>
+<li><code>CHANGE</code>：电平发生变化</li>
+</ul>
+<blockquote>
+<p>中断回调函数注意事项</p>
+<ol>
+<li>中断函数不能使用 <code>delay()</code>、<code>Serial.print()</code>（不推荐）；</li>
+<li>代码尽量简短快速；</li>
+<li>被中断修改的全局变量必须加 <code>volatile</code>。</li>
+</ol>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">volatile uint32_t cnt = 0;
+</span></span><span class="line"><span class="cl">void isrFunc(){
+</span></span><span class="line"><span class="cl">  cnt++;
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">void setup(){
+</span></span><span class="line"><span class="cl">  Serial.begin(115200);
+</span></span><span class="line"><span class="cl">  attachInterrupt(10, isrFunc, FALLING);
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">void loop(){
+</span></span><span class="line"><span class="cl">  Serial.println(cnt);
+</span></span><span class="line"><span class="cl">  delay(500);
+</span></span><span class="line"><span class="cl">}</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 class="heading-element" id="7-数学工具函数"><span>7. 数学工具函数</span>
+  <a href="#7-%e6%95%b0%e5%ad%a6%e5%b7%a5%e5%85%b7%e5%87%bd%e6%95%b0" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>表格</p>
+<table>
+	<thead>
+			<tr>
+					<th>函数</th>
+					<th>功能</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>abs(x)</code></td>
+					<td>取绝对值</td>
+			</tr>
+			<tr>
+					<td><code>constrain(x, min, max)</code></td>
+					<td>数值限幅</td>
+			</tr>
+			<tr>
+					<td><code>map(val, inMin, inMax, outMin, outMax)</code></td>
+					<td>线性映射转换</td>
+			</tr>
+			<tr>
+					<td><code>max(a,b)</code></td>
+					<td>返回较大值</td>
+			</tr>
+			<tr>
+					<td><code>min(a,b)</code></td>
+					<td>返回较小值</td>
+			</tr>
+			<tr>
+					<td><code>sqrt(x)</code></td>
+					<td>平方根</td>
+			</tr>
+			<tr>
+					<td><code>pow(base,exp)</code></td>
+					<td>幂运算</td>
+			</tr>
+			<tr>
+					<td><code>sin(rad)</code> / <code>cos(rad)</code> / <code>tan(rad)</code></td>
+					<td>三角函数，<strong>参数为弧度，不是角度</strong></td>
+			</tr>
+			<tr>
+					<td><code>round(x)</code></td>
+					<td>四舍五入</td>
+			</tr>
+			<tr>
+					<td><code>floor(x)</code></td>
+					<td>向下取整</td>
+			</tr>
+			<tr>
+					<td><code>ceil(x)</code></td>
+					<td>向上取整</td>
+			</tr>
+	</tbody>
+</table>
+<p>示例</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="ne">int</span> <span class="n">v1</span> <span class="o">=</span> <span class="n">constrain</span><span class="p">(</span><span class="mi">130</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span> <span class="o">//</span><span class="err">输出</span><span class="mi">100</span>
+</span></span><span class="line"><span class="cl"><span class="ne">int</span> <span class="n">v2</span> <span class="o">=</span> <span class="n">map</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1023</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">);</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 class="heading-element" id="8-位操作"><span>8. 位操作</span>
+  <a href="#8-%e4%bd%8d%e6%93%8d%e4%bd%9c" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>表格</p>
+<table>
+	<thead>
+			<tr>
+					<th>函数</th>
+					<th>说明</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>bit(n)</code></td>
+					<td>返回第 n 位的掩码 <code>bit(0)=1</code></td>
+			</tr>
+			<tr>
+					<td><code>bitSet(x,n)</code></td>
+					<td>将 x 的第 n 位置 1</td>
+			</tr>
+			<tr>
+					<td><code>bitClear(x,n)</code></td>
+					<td>将 x 的第 n 位清 0</td>
+			</tr>
+			<tr>
+					<td><code>bitRead(x,n)</code></td>
+					<td>读取 x 第 n 位，返回 0 或 1</td>
+			</tr>
+			<tr>
+					<td><code>bitWrite(x,n,val)</code></td>
+					<td>设置 x 第 n 位为 0/1</td>
+			</tr>
+	</tbody>
+</table>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">int x = 0b00000101;
+</span></span><span class="line"><span class="cl">int b = bitRead(x, 2);</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 class="heading-element" id="9-随机数工具"><span>9. 随机数工具</span>
+  <a href="#9-%e9%9a%8f%e6%9c%ba%e6%95%b0%e5%b7%a5%e5%85%b7" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>表格</p>
+<table>
+	<thead>
+			<tr>
+					<th>函数</th>
+					<th>说明</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>randomSeed(seed)</code></td>
+					<td>设置随机种子</td>
+			</tr>
+			<tr>
+					<td><code>random(max)</code></td>
+					<td>返回 <code>0 ~ max‑1</code></td>
+			</tr>
+			<tr>
+					<td><code>random(min,max)</code></td>
+					<td>返回 <code>min ~ max‑1</code></td>
+			</tr>
+	</tbody>
+</table>
+<blockquote>
+<p>ESP32‑S3 推荐使用硬件真随机源：<code>randomSeed(esp_random());</code></p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">void setup(){
+</span></span><span class="line"><span class="cl">  Serial.begin(115200);
+</span></span><span class="line"><span class="cl">  randomSeed(esp_random());
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">void loop(){
+</span></span><span class="line"><span class="cl">  long r = random(1,100);
+</span></span><span class="line"><span class="cl">  Serial.println(r);
+</span></span><span class="line"><span class="cl">  delay(300);
+</span></span><span class="line"><span class="cl">}</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 class="heading-element" id="10-string-字符串对象"><span>10. String 字符串对象</span>
+  <a href="#10-string-%e5%ad%97%e7%ac%a6%e4%b8%b2%e5%af%b9%e8%b1%a1" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><blockquote>
+<p>注意：高频拼接会产生内存碎片，ESP32 可用，尽量避免在 loop 高频大量拼接。</p>
+</blockquote>
+<p>表格</p>
+<table>
+	<thead>
+			<tr>
+					<th>方法</th>
+					<th>功能</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>.length()</code></td>
+					<td>获取字符串长度</td>
+			</tr>
+			<tr>
+					<td><code>.indexOf(str)</code></td>
+					<td>查找子串，找不到返回 <code>-1</code></td>
+			</tr>
+			<tr>
+					<td><code>.substring(start,end)</code></td>
+					<td>截取子串</td>
+			</tr>
+			<tr>
+					<td><code>.toInt()</code></td>
+					<td>字符串转 int 整数</td>
+			</tr>
+			<tr>
+					<td><code>.toFloat()</code></td>
+					<td>字符串转浮点数</td>
+			</tr>
+			<tr>
+					<td><code>.c_str()</code></td>
+					<td>返回 C 语言 const char * 指针，用于库函数传参</td>
+			</tr>
+			<tr>
+					<td><code>.concat(str)</code></td>
+					<td>字符串拼接</td>
+			</tr>
+			<tr>
+					<td><code>.operator+=</code></td>
+					<td><code>s+=&quot;abc&quot;</code> 拼接简写</td>
+			</tr>
+			<tr>
+					<td><code>.equals(str)</code></td>
+					<td>判断字符串相等</td>
+			</tr>
+	</tbody>
+</table>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">String s = &#34;ESP32‑S3&#34;;
+</span></span><span class="line"><span class="cl">Serial.println(s.length());
+</span></span><span class="line"><span class="cl">Serial.println(s.substring(0,5));</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 class="heading-element" id="11-spi-总线esp32s3"><span>11. SPI 总线（ESP32‑S3）</span>
+  <a href="#11-spi-%e6%80%bb%e7%ba%bfesp32s3" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><blockquote>
+<p>ST7789 屏幕使用 SPI；ESP32‑S3 支持软件重映射 SPI 引脚。</p>
+</blockquote>
+<p>头文件：<code>#include &lt;SPI.h&gt;</code></p>
+<p>表格</p>
+<table>
+	<thead>
+			<tr>
+					<th>函数</th>
+					<th>说明</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>SPI.begin()</code></td>
+					<td>初始化硬件 SPI</td>
+			</tr>
+			<tr>
+					<td><code>SPI.setFrequency(freq)</code></td>
+					<td>设置 SPI 时钟频率，单位 Hz</td>
+			</tr>
+			<tr>
+					<td><code>SPI.transfer(val)</code></td>
+					<td>发送 1 字节，同时接收 1 字节</td>
+			</tr>
+			<tr>
+					<td><code>SPI.transfer(buf,size)</code></td>
+					<td>批量收发缓冲区</td>
+			</tr>
+			<tr>
+					<td><code>SPI.end()</code></td>
+					<td>关闭 SPI</td>
+			</tr>
+	</tbody>
+</table>
+<blockquote>
+<p>TFT_eSPI 库内部已经封装 SPI，一般不需要手动调用 SPI 底层。</p>
+</blockquote>
+<h2 class="heading-element" id="12-i2c-twi-总线"><span>12. I2C (TWI) 总线</span>
+  <a href="#12-i2c-twi-%e6%80%bb%e7%ba%bf" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>头文件：<code>#include &lt;Wire.h&gt;</code></p>
+<p>表格</p>
+<table>
+	<thead>
+			<tr>
+					<th>函数</th>
+					<th>说明</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>Wire.begin()</code></td>
+					<td>I2C 初始化</td>
+			</tr>
+			<tr>
+					<td><code>Wire.beginTransmission(addr)</code></td>
+					<td>开始向指定从机地址发送</td>
+			</tr>
+			<tr>
+					<td><code>Wire.write(data)</code></td>
+					<td>写入字节</td>
+			</tr>
+			<tr>
+					<td><code>Wire.endTransmission()</code></td>
+					<td>结束传输</td>
+			</tr>
+			<tr>
+					<td><code>Wire.requestFrom(addr, len)</code></td>
+					<td>请求读取从机 len 个字节</td>
+			</tr>
+			<tr>
+					<td><code>Wire.available()</code></td>
+					<td>获取接收缓冲区字节数</td>
+			</tr>
+			<tr>
+					<td><code>Wire.read()</code></td>
+					<td>读取一个字节</td>
+			</tr>
+	</tbody>
+</table>
+<h2 class="heading-element" id="13-esp32s3-wifi-基础"><span>13. ESP32‑S3 WiFi 基础</span>
+  <a href="#13-esp32s3-wifi-%e5%9f%ba%e7%a1%80" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>头文件：<code>#include &lt;WiFi.h&gt;</code></p>
+<p>表格</p>
+<table>
+	<thead>
+			<tr>
+					<th>函数</th>
+					<th>说明</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>WiFi.begin(ssid,password)</code></td>
+					<td>连接 WiFi</td>
+			</tr>
+			<tr>
+					<td><code>WiFi.status()</code></td>
+					<td>获取连接状态；返回 <code>WL_CONNECTED</code> 代表连接成功</td>
+			</tr>
+			<tr>
+					<td><code>WiFi.isConnected()</code></td>
+					<td>返回 bool，是否已联网</td>
+			</tr>
+			<tr>
+					<td><code>WiFi.disconnect()</code></td>
+					<td>断开 WiFi</td>
+			</tr>
+			<tr>
+					<td><code>WiFi.reconnect()</code></td>
+					<td>尝试重连</td>
+			</tr>
+			<tr>
+					<td><code>WiFi.localIP()</code></td>
+					<td>获取本机 IP</td>
+			</tr>
+			<tr>
+					<td><code>WiFi.SSID()</code></td>
+					<td>获取当前连接 wifi 名称</td>
+			</tr>
+	</tbody>
+</table>
+<blockquote>
+<p>⚠️禁止死循环 <code>while(!WiFi.isConnected());</code>，必须增加超时防止程序卡死白屏。</p>
+</blockquote>
+<p>示例：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="k">const</span> <span class="n">char</span><span class="o">*</span> <span class="n">ssid</span> <span class="o">=</span> <span class="s2">&#34;xxx&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">const</span> <span class="n">char</span><span class="o">*</span> <span class="n">pwd</span> <span class="o">=</span> <span class="s2">&#34;xxx&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">void</span> <span class="n">setup</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">  <span class="n">Serial</span><span class="o">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">115200</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">WiFi</span><span class="o">.</span><span class="n">begin</span><span class="p">(</span><span class="n">ssid</span><span class="p">,</span><span class="n">pwd</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="ne">int</span> <span class="n">timeout</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">while</span><span class="p">(</span><span class="n">WiFi</span><span class="o">.</span><span class="n">status</span><span class="p">()</span> <span class="o">!=</span> <span class="n">WL_CONNECTED</span> <span class="o">&amp;&amp;</span> <span class="n">timeout</span> <span class="o">&lt;</span><span class="mi">20</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">    <span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">timeout</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 class="heading-element" id="14-esp32s3-ntp-网络时间"><span>14. ESP32‑S3 NTP 网络时间</span>
+  <a href="#14-esp32s3-ntp-%e7%bd%91%e7%bb%9c%e6%97%b6%e9%97%b4" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>头文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;WiFiUdp.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;NTPClient.h&gt;</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>表格</p>
+<table>
+	<thead>
+			<tr>
+					<th>方法</th>
+					<th>说明</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>NTPClient.begin()</code></td>
+					<td>启动 NTP 客户端</td>
+			</tr>
+			<tr>
+					<td><code>NTPClient.update()</code></td>
+					<td>更新时间</td>
+			</tr>
+			<tr>
+					<td><code>NTPClient.getFormattedTime()</code></td>
+					<td>获取时分秒字符串</td>
+			</tr>
+			<tr>
+					<td><code>NTPClient.getDay()</code></td>
+					<td>获取星期 0‑6，0 = 周日</td>
+			</tr>
+			<tr>
+					<td><code>NTPClient.getHours()</code> / <code>getMinutes()</code> / <code>getSeconds()</code></td>
+					<td>获取时分秒</td>
+			</tr>
+			<tr>
+					<td><code>NTPClient.getYear()</code> / <code>getMonth()</code> / <code>getDayOfMonth()</code></td>
+					<td>获取公历年月日</td>
+			</tr>
+	</tbody>
+</table>
+<blockquote>
+<p>时区偏移：东八区 <code>8 * 3600</code></p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">WiFiUDP ntpUDP;
+</span></span><span class="line"><span class="cl">NTPClient timeClient(ntpUDP, &#34;ntp.aliyun.com&#34;, 8*3600, 60000);</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 class="heading-element" id="15-esp32s3-httpclient-http-请求"><span>15. ESP32‑S3 HTTPClient HTTP 请求</span>
+  <a href="#15-esp32s3-httpclient-http-%e8%af%b7%e6%b1%82" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>头文件：<code>#include &lt;HTTPClient.h&gt;</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="ne">HTTPClient</span> <span class="n">http</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">http</span><span class="o">.</span><span class="n">begin</span><span class="p">(</span><span class="s2">&#34;https://xxx&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="ne">int</span> <span class="n">code</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="n">GET</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span><span class="p">(</span><span class="n">code</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">  <span class="ne">String</span> <span class="n">payload</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="n">getString</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="n">http</span><span class="o">.</span><span class="n">end</span><span class="p">();</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>表格</p>
+<table>
+	<thead>
+			<tr>
+					<th>方法</th>
+					<th>说明</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>.begin(url)</code></td>
+					<td>设置请求地址</td>
+			</tr>
+			<tr>
+					<td><code>.GET()</code></td>
+					<td>GET 请求，返回 http 状态码</td>
+			</tr>
+			<tr>
+					<td><code>.getString()</code></td>
+					<td>获取响应文本</td>
+			</tr>
+			<tr>
+					<td><code>.getPayloadLength()</code></td>
+					<td>返回数据长度</td>
+			</tr>
+			<tr>
+					<td><code>.end()</code></td>
+					<td>释放资源，必须调用</td>
+			</tr>
+	</tbody>
+</table>
+<blockquote>
+<p>注意：HTTPS 需要证书，简单项目优先使用 HTTP 接口。</p>
+</blockquote>
+<h2 class="heading-element" id="16-esp32s3-flash-文件系统-spiffs--littlefs"><span>16. ESP32‑S3 Flash 文件系统 SPIFFS / LittleFS</span>
+  <a href="#16-esp32s3-flash-%e6%96%87%e4%bb%b6%e7%b3%bb%e7%bb%9f-spiffs--littlefs" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><blockquote>
+<p>ESP32‑S3 推荐使用 <strong>LittleFS</strong>，SPIFFS 已逐步废弃。</p>
+</blockquote>
+<p>头文件：<code>#include &lt;LittleFS.h&gt;</code></p>
+<p>表格</p>
+<table>
+	<thead>
+			<tr>
+					<th>函数</th>
+					<th>说明</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>LittleFS.begin()</code></td>
+					<td>挂载文件系统</td>
+			</tr>
+			<tr>
+					<td><code>LittleFS.open(path,&quot;r&quot;)</code></td>
+					<td>打开文件读</td>
+			</tr>
+			<tr>
+					<td><code>LittleFS.open(path,&quot;w&quot;)</code></td>
+					<td>打开文件写</td>
+			</tr>
+			<tr>
+					<td><code>.read()</code></td>
+					<td>读取字节</td>
+			</tr>
+			<tr>
+					<td><code>.write()</code></td>
+					<td>写入字节</td>
+			</tr>
+			<tr>
+					<td><code>.close()</code></td>
+					<td>关闭文件</td>
+			</tr>
+			<tr>
+					<td><code>LittleFS.exists(path)</code></td>
+					<td>判断文件是否存在</td>
+			</tr>
+			<tr>
+					<td><code>LittleFS.remove(path)</code></td>
+					<td>删除文件</td>
+			</tr>
+	</tbody>
+</table>
+<h2 class="heading-element" id="17-常用系统常量"><span>17. 常用系统常量</span>
+  <a href="#17-%e5%b8%b8%e7%94%a8%e7%b3%bb%e7%bb%9f%e5%b8%b8%e9%87%8f" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">//电平
+</span></span><span class="line"><span class="cl">HIGH
+</span></span><span class="line"><span class="cl">LOW
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">//引脚模式
+</span></span><span class="line"><span class="cl">OUTPUT
+</span></span><span class="line"><span class="cl">INPUT
+</span></span><span class="line"><span class="cl">INPUT_PULLUP
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">//中断触发
+</span></span><span class="line"><span class="cl">RISING
+</span></span><span class="line"><span class="cl">FALLING
+</span></span><span class="line"><span class="cl">CHANGE
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">//WiFi状态
+</span></span><span class="line"><span class="cl">WL_CONNECTED
+</span></span><span class="line"><span class="cl">WL_DISCONNECTED
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">//内置LED
+</span></span><span class="line"><span class="cl">LED_BUILTIN</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 class="heading-element" id="18-esp32s3-开发板重点注意事项"><span>18. ESP32‑S3 开发板重点注意事项</span>
+  <a href="#18-esp32s3-%e5%bc%80%e5%8f%91%e6%9d%bf%e9%87%8d%e7%82%b9%e6%b3%a8%e6%84%8f%e4%ba%8b%e9%a1%b9" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><ol>
+<li><strong>Strapping 启动引脚：GPIO0、GPIO45、GPIO46</strong>，上电有特殊电平，尽量不要作为屏幕、LED 输出；</li>
+<li>ADC：<code>analogRead()</code>返回 0‑4095，不是 Uno 的 0‑1023；ADC1 部分引脚与 SPI 冲突；</li>
+<li>无<code>analogWrite()</code>，PWM 全部使用<code>ledc</code>；</li>
+<li>SPI、I2C 引脚可以软件映射，不必使用硬件默认引脚；</li>
+<li>老 ESP32 的 GPIO32‑34，ESP32‑S3 多数开发板没有引出，复制旧代码注意核对；</li>
+<li><code>millis()</code>变量必须使用<code>unsigned long</code>，不要用 int/long；</li>
+<li>WiFi 连接一定要做超时，禁止死循环等待，否则屏幕项目会白屏卡死；</li>
+<li>LittleFS 替代 SPIFFS，上传文件需要使用插件上传文件镜像。</li>
+</ol>
+<h2 class="heading-element" id="附录-a通用最小代码模板"><span>附录 A：通用最小代码模板</span>
+  <a href="#%e9%99%84%e5%bd%95-a%e9%80%9a%e7%94%a8%e6%9c%80%e5%b0%8f%e4%bb%a3%e7%a0%81%e6%a8%a1%e6%9d%bf" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">#define LED_PIN 2
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">void setup() {
+</span></span><span class="line"><span class="cl">  Serial.begin(115200);
+</span></span><span class="line"><span class="cl">  pinMode(LED_PIN, OUTPUT);
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">void loop() {
+</span></span><span class="line"><span class="cl">  digitalWrite(LED_PIN, HIGH);
+</span></span><span class="line"><span class="cl">  delay(500);
+</span></span><span class="line"><span class="cl">  digitalWrite(LED_PIN, LOW);
+</span></span><span class="line"><span class="cl">  delay(500);
+</span></span><span class="line"><span class="cl">}</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 class="heading-element" id="附录-b常见踩坑清单"><span>附录 B：常见踩坑清单</span>
+  <a href="#%e9%99%84%e5%bd%95-b%e5%b8%b8%e8%a7%81%e8%b8%a9%e5%9d%91%e6%b8%85%e5%8d%95" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><ol>
+<li>编译报错：<code>no matching function</code> → 库版本升级，旧函数被废弃，查阅库 examples；</li>
+<li>屏幕白屏：TFT_eSPI 配置写在<code>User_Setup.h</code>，不要只在代码定义引脚；检查 BL 背光引脚；</li>
+<li>millis 计时错乱：变量没有写<code>unsigned long</code>；</li>
+<li>WiFi 卡死白屏：<code>while(!WiFi.begin())</code>死循环，缺少超时；</li>
+<li>中断变量没有加<code>volatile</code>，读取数值异常；</li>
+<li>ESP32‑S3 直接复制 ESP32 老项目引脚，32‑34 不存在导致外设无响应。</li>
+</ol>
+</div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="更新于 2026-08-24 00:00:00">更新于 2026-08-24&nbsp;</span>
+      </div><div class="post-info-license">
+            <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a></span>
+          </div></div><div class="post-info-line">
+        <div class="post-info-md"><span><a href="/posts/arduinoesp32s3manual/index.md" title="阅读原始文档" class="link-to-markdown">阅读原始文档</a></span></div>
+        <div class="post-info-share">
+          <span><a href="javascript:void(0);" title="分享到 X" data-sharer="twitter" data-url="http://www.buray.top/posts/arduinoesp32s3manual/" data-title="Arduino &amp; ESP32‑S3 中文函数参考手册" data-hashtags="单片机,ESP32,Arduino,函数"><i class="fa-brands fa-x-twitter fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="http://www.buray.top/posts/arduinoesp32s3manual/" data-hashtag="单片机"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="http://www.buray.top/posts/arduinoesp32s3manual/" data-title="Arduino &amp; ESP32‑S3 中文函数参考手册"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
+  </span>
+        </div>
+      </div></div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href="/tags/%E5%8D%95%E7%89%87%E6%9C%BA/" class="post-tag" title="标签 - 单片机">单片机</a><a href="/tags/esp32/" class="post-tag" title="标签 - ESP32">ESP32</a><a href="/tags/arduino/" class="post-tag" title="标签 - Arduino">Arduino</a><a href="/tags/%E5%87%BD%E6%95%B0/" class="post-tag" title="标签 - 函数">函数</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div><div class="post-nav"><a href="/posts/arduinojsonmanual/" class="post-nav-item" rel="prev" title="ArduinoJson &amp; ESP32‑S3 JSON解析使用手册"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>ArduinoJson &amp; ESP32‑S3 JSON解析使用手册</a></div>
+</div>
+</article>
+
+  <aside class="toc" id="toc-auto" aria-label="目录"><h2 class="toc-title">目录&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2022 - 2026</span><span class="author" itemprop="copyrightHolder">
+              <a href="http://www.buray.top"target="_blank" rel="external nofollow noopener noreferrer">Buray</a></span></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="回到顶部"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">该网站在启用 JavaScript 的情况下效果最佳。</div>
+  </noscript>
+</div><link rel="preload" href="/lib/katex/katex.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/katex/katex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/fuse/fuse.min.js" defer></script><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script src="/lib/pangu/pangu.min.js" defer></script><script src="/js/flyfish.js" defer></script><script>window.config={"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验。"},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"pangu":{"enable":true,"selector":"article"},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/search.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":30,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"version":"v0.3.20"};</script><script src="/js/theme.min.js" defer></script></body>
+</html>
