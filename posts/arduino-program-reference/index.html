@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>Arduino编程语句参考 - Buray&#39;s Blog</title><meta name="author" content="Buray">
+<meta name="description" content="Arduino编程语句参考 Arduino程序可以分为三个主要部分：结构，数值（变量与常量）和函数。
+"><meta name="keywords" content='单片机, ESP32, Arduino'>
+	<meta itemprop="name" content="Arduino编程语句参考">
+	<meta itemprop="description" content="Arduino编程语句参考 Arduino程序可以分为三个主要部分：结构，数值（变量与常量）和函数。">
+	<meta itemprop="datePublished" content="2026-08-25T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-08-25T00:00:00+00:00">
+	<meta itemprop="wordCount" content="2357">
+	<meta itemprop="keywords" content="单片机,ESP32,Arduino"><meta property="og:url" content="http://www.buray.top/posts/arduino-program-reference/">
+	<meta property="og:site_name" content="Buray&#39;s Blog">
+	<meta property="og:title" content="Arduino编程语句参考">
+	<meta property="og:description" content="Arduino编程语句参考 Arduino程序可以分为三个主要部分：结构，数值（变量与常量）和函数。">
+	<meta property="og:locale" content="zh_CN">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-08-25T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-08-25T00:00:00+00:00">
+		<meta property="article:tag" content="单片机">
+		<meta property="article:tag" content="ESP32">
+		<meta property="article:tag" content="Arduino">
+
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Arduino编程语句参考">
+	<meta name="twitter:description" content="Arduino编程语句参考 Arduino程序可以分为三个主要部分：结构，数值（变量与常量）和函数。">
+<meta name="application-name" content="Buray&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="Buray&#39;s Blog"><meta name="theme-color" data-light="#f8f8f8" data-dark="#252627" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" type="text/html" href="http://www.buray.top/posts/arduino-program-reference/" title="Arduino编程语句参考 - Buray&#39;s Blog" /><link rel="prev" type="text/html" href="http://www.buray.top/posts/arduinoesp32s3manual/" title="Arduino &amp; ESP32‑S3 中文函数参考手册" /><link rel="alternate" type="text/markdown" href="http://www.buray.top/posts/arduino-program-reference/index.md" title="Arduino编程语句参考 - Buray's Blog"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Arduino编程语句参考",
+    "inLanguage": "zh-CN",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http:\/\/www.buray.top\/posts\/arduino-program-reference\/"
+    },"image": ["https:\/\/burayimg.heisenw.com\/blog\/img\/a6c9b1f7-6da1-4978-bedf-29b03325cace.webp"],"genre": "posts","keywords": "单片机, ESP32, Arduino","wordcount":  2357 ,
+    "url": "http:\/\/www.buray.top\/posts\/arduino-program-reference\/","datePublished": "2026-08-25T00:00:00+00:00","dateModified": "2026-08-25T00:00:00+00:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "Buray"
+      },"description": ""
+  }
+  </script><script src="/js/head/color-scheme.min.js"></script></head>
+  <body data-header-desktop="sticky" data-header-mobile="auto"><div class="wrapper" data-page-style="normal"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="Buray&#39;s Blog"><img class="logo" src='/favicon.ico' alt="Buray&#39;s Blog" height="32" width="32"><span class="header-title-text">Buray&#39;s Blog</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a class="menu-link" href="/"><i class="fa-solid fa-house fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li class="menu-item">
+              <a class="menu-link" href="/archives/"><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 文档</a></li><li class="menu-item">
+              <a class="menu-link" href="/categories/"><i class="fa-solid fa-folder-tree fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li class="menu-item">
+              <a class="menu-link" href="/tags/"><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item">
+              <a class="menu-link" href="/posts/readme/"><i class="fa-solid fa-user fa-fw fa-sm" aria-hidden="true"></i> 关于</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="搜索文章标题或内容……" id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+              <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+              <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" title="切换主题">
+          <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+        </li></ul>
+    </nav>
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="Buray&#39;s Blog"><img class="logo" src='/favicon.ico' alt="Buray&#39;s Blog" height="26" width="26"><span class="header-title-text">Buray&#39;s Blog</span></a><span class="header-subtitle"></span></div>
+      <div class="menu-toggle" id="menu-toggle-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="搜索文章标题或内容……" id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                <i class="fa-solid fa-search fa-fw" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                <i class="fa-solid fa-times-circle fa-fw" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              取消
+            </a>
+          </li><li class="menu-item"><a class="menu-link" href="/"><i class="fa-solid fa-house fa-fw fa-sm" aria-hidden="true"></i> 首页</a></li><li class="menu-item"><a class="menu-link" href="/archives/"><i class="fa-solid fa-archive fa-fw fa-sm" aria-hidden="true"></i> 文档</a></li><li class="menu-item"><a class="menu-link" href="/categories/"><i class="fa-solid fa-folder-tree fa-fw fa-sm" aria-hidden="true"></i> 分类</a></li><li class="menu-item"><a class="menu-link" href="/tags/"><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden="true"></i> 标签</a></li><li class="menu-item"><a class="menu-link" href="/posts/readme/"><i class="fa-solid fa-user fa-fw fa-sm" aria-hidden="true"></i> 关于</a></li><li class="menu-item menu-system">
+          <span class="menu-system-item theme-switch" title="切换主题"><i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i></span></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><nav aria-label="breadcrumb" class="breadcrumb-container">
+    <ol class="breadcrumb"><li class="breadcrumb-item" data-separator="/"><a href="/" title="Buray&#39;s Blog">主页</a></li><li class="breadcrumb-item" data-separator="/"><a href="/posts/" title="Posts">文章</a></li><li class="breadcrumb-item active" data-separator="/" aria-current="page">Arduino编程语句参考</li>
+    </ol>
+  </nav><main class="container"><aside class="aside-collection animate__animated animate__fadeIn animate__faster" aria-label="合集"></aside>
+
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>Arduino编程语句参考</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><a href="http://www.buray.top" title="作者"target="_blank" rel="external nofollow noopener noreferrer author" class="author"><i class="fa-solid fa-user-circle" aria-hidden="true"></i>
+    Buray</a></span><span class="post-included-in">&nbsp;收录于 <a href="/categories/%E7%AC%94%E8%AE%B0/" class="post-category" title="分类 - 笔记"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 笔记</a></span></div><div class="post-meta-line"><span title="发布于 2026-08-25 00:00:00"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2026-08-25">2026-08-25</time></span>&nbsp;<span title="2357 字"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>约 2400 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>预计阅读 5 分钟</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>目录</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#结构">结构</a>
+      <ul>
+        <li><a href="#基础程序结构">基础程序结构</a></li>
+        <li><a href="#控制结构">控制结构</a></li>
+        <li><a href="#进阶语法">进阶语法</a></li>
+      </ul>
+    </li>
+    <li><a href="#数值">数值</a>
+      <ul>
+        <li><a href="#常量">常量</a></li>
+        <li><a href="#数据类型">数据类型</a></li>
+        <li><a href="#类型转换函数">类型转换函数</a></li>
+        <li><a href="#变量范围与限定符">变量范围与限定符</a></li>
+        <li><a href="#运算符">运算符</a>
+          <ul>
+            <li><a href="#算术运算符">算术运算符</a></li>
+            <li><a href="#关系运算符比较运算返回truefalse">关系运算符（比较运算，返回true/false）</a></li>
+            <li><a href="#布尔逻辑运算符逻辑与或非">布尔逻辑运算符（逻辑与/或/非）</a></li>
+            <li><a href="#位运算符">位运算符</a></li>
+            <li><a href="#指针运算">指针运算</a></li>
+          </ul>
+        </li>
+        <li><a href="#工具">工具</a></li>
+      </ul>
+    </li>
+    <li><a href="#函数">函数</a>
+      <ul>
+        <li><a href="#通信-serial串口通讯">通信 Serial（串口通讯）</a></li>
+        <li><a href="#数字-io">数字 I/O</a></li>
+        <li><a href="#模拟-io">模拟 I/O</a></li>
+        <li><a href="#高级-io">高级 I/O</a></li>
+        <li><a href="#时间函数">时间函数</a></li>
+        <li><a href="#数学函数">数学函数</a></li>
+        <li><a href="#三角函数">三角函数</a></li>
+        <li><a href="#随机数">随机数</a></li>
+        <li><a href="#位与字节操作">位与字节操作</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><h2 class="heading-element" id="arduino编程语句参考"><span>Arduino编程语句参考</span>
+  <a href="#arduino%e7%bc%96%e7%a8%8b%e8%af%ad%e5%8f%a5%e5%8f%82%e8%80%83" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>Arduino程序可以分为三个主要部分：<strong>结构，数值（变量与常量）和函数</strong>。</p>
+<blockquote>
+<p>提示：本文同时兼容 AVR‑Arduino 和 ESP32‑S3，部分函数行为会因硬件平台略有差异。</p>
+</blockquote>
+<hr>
+<h2 class="heading-element" id="结构"><span>结构</span>
+  <a href="#%e7%bb%93%e6%9e%84" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><h3 class="heading-element" id="基础程序结构"><span>基础程序结构</span>
+  <a href="#%e5%9f%ba%e7%a1%80%e7%a8%8b%e5%ba%8f%e7%bb%93%e6%9e%84" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><table>
+	<thead>
+			<tr>
+					<th>语法</th>
+					<th>说明</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>setup()</code></td>
+					<td>上电/复位后<strong>仅运行一次</strong>，用于初始化引脚、串口、外设。无返回值。</td>
+			</tr>
+			<tr>
+					<td><code>loop()</code></td>
+					<td>setup执行完毕后无限循环执行，项目主业务逻辑写在此函数内。无返回值。</td>
+			</tr>
+	</tbody>
+</table>
+<h3 class="heading-element" id="控制结构"><span>控制结构</span>
+  <a href="#%e6%8e%a7%e5%88%b6%e7%bb%93%e6%9e%84" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><ul>
+<li><code>if</code>：条件判断，如果括号内表达式结果为真，则执行内部代码块</li>
+<li><code>if...else</code>：二分支条件判断；条件成立执行if分支，不成立执行else分支</li>
+<li><code>for</code>：循环，多用于已知循环次数的场景</li>
+<li><code>switch case</code>：多分支条件判断，用于匹配变量多种离散取值；不要忘记<code>break</code>，否则会穿透执行后续case</li>
+<li><code>while</code>：当条件表达式为真时，反复执行循环体；条件不成立直接跳出</li>
+<li><code>do... while</code>：<strong>先执行1次循环体，之后再判断条件</strong>，条件为真继续循环；至少运行一次</li>
+<li><code>break</code>：跳出<code>for/while</code>循环，或者跳出<code>switch‑case</code>语句</li>
+<li><code>continue</code>：跳过<strong>本次循环</strong>剩下代码，直接进入下一轮循环判断</li>
+<li><code>return</code>：函数返回，提前结束当前函数；有返回值函数需要携带返回数据</li>
+<li><code>goto</code>：跳转到代码标记位置，Arduino语法支持，但<strong>不推荐普通项目使用</strong>，容易破坏代码逻辑</li>
+</ul>
+<h3 class="heading-element" id="进阶语法"><span>进阶语法</span>
+  <a href="#%e8%bf%9b%e9%98%b6%e8%af%ad%e6%b3%95" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><table>
+	<thead>
+			<tr>
+					<th>语法</th>
+					<th>说明</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>;</code></td>
+					<td>语句结束分号，绝大多数代码行末尾必须带分号；<code>for()</code>、<code>if()</code>、函数定义后<strong>不要在括号后加分号</strong></td>
+			</tr>
+			<tr>
+					<td><code>{ }</code></td>
+					<td>大括号，包裹代码块（函数、if、循环内部）；建议成对书写</td>
+			</tr>
+			<tr>
+					<td><code>//</code></td>
+					<td>单行注释，<code>//</code>之后本行全部内容不会编译执行</td>
+			</tr>
+			<tr>
+					<td><code>/* */</code></td>
+					<td>多行注释，<code>/*</code>与<code>*/</code>之间全部内容作为注释，可跨越多行</td>
+			</tr>
+			<tr>
+					<td><code>#define</code></td>
+					<td>宏定义，预处理阶段文本替换；不是真正变量，没有类型，注意避免括号陷阱</td>
+			</tr>
+			<tr>
+					<td><code>#include</code></td>
+					<td>引入外部库或者头文件，<code>&lt;&gt;</code>用于系统库，<code>&quot;&quot;</code>用于本地自定义头文件</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h2 class="heading-element" id="数值"><span>数值</span>
+  <a href="#%e6%95%b0%e5%80%bc" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><h3 class="heading-element" id="常量"><span>常量</span>
+  <a href="#%e5%b8%b8%e9%87%8f" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><ul>
+<li>IO电平常量：<code>HIGH</code> / <code>LOW</code></li>
+<li>引脚模式常量：<code>INPUT</code> / <code>OUTPUT</code> / <code>INPUT_PULLUP</code></li>
+<li>布尔常量：<code>true</code> / <code>false</code></li>
+<li>整数常量：支持十进制、十六进制<code>0x</code>、八进制<code>0</code>开头</li>
+<li>浮点数常量：带小数点数字，例如<code>3.14</code></li>
+</ul>
+<blockquote>
+<p>注意：ESP32<strong>没有 INPUT_PULLDOWN</strong>，该常量仅部分AVR板子支持。</p>
+</blockquote>
+<h3 class="heading-element" id="数据类型"><span>数据类型</span>
+  <a href="#%e6%95%b0%e6%8d%ae%e7%b1%bb%e5%9e%8b" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><table>
+	<thead>
+			<tr>
+					<th>类型</th>
+					<th>中文名称</th>
+					<th>说明</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>void</code></td>
+					<td>无返回值</td>
+					<td>仅用于函数声明，代表函数不返回任何数据，不能用来定义变量</td>
+			</tr>
+			<tr>
+					<td><code>boolean</code></td>
+					<td>布尔型</td>
+					<td>取值 <code>true</code> / <code>false</code>；底层存储为1字节</td>
+			</tr>
+			<tr>
+					<td><code>char</code></td>
+					<td>字符型</td>
+					<td>单个字符，1字节；AVR是有符号(-128~127)，ESP32 char默认为无符号</td>
+			</tr>
+			<tr>
+					<td><code>unsigned char</code></td>
+					<td>无符号字符型</td>
+					<td>1字节，数值范围 <code>0‑255</code></td>
+			</tr>
+			<tr>
+					<td><code>byte</code></td>
+					<td>字节型</td>
+					<td>等价 <code>unsigned char</code>，范围<code>0‑255</code>，硬件位操作常用</td>
+			</tr>
+			<tr>
+					<td><code>int</code></td>
+					<td>整型</td>
+					<td>AVR：16位 <code>-32768 ~ 32767</code>；<strong>ESP32是32位int</strong>，范围大幅扩大</td>
+			</tr>
+			<tr>
+					<td><code>word</code></td>
+					<td>字型</td>
+					<td>无符号16位，取值 <code>0‑65535</code></td>
+			</tr>
+			<tr>
+					<td><code>long</code></td>
+					<td>长整型</td>
+					<td>32位带符号整数</td>
+			</tr>
+			<tr>
+					<td><code>float</code></td>
+					<td>单精度浮点型</td>
+					<td>4字节，保存小数</td>
+			</tr>
+			<tr>
+					<td><code>double</code></td>
+					<td>双精度浮点</td>
+					<td>AVR为8字节；<strong>ESP32下 double 和 float 完全等价，没有更高精度</strong></td>
+			</tr>
+			<tr>
+					<td><code>String</code></td>
+					<td>字符串对象</td>
+					<td>Arduino封装类，方便文本操作；内存碎片风险，嵌入式谨慎高频使用</td>
+			</tr>
+			<tr>
+					<td><code>array</code></td>
+					<td>数组</td>
+					<td>相同类型数据集合；<code>int arr[10];</code> 定义数组</td>
+			</tr>
+	</tbody>
+</table>
+<h3 class="heading-element" id="类型转换函数"><span>类型转换函数</span>
+  <a href="#%e7%b1%bb%e5%9e%8b%e8%bd%ac%e6%8d%a2%e5%87%bd%e6%95%b0" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><blockquote>
+<p>强制把数据转为对应类型</p>
+</blockquote>
+<ul>
+<li><code>char()</code> 转为 char</li>
+<li><code>byte()</code> 转为 byte</li>
+<li><code>int()</code> 转为 int</li>
+<li><code>word()</code> 转为 word</li>
+<li><code>long()</code> 转为 long</li>
+<li><code>float()</code> 转为 float</li>
+</ul>
+<h3 class="heading-element" id="变量范围与限定符"><span>变量范围与限定符</span>
+  <a href="#%e5%8f%98%e9%87%8f%e8%8c%83%e5%9b%b4%e4%b8%8e%e9%99%90%e5%ae%9a%e7%ac%a6" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><ul>
+<li><strong>变量作用域</strong>
+<ul>
+<li>全局变量：写在所有函数外面，整个程序全部函数都可以访问；上电初始化一次</li>
+<li>局部变量：写在函数/大括号<code>{}</code>内部，仅该代码块内有效；每次进入代码块重新创建</li>
+</ul>
+</li>
+<li><code>static</code>：静态局部变量；函数退出后，变量数值保留，不会销毁</li>
+<li><code>volatile</code>：易变限定符；阻止编译器优化读取，<strong>中断服务函数访问共享变量必须加volatile</strong></li>
+<li><code>const</code>：常量，赋值后数值不可修改</li>
+</ul>
+<h3 class="heading-element" id="运算符"><span>运算符</span>
+  <a href="#%e8%bf%90%e7%ae%97%e7%ac%a6" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><h4 class="heading-element" id="算术运算符"><span>算术运算符</span>
+  <a href="#%e7%ae%97%e6%9c%af%e8%bf%90%e7%ae%97%e7%ac%a6" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h4><ul>
+<li><code>=</code> 赋值运算符，把右侧值存入左侧变量，不等于数学等于</li>
+<li><code>+</code> 加法</li>
+<li><code>-</code> 减法</li>
+<li><code>*</code> 乘法</li>
+<li><code>/</code> 除法；整数相除结果为整数，舍弃小数</li>
+<li><code>%</code> 取模（求余数）；<strong>仅支持整数，不能用于浮点数</strong></li>
+</ul>
+<h4 class="heading-element" id="关系运算符比较运算返回truefalse"><span>关系运算符（比较运算，返回true/false）</span>
+  <a href="#%e5%85%b3%e7%b3%bb%e8%bf%90%e7%ae%97%e7%ac%a6%e6%af%94%e8%be%83%e8%bf%90%e7%ae%97%e8%bf%94%e5%9b%9etruefalse" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h4><ul>
+<li><code>==</code> 判断是否相等，<strong>不要和赋值<code>=</code>混淆</strong></li>
+<li><code>!=</code> 判断不等于</li>
+<li><code>&lt;</code> 小于</li>
+<li><code>&gt;</code> 大于</li>
+<li><code>&lt;=</code> 小于等于</li>
+<li><code>&gt;=</code> 大于等于</li>
+</ul>
+<h4 class="heading-element" id="布尔逻辑运算符逻辑与或非"><span>布尔逻辑运算符（逻辑与/或/非）</span>
+  <a href="#%e5%b8%83%e5%b0%94%e9%80%bb%e8%be%91%e8%bf%90%e7%ae%97%e7%ac%a6%e9%80%bb%e8%be%91%e4%b8%8e%e6%88%96%e9%9d%9e" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h4><ul>
+<li><code>&amp;&amp;</code> 逻辑与，两边条件全部为真结果才为真</li>
+<li><code>||</code> 逻辑或，任意一边条件为真结果即为真</li>
+<li><code>!</code> 逻辑非，取反，真变假，假变真</li>
+</ul>
+<h4 class="heading-element" id="位运算符"><span>位运算符</span>
+  <a href="#%e4%bd%8d%e8%bf%90%e7%ae%97%e7%ac%a6" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h4><ul>
+<li><code>&amp;</code> 按位与</li>
+<li><code>|</code> 按位或</li>
+<li><code>^</code> 按位异或</li>
+<li><code>~</code> 按位取反</li>
+<li><code>&lt;&lt;</code> 位左移</li>
+<li><code>&gt;&gt;</code> 位右移</li>
+</ul>
+<h4 class="heading-element" id="指针运算"><span>指针运算</span>
+  <a href="#%e6%8c%87%e9%92%88%e8%bf%90%e7%ae%97" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h4><ul>
+<li>指针的概念</li>
+<li>指针变量</li>
+</ul>
+<blockquote>
+<p>提示：普通Arduino项目很少用到指针，高级C语言特性。</p>
+</blockquote>
+<h3 class="heading-element" id="工具"><span>工具</span>
+  <a href="#%e5%b7%a5%e5%85%b7" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><ul>
+<li><code>sizeof()</code> 获取变量/数据类型占用内存字节大小</li>
+</ul>
+<hr>
+<h2 class="heading-element" id="函数"><span>函数</span>
+  <a href="#%e5%87%bd%e6%95%b0" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><h3 class="heading-element" id="通信-serial串口通讯"><span>通信 Serial（串口通讯）</span>
+  <a href="#%e9%80%9a%e4%bf%a1-serial%e4%b8%b2%e5%8f%a3%e9%80%9a%e8%ae%af" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="err">波特率</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">();</span>      <span class="c1">// 打印不换行
+</span></span></span><span class="line"><span class="cl"><span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">();</span>    <span class="c1">// 打印并换行
+</span></span></span><span class="line"><span class="cl"><span class="n">Serial</span><span class="p">.</span><span class="n">read</span><span class="p">();</span>       <span class="c1">// 读取1字节串口数据
+</span></span></span><span class="line"><span class="cl"><span class="n">Serial</span><span class="p">.</span><span class="n">available</span><span class="p">();</span>  <span class="c1">// 获取接收缓冲区可用字节数量
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 class="heading-element" id="数字-io"><span>数字 I/O</span>
+  <a href="#%e6%95%b0%e5%ad%97-io" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><ul>
+<li><code>pinMode(pin, mode)</code> 设置引脚模式：<code>INPUT</code> / <code>OUTPUT</code> / <code>INPUT_PULLUP</code></li>
+<li><code>digitalWrite(pin, val)</code> 输出引脚电平：<code>HIGH</code> / <code>LOW</code></li>
+<li><code>digitalRead(pin)</code> 读取数字引脚电平，返回<code>HIGH</code>或<code>LOW</code></li>
+</ul>
+<h3 class="heading-element" id="模拟-io"><span>模拟 I/O</span>
+  <a href="#%e6%a8%a1%e6%8b%9f-io" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><ul>
+<li><code>analogRead(pin)</code> 读取 ADC 模拟输入；返回采样数值；ESP32 ADC 存在噪声</li>
+<li><code>analogWrite(pin, duty)</code> PWM 脉冲宽度调制输出；<strong>不是 DAC 模拟电压输出</strong></li>
+</ul>
+<h3 class="heading-element" id="高级-io"><span>高级 I/O</span>
+  <a href="#%e9%ab%98%e7%ba%a7-io" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><ul>
+<li><code>tone(pin, freq)</code> 在指定引脚输出方波，常用于驱动蜂鸣器</li>
+<li><code>noTone(pin)</code> 停止 tone 方波输出</li>
+<li><code>shiftOut(dataPin, clockPin, bitOrder, value)</code> 串行移位输出</li>
+<li><code>shiftIn(dataPin, clockPin, bitOrder)</code> 串行移位输入</li>
+<li><code>pulseIn(pin, value)</code> 读取引脚上指定电平脉冲持续时间（微秒）</li>
+</ul>
+<h3 class="heading-element" id="时间函数"><span>时间函数</span>
+  <a href="#%e6%97%b6%e9%97%b4%e5%87%bd%e6%95%b0" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><blockquote>
+<p>millis/micros 为非阻塞，推荐优先使用；delay 是阻塞延时，程序卡在该处不能做别的任务</p>
+</blockquote>
+<ul>
+<li><code>millis()</code> 返回系统上电运行总毫秒数，返回 unsigned long</li>
+<li><code>micros()</code> 返回系统上电运行总微秒数，返回 unsigned long</li>
+<li><code>delay(ms)</code> 毫秒级阻塞延时</li>
+<li><code>delayMicroseconds(us)</code> 微秒级阻塞延时</li>
+</ul>
+<h3 class="heading-element" id="数学函数"><span>数学函数</span>
+  <a href="#%e6%95%b0%e5%ad%a6%e5%87%bd%e6%95%b0" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><ul>
+<li><code>min(a,b)</code> 返回两个数最小值</li>
+<li><code>max(a,b)</code> 返回两个数最大值</li>
+<li><code>abs(x)</code> 返回绝对值</li>
+<li><code>constrain(x,min,max)</code> 将数值限制在 min‑max 区间，超出直接截断到边界</li>
+<li><code>map(val,in_min,in_max,out_min,out_max)</code> 将输入区间线性映射到输出区间</li>
+<li><code>pow(base,exp)</code> 幂运算，求 base 的 exp 次方，返回 float</li>
+<li><code>sqrt(x)</code> 平方根运算</li>
+</ul>
+<h3 class="heading-element" id="三角函数"><span>三角函数</span>
+  <a href="#%e4%b8%89%e8%a7%92%e5%87%bd%e6%95%b0" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><blockquote>
+<p>⚠️ 参数单位是<strong>弧度，不是角度</strong>，角度需要先转换 <code>角度 * PI / 180</code></p>
+</blockquote>
+<ul>
+<li><code>sin(rad)</code> 正弦</li>
+<li><code>cos(rad)</code> 余弦</li>
+<li><code>tan(rad)</code> 正切</li>
+</ul>
+<h3 class="heading-element" id="随机数"><span>随机数</span>
+  <a href="#%e9%9a%8f%e6%9c%ba%e6%95%b0" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><ul>
+<li><code>random(max)</code> / <code>random(min,max)</code> 获取随机整数；范围 [min, max‑1]，上限不包含</li>
+<li><code>randomSeed(seed)</code> 设置随机数种子；通常用<code>analogRead(悬空引脚)</code>获取噪声做种子</li>
+</ul>
+<h3 class="heading-element" id="位与字节操作"><span>位与字节操作</span>
+  <a href="#%e4%bd%8d%e4%b8%8e%e5%ad%97%e8%8a%82%e6%93%8d%e4%bd%9c" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><ul>
+<li><code>lowByte()</code> 获取 16 位数值低字节</li>
+<li><code>highByte()</code> 获取 16 位数值高字节</li>
+<li><code>bitRead()</code> 读取指定 bit 位</li>
+<li><code>bitWrite()</code> 修改指定 bit 位</li>
+<li><code>bitSet()</code> 将指定 bit 置 1</li>
+<li><code>bitClear()</code> 将指定 bit 置 0</li>
+<li><code>bit()</code> 返回第 n 位掩码数值</li>
+</ul>
+<hr>
+</div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod">
+        <span title="更新于 2026-08-25 00:00:00">更新于 2026-08-25&nbsp;</span>
+      </div><div class="post-info-license">
+            <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a></span>
+          </div></div><div class="post-info-line">
+        <div class="post-info-md"><span><a href="/posts/arduino-program-reference/index.md" title="阅读原始文档" class="link-to-markdown">阅读原始文档</a></span></div>
+        <div class="post-info-share">
+          <span><a href="javascript:void(0);" title="分享到 X" data-sharer="twitter" data-url="http://www.buray.top/posts/arduino-program-reference/" data-title="Arduino编程语句参考" data-hashtags="单片机,ESP32,Arduino"><i class="fa-brands fa-x-twitter fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="http://www.buray.top/posts/arduino-program-reference/" data-hashtag="单片机"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="http://www.buray.top/posts/arduino-program-reference/" data-title="Arduino编程语句参考"><i class="fa-brands fa-weibo fa-fw" aria-hidden="true"></i></a>
+  </span>
+        </div>
+      </div></div>
+
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href="/tags/%E5%8D%95%E7%89%87%E6%9C%BA/" class="post-tag" title="标签 - 单片机">单片机</a><a href="/tags/esp32/" class="post-tag" title="标签 - ESP32">ESP32</a><a href="/tags/arduino/" class="post-tag" title="标签 - Arduino">Arduino</a></section>
+    <section>
+      <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+    </section>
+  </div><div class="post-nav"><a href="/posts/arduinoesp32s3manual/" class="post-nav-item" rel="prev" title="Arduino &amp; ESP32‑S3 中文函数参考手册"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i>Arduino &amp; ESP32‑S3 中文函数参考手册</a></div>
+</div>
+</article>
+
+  <aside class="toc" id="toc-auto" aria-label="目录"><h2 class="toc-title">目录&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2022 - 2026</span><span class="author" itemprop="copyrightHolder">
+              <a href="http://www.buray.top"target="_blank" rel="external nofollow noopener noreferrer">Buray</a></span></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role="button" aria-label="回到顶部"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden="true"></i><span class="variant-numeric d-none">0%</span>
+        </div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">该网站在启用 JavaScript 的情况下效果最佳。</div>
+  </noscript>
+</div><link rel="preload" href="/lib/katex/katex.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/katex/katex.min.css"></noscript><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/fuse/fuse.min.js" defer></script><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/katex/katex.min.js" defer></script><script src="/lib/katex/auto-render.min.js" defer></script><script src="/lib/katex/copy-tex.min.js" defer></script><script src="/lib/katex/mhchem.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script src="/lib/pangu/pangu.min.js" defer></script><script src="/js/flyfish.js" defer></script><script>window.config={"code":{"copyTitle":"复制到剪贴板","editLockTitle":"锁定可编辑代码块","editUnLockTitle":"解锁可编辑代码块","editable":true,"maxShownLines":10},"comment":{"enable":false},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验。"},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"pangu":{"enable":true,"selector":"article"},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/search.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"没有找到结果","snippetLength":30,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"version":"v0.3.20"};</script><script src="/js/theme.min.js" defer></script></body>
+</html>
