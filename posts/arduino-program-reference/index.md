@@ -463,7 +463,6 @@ Serial.available();  // 获取接收缓冲区可用字节数量
 - `bitClear()` 将指定 bit 置 0
 - `bit()` 返回第 n 位掩码数值
 
-{{ .TableOfContents }}
 
 ---
 
